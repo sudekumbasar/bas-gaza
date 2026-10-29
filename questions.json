@@ -1,5 +1,5 @@
 {
-  "about": "Bas Gaza question content. Every question is written in our own words from the official source listed with it. Only questions with \"reviewed\": true appear in the game; Sude sets this after checking the question against the source.",
+  "about": "Bas Gaza question content. Every question is written in our own words from the official source listed with it. Only questions with \"reviewed\": true appear in the game; Sude sets this after checking the question against the source. \"roadPicture\" only picks what is drawn on the road before the question.",
   "sources": {
     "meb-ilk-yardim-2025": {
       "title": "Genel İlk Yardım Bilgileri (eğitim sunumu)",
@@ -17,6 +17,7 @@
   "questions": [
     {
       "id": "iy-001",
+      "roadPicture": "crash",
       "category": "ilk_yardim",
       "situation": "Yolun kenarında bir kaza olmuş, bir kişi yaralı. Arabanı güvenli bir yere çekip durdun.",
       "question": "Yaralıya yardım etmeden önce ilk ne yapmalısın?",
@@ -34,6 +35,7 @@
     },
     {
       "id": "iy-002",
+      "roadPicture": "crash",
       "category": "ilk_yardim",
       "situation": "Şehir içinde bir trafik kazasına yardım ediyorsun.",
       "question": "Uyarı işaretlerini kazanın önüne ve arkasına en az kaç metre uzağa koymalısın?",
@@ -46,6 +48,7 @@
     },
     {
       "id": "iy-003",
+      "roadPicture": "crash",
       "category": "ilk_yardim",
       "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor ama normal nefes alıyor. 112 aranmış.",
       "question": "Yaralıyı hangi pozisyona getirmelisin?",
@@ -63,6 +66,7 @@
     },
     {
       "id": "tc-001",
+      "roadPicture": "junction",
       "category": "trafik_cevre",
       "situation": "Işık, levha ya da trafik polisi olmayan bir kavşaktasın. Tali yoldan anayola çıkacaksın.",
       "question": "Önce kim geçmeli?",
@@ -80,6 +84,7 @@
     },
     {
       "id": "tc-002",
+      "roadPicture": "roundabout",
       "category": "trafik_cevre",
       "situation": "Işık, levha ya da trafik polisi olmayan bir dönel kavşağa (göbekli kavşak) geldin. İçeride dönen araçlar var.",
       "question": "Ne yapmalısın?",
@@ -97,6 +102,7 @@
     },
     {
       "id": "ta-001",
+      "roadPicture": "ambulance",
       "category": "trafik_adabi",
       "situation": "Arkandan ışıklarını yakmış, sirenini çalan bir ambulans geliyor.",
       "question": "Ne yapmalısın?",
@@ -114,6 +120,7 @@
     },
     {
       "id": "ta-002",
+      "roadPicture": "crossing",
       "category": "trafik_adabi",
       "situation": "Işıklı trafik işareti ve görevli olmayan bir yaya geçidine yaklaşıyorsun. Bir yaya karşıya geçmek üzere bekliyor.",
       "question": "Ne yapmalısın?",

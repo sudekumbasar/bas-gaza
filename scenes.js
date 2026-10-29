@@ -1,4 +1,5 @@
-// Short fail scenes shown on the road after a wrong answer, one per course.
+// Pictures drawn on the road: short fail scenes after a wrong answer (one per course),
+// and the road pictures that lead up to each question.
 // All drawings are our own simple shapes. The tone stays soft: nobody is hurt on screen.
 
 const SCENE_DURATION = 3; // seconds
@@ -243,4 +244,146 @@ function drawExaminer(t, v) {
     const wobble = Math.sin(t * 14) * 0.15;
     drawPerson(ctx, x, y, carWidth * 0.7, "#e94b3c", wobble);
   }
+}
+
+// --- Road pictures: what comes towards you before a question opens ---
+// "front" is the screen y where the picture meets your car (the question opens there).
+// view: { ctx, width, height, lane, roadLeft, roadWidth, carWidth, carHeight, laneCentre, drawCar }
+
+function drawRoadPicture(name, front, progress, t, view) {
+  const pictures = {
+    crash: drawCrashPicture,
+    junction: drawJunctionPicture,
+    roundabout: drawRoundaboutPicture,
+    ambulance: drawAmbulancePicture,
+    crossing: drawCrossingPicture,
+  };
+  pictures[name](front, progress, t, view);
+}
+
+function drawCrashPicture(front, progress, t, v) {
+  const { ctx, carWidth, carHeight } = v;
+  const x = v.laneCentre(0);
+  const top = front - carHeight * 1.6;
+  ctx.save();
+  ctx.translate(x, top + carHeight / 2);
+  ctx.rotate(-0.5);
+  v.drawCar(0, -carHeight / 2, "#9ca3af", "#6b7280");
+  ctx.restore();
+  drawPerson(ctx, x + carWidth * 0.9, top + carHeight * 0.6, carWidth * 0.7, "#2563eb", Math.PI / 2);
+  // Warning triangle on the road, in front of the crash
+  ctx.fillStyle = "#ef4444";
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x, front - 22);
+  ctx.lineTo(x - 13, front);
+  ctx.lineTo(x + 13, front);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  // Hazard lights blink on the crashed car
+  if (flashOn(t, 2)) {
+    ctx.fillStyle = "rgba(251, 191, 36, 0.8)";
+    ctx.beginPath();
+    ctx.arc(x - carWidth * 0.2, top + carHeight * 0.95, 6, 0, Math.PI * 2);
+    ctx.arc(x + carWidth * 0.45, top + carHeight * 0.75, 6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawJunctionPicture(front, progress, t, v) {
+  const { ctx, width, carWidth, carHeight } = v;
+  const band = carHeight * 1.5;
+  const top = front - band - 8;
+  // The main road crosses ours from side to side.
+  ctx.fillStyle = "#3a3f47";
+  ctx.fillRect(0, top, width, band);
+  ctx.fillStyle = "#f2f2f2";
+  for (let x = ((t * 60) % 72) - 72; x < width; x += 72) {
+    ctx.fillRect(x, top + band / 2 - 3, 40, 6);
+  }
+  // Our side road ends at a white line.
+  ctx.fillRect(v.roadLeft, front - 8, v.roadWidth, 6);
+  // Cars on the main road
+  const slide = (t * 90) % (width + carHeight * 2);
+  ctx.save();
+  ctx.translate(width - slide + carHeight, top + band * 0.28);
+  ctx.rotate(-Math.PI / 2);
+  v.drawCar(0, -carHeight / 2, "#3c7be9", "rgba(0, 0, 0, 0.15)");
+  ctx.restore();
+  ctx.save();
+  ctx.translate(slide - carHeight, top + band * 0.72);
+  ctx.rotate(Math.PI / 2);
+  v.drawCar(0, -carHeight / 2, "#8a5cd6", "rgba(0, 0, 0, 0.15)");
+  ctx.restore();
+}
+
+function drawRoundaboutPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carHeight } = v;
+  const cx = roadLeft + roadWidth / 2;
+  const ring = roadWidth * 0.5;
+  const cy = front - ring - 10;
+  // Ring road and green island
+  ctx.fillStyle = "#3a3f47";
+  ctx.beginPath();
+  ctx.arc(cx, cy, ring + carHeight * 0.1, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#5fa84a";
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(cx, cy, ring * 0.45, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  // Give-way line where we enter
+  ctx.fillStyle = "#f2f2f2";
+  for (let x = roadLeft + 6; x < roadLeft + roadWidth - 6; x += 18) {
+    ctx.fillRect(x, front - 8, 10, 5);
+  }
+  // A car going round
+  const angle = t * 1.4;
+  const r = ring * 0.75;
+  ctx.save();
+  ctx.translate(cx + Math.cos(angle) * r, cy + Math.sin(angle) * r);
+  ctx.rotate(angle);
+  v.drawCar(0, -carHeight / 2, "#f5c518", "rgba(0, 0, 0, 0.15)");
+  ctx.restore();
+}
+
+function drawAmbulancePicture(front, progress, t, v) {
+  const { ctx, height, carWidth, carHeight } = v;
+  // The ambulance comes up from behind you, in the lane next to yours.
+  const x = v.laneCentre(v.lane === 2 ? 1 : v.lane + 1);
+  const p = easeOut(progress);
+  const top = height + carHeight * 0.2 - p * (height + carHeight * 0.2 - (front + carHeight * 0.5));
+  v.drawCar(x, top, "#ffffff", "#e5e7eb");
+  ctx.fillStyle = "#ef4444";
+  ctx.fillRect(x - carWidth * 0.35, top + carHeight * 0.45, carWidth * 0.7, carHeight * 0.08);
+  ctx.fillRect(x - carWidth * 0.04, top + carHeight * 0.3, carWidth * 0.08, carHeight * 0.38);
+  drawLightBar(ctx, x, top + carHeight * 0.13, carWidth * 0.8, t);
+}
+
+function drawCrossingPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  const depth = 46;
+  const top = front - depth - 6;
+  // Zebra stripes
+  ctx.fillStyle = "#f2f2f2";
+  for (let x = roadLeft + 6; x < roadLeft + roadWidth - 10; x += 22) {
+    ctx.fillRect(x, top, 12, depth);
+  }
+  // Crossing sign post at the side: blue square with a white triangle
+  const signX = roadLeft + roadWidth + 14;
+  ctx.fillStyle = "#1d4ed8";
+  ctx.fillRect(signX - 11, top - 4, 22, 22);
+  ctx.fillStyle = "#ffffff";
+  ctx.beginPath();
+  ctx.moveTo(signX, top);
+  ctx.lineTo(signX - 8, top + 14);
+  ctx.lineTo(signX + 8, top + 14);
+  ctx.fill();
+  // A pedestrian waits at the kerb, shifting a little.
+  const sway = Math.sin(t * 4) * 2;
+  drawPerson(ctx, roadLeft + roadWidth - carWidth * 0.35 + sway, top + depth / 2, carWidth * 0.7, "#f97316", Math.PI);
 }

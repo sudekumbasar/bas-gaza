@@ -23,6 +23,8 @@ const SLOW_CAR_COLOURS = ["#3c7be9", "#f5c518", "#8a5cd6", "#ffffff"];
 
 // Question events
 const EVENT_GAP = 5; // road travelled between two events
+const EVENT_START_Y = -0.35; // road pictures start above the screen
+const EVENTS_PER_COURSE = 2;
 const CATEGORY_NAMES = {
   ilk_yardim: "İlk Yardım",
   trafik_cevre: "Trafik ve Çevre",
@@ -62,9 +64,11 @@ let untilSpawn = SPAWN_GAP;
 let obstacles = []; // { type: "cone" | "car", lane, y, colour }
 let hitTimer = 0;
 let questions = []; // reviewed questions from questions.json
-let deck = []; // questions not yet asked in this round
+let runEvents = []; // the questions of this run, in order
+let eventIndex = 0;
+let correctCount = 0;
 let untilEvent = EVENT_GAP;
-let eventMarker = null; // { y } while a question event is on the road
+let eventMarker = null; // { y, q } while a question event is on the road
 let questionOpen = false;
 let scene = null; // { category, t } while a fail scene plays
 
@@ -140,8 +144,8 @@ function update(dt) {
   scroll += speed * height * dt;
 
   untilEvent -= speed * dt;
-  if (untilEvent <= 0 && !eventMarker && questions.length > 0) {
-    eventMarker = { y: -0.1 };
+  if (untilEvent <= 0 && !eventMarker && eventIndex < runEvents.length) {
+    eventMarker = { y: EVENT_START_Y, q: runEvents[eventIndex] };
   }
   if (eventMarker) {
     eventMarker.y += speed * dt;
@@ -271,36 +275,20 @@ function drawObstacles() {
 
 function drawEventMarker() {
   if (!eventMarker) return;
-  const { roadWidth, roadLeft } = layout();
-  const y = eventMarker.y * height;
-  const band = 28;
-  // Yellow and black stripes across the road, with a question badge.
-  ctx.save();
-  ctx.beginPath();
-  ctx.rect(roadLeft, y, roadWidth, band);
-  ctx.clip();
-  for (let x = roadLeft - band; x < roadLeft + roadWidth; x += band) {
-    ctx.fillStyle = Math.round((x - roadLeft) / band) % 2 === 0 ? "#f5c518" : "#1f2328";
-    ctx.beginPath();
-    ctx.moveTo(x, y + band);
-    ctx.lineTo(x + band / 2, y);
-    ctx.lineTo(x + band * 1.5, y);
-    ctx.lineTo(x + band, y + band);
-    ctx.fill();
-  }
-  ctx.restore();
-  ctx.fillStyle = "#f5c518";
-  ctx.strokeStyle = "#1f2328";
-  ctx.lineWidth = 4;
-  ctx.beginPath();
-  ctx.arc(width / 2, y + band / 2, 26, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle = "#1f2328";
-  ctx.font = "900 30px system-ui, -apple-system, sans-serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText("?", width / 2, y + band / 2 + 1);
+  const { roadWidth, roadLeft, carWidth, carHeight } = layout();
+  const progress = (eventMarker.y - EVENT_START_Y) / (PLAYER_Y - EVENT_START_Y);
+  drawRoadPicture(eventMarker.q.roadPicture, eventMarker.y * height, progress, elapsed, {
+    ctx,
+    width,
+    height,
+    lane,
+    roadLeft,
+    roadWidth,
+    carWidth,
+    carHeight,
+    laneCentre,
+    drawCar,
+  });
 }
 
 function drawSceneCaption(text) {
@@ -415,13 +403,19 @@ function shuffle(items) {
   return copy;
 }
 
-function nextQuestion() {
-  if (deck.length === 0) deck = shuffle(questions);
-  return deck.pop();
+// A run asks a few questions from every course that has reviewed questions.
+function buildRun() {
+  const courses = [...new Set(questions.map((q) => q.category))];
+  const picked = courses.flatMap((course) =>
+    shuffle(questions.filter((q) => q.category === course)).slice(0, EVENTS_PER_COURSE),
+  );
+  runEvents = shuffle(picked);
+  eventIndex = 0;
+  correctCount = 0;
 }
 
 function openQuestion() {
-  const q = nextQuestion();
+  const q = eventMarker.q;
   questionOpen = true;
   eventMarker = null;
 
@@ -458,6 +452,7 @@ function answerQuestion(q, chosen) {
   card.explanation.textContent = q.explanation;
 
   if (right) {
+    correctCount++;
     showFeedback();
     return;
   }
@@ -485,6 +480,11 @@ function showFeedback() {
 }
 
 function closeQuestion() {
+  eventIndex++;
+  if (eventIndex >= runEvents.length) {
+    showRunEnd();
+    return;
+  }
   card.root.hidden = true;
   questionOpen = false;
   obstacles = [];
@@ -493,10 +493,25 @@ function closeQuestion() {
   lastTime = performance.now();
 }
 
+// For now the run simply ends with the score; mistakes and game over come in step 6.
+function showRunEnd() {
+  card.category.textContent = "Tur bitti";
+  card.situation.hidden = true;
+  card.text.textContent = `${runEvents.length} sorudan ${correctCount} doğru`;
+  card.options.replaceChildren();
+  card.result.hidden = true;
+  card.explanation.hidden = true;
+  card.continueButton.textContent = "Tekrar oyna";
+  card.continueButton.onclick = () => window.location.reload();
+  card.feedback.hidden = false;
+  card.root.hidden = false;
+}
+
 async function loadQuestions() {
   const response = await fetch("questions.json");
   const data = await response.json();
   questions = data.questions.filter((q) => q.reviewed);
+  buildRun();
 }
 
 function start() {
@@ -536,5 +551,5 @@ window.addEventListener("keydown", (event) => {
 
 window.addEventListener("resize", resize);
 startButton.addEventListener("click", start);
-card.continueButton.addEventListener("click", closeQuestion);
+card.continueButton.onclick = closeQuestion;
 loadQuestions();
