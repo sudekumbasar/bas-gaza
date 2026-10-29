@@ -1,4 +1,4 @@
-# Bas Gaz Ehliyet
+# Bas Gaza
 
 ## What it is
 
@@ -110,7 +110,7 @@ Small steps. Each step ends with something Sude can open and play on her own pho
    - Tools: plain HTML, CSS and JavaScript, drawing on a canvas. No framework, no library, no build step.
    - Steps 1–6: a small local web server on the Mac; Sude opens the link on her phone over the same home Wi-Fi. No account needed.
    - Step 7: publish on GitHub Pages (free) so friends can play. This needs a GitHub account.
-1. **Empty game online.** A page with the name "Bas Gaz Ehliyet" and a "Başla" button opens on Sude's phone from a web link.
+1. **Empty game online.** A page with the name "Bas Gaza" and a "Başla" button opens on Sude's phone from a web link.
 2. **Road and car.** The road scrolls, the car moves between lanes with one finger.
 3. **Obstacles.** Cones and slow cars appear; hitting them slows you down.
 4. **First question.** A content file with a few checked questions. One event appears, the game pauses and shows the question card; right/wrong feedback works.

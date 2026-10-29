@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Bas Gaz Ehliyet: a 2D phone browser game for Turkish driving licence (e-sınav) practice. See `PRODUCT.md` for what we are building and the build order.
+Bas Gaza: a 2D phone browser game for Turkish driving licence (e-sınav) practice. See `PRODUCT.md` for what we are building and the build order.
 
 ## Working with Sude
 
