@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+  /* Asphalt with a dashed centre line */
+  background:
+    linear-gradient(#f5c518 50%, transparent 50%) center / 8px 48px repeat-y,
+    #2b2f36;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  overflow: hidden;
+}
+
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.logo-car {
+  width: 72px;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4));
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #2b2f36;
+  padding: 4px 16px;
+  border-radius: 12px;
+}
+
+.tagline {
+  font-size: 18px;
+  background: #2b2f36;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+#start-button {
+  margin-top: 24px;
+  font: inherit;
+  font-size: 28px;
+  font-weight: 800;
+  color: #2b2f36;
+  background: #f5c518;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 56px;
+  box-shadow: 0 6px 0 #b48f0c;
+  cursor: pointer;
+}
+
+#start-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #b48f0c;
+}
+
+.message {
+  font-size: 18px;
+  background: #2b2f36;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
