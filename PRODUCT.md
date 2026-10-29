@@ -106,7 +106,10 @@ These rules matter more than anything else in the project.
 
 Small steps. Each step ends with something Sude can open and play on her own phone.
 
-0. **Choose tools and hosting.** Claude proposes a framework and a free hosting option; Sude approves before anything is built.
+0. **Choose tools and hosting.** Decided on 29 October 2026:
+   - Tools: plain HTML, CSS and JavaScript, drawing on a canvas. No framework, no library, no build step.
+   - Steps 1–6: a small local web server on the Mac; Sude opens the link on her phone over the same home Wi-Fi. No account needed.
+   - Step 7: publish on GitHub Pages (free) so friends can play. This needs a GitHub account.
 1. **Empty game online.** A page with the name "Bas Gaz Ehliyet" and a "Başla" button opens on Sude's phone from a web link.
 2. **Road and car.** The road scrolls, the car moves between lanes with one finger.
 3. **Obstacles.** Cones and slow cars appear; hitting them slows you down.
