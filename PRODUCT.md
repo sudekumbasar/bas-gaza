@@ -33,11 +33,11 @@ Source: T.C. Millî Eğitim Bakanlığı, *Motorlu Taşıt Sürücü Kursiyerler
 ## How one run plays
 
 1. The start screen shows the name, a "Başla" button and the best score.
-2. The car drives forward on its own along one road. The player moves it between lanes with one finger (swipe or tap left/right) to avoid cones and slow cars. Hitting one only slows you down; it is not a mistake.
+2. The car drives forward on its own along one road. The player moves it between lanes with one finger (swipe or tap left/right) to avoid cones and slow cars. Hitting one slows you down and costs a little can (health, see Scoring).
 3. An event appears ahead (for example, a crashed car at the side of the road). The car stops and a question card opens with the situation, the question and the answer options.
 4. The player taps an answer.
    - Right: a short "Doğru!" with a one-line explanation, then the car drives on.
-   - Wrong: a short scene shows the outcome (see below), then the correct answer with its explanation. This costs one mistake.
+   - Wrong: a short scene shows the outcome (see below), then the correct answer with its explanation. This costs a lot of can.
 5. A run has **2 events from each course that has questions**, in random order: 8 events with all four courses, 6 while Araç Tekniği is missing (see Version 1). The questions are picked at random from the content file, so each run is a little different.
 6. At the end:
    - **Passed:** "Tebrikler, ehliyetini aldın!" with the score.
@@ -60,12 +60,14 @@ The exact wording above can still change during playtesting.
 
 ## Scoring and game over
 
-- The game follows the real pass mark: you need at least 70%.
-  With 8 questions, 6 right (75%) passes and 5 right (62.5%) fails, so **the 3rd wrong answer ends the run**.
-  With 6 questions, 5 right (83%) passes and 4 right (67%) fails, so **the 2nd wrong answer ends the run**.
-  The run ends at once with "Ehliyetini alamadın".
-- Mistakes are shown at the top of the screen as small licence cards (one per allowed mistake plus the last one); one is crossed out per mistake.
-- Score: 100 points per right answer, plus a small bonus for distance driven without hitting obstacles.
+- **Can bar** (chosen by Sude on 29 October 2026): you start with 100 can, shown as a bar at the top of the screen.
+  - A wrong answer costs **50**. A hit on a cone or slow car costs **10**.
+  - At 0 can the run ends at once with "Ehliyetini alamadın, tekrar dene!".
+  - So 2 wrong answers always end the run. This keeps the real pass mark: with 6 questions, 5 right (83%) passes and 4 right (67%) fails.
+    After many hits, even 1 wrong answer can be enough.
+  - When Araç Tekniği returns and a run has 8 questions, the costs must be changed so that the 3rd wrong answer ends the run (for example 34 per wrong answer).
+- If you reach the end of the run with some can left, you pass: "Tebrikler, ehliyetini aldın!".
+- Score: 100 points per right answer, plus the can you have left at the end (so driving carefully counts).
 - The best score is kept on the phone only (browser storage). No account.
 
 ## Content rules

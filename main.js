@@ -1,9 +1,10 @@
-// Step 4: scrolling road, one-finger lane switching, obstacles to dodge,
-// and question events. Hitting an obstacle only slows the car down.
+// Bas Gaza: drive, dodge obstacles, answer exam questions, keep your can (health).
+// A hit costs a little can, a wrong answer costs a lot; at 0 can the run is lost.
 // Questions come only from questions.json, and only reviewed ones are used.
 
 const startScreen = document.getElementById("start-screen");
 const startButton = document.getElementById("start-button");
+const bestScoreText = document.getElementById("best-score");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
@@ -21,8 +22,15 @@ const RECOVER_RATE = 0.35; // speed regained per second after a hit
 const HIT_FLASH_TIME = 0.6; // seconds the car blinks after a hit
 const SLOW_CAR_COLOURS = ["#3c7be9", "#f5c518", "#8a5cd6", "#ffffff"];
 
+// Can (health). With 6 questions, 2 wrong answers always end the run (the real 70% pass mark).
+const MAX_HEALTH = 100;
+const WRONG_ANSWER_COST = 50;
+const HIT_COST = 10;
+const HEALTH_FLASH_TIME = 0.6;
+const BEST_SCORE_KEY = "basgaza.bestScore";
+
 // Question events
-const EVENT_GAP = 5; // road travelled between two events
+const EVENT_GAP = 3; // road travelled between two events (about 5 seconds)
 const EVENT_START_Y = -0.35; // road pictures start above the screen
 const EVENTS_PER_COURSE = 2;
 const CATEGORY_NAMES = {
@@ -71,6 +79,9 @@ let untilEvent = EVENT_GAP;
 let eventMarker = null; // { y, q } while a question event is on the road
 let questionOpen = false;
 let scene = null; // { category, t } while a fail scene plays
+let health = MAX_HEALTH;
+let healthFlash = 0;
+let runOver = false;
 
 function layout() {
   const roadWidth = Math.min(width * 0.84, 420);
@@ -109,17 +120,36 @@ function obstacleSize(type) {
   return { w: cone, h: cone };
 }
 
+// Would a new obstacle in this lane close all three lanes at once?
+function wouldBlockRoad(newLane, newY) {
+  const { carHeight } = layout();
+  // Room the player needs to slip between two obstacles, in screen heights.
+  const gap = (carHeight * 2.2) / height;
+  const blocked = new Set([newLane]);
+  for (const o of obstacles) {
+    // Slow cars drift relative to everything else, so they block their lane
+    // for as long as they are ahead of the player.
+    const near = o.type === "car" ? o.y < PLAYER_Y : Math.abs(o.y - newY) < gap;
+    if (near) blocked.add(o.lane);
+  }
+  return blocked.size >= LANES;
+}
+
 function spawnObstacle() {
   const type = Math.random() < 0.6 ? "cone" : "car";
-  // Never put a cone behind a slow car in the same lane: it would drive through it.
+  const { h } = obstacleSize(type);
+  const y = -h / height;
+  // Never put a cone behind a slow car in the same lane (it would drive through it),
+  // and always leave at least one lane open.
   const freeLanes = [0, 1, 2].filter(
-    (l) => type === "car" || !obstacles.some((o) => o.lane === l && o.type === "car"),
+    (l) =>
+      (type === "car" || !obstacles.some((o) => o.lane === l && o.type === "car")) &&
+      !wouldBlockRoad(l, y),
   );
   if (freeLanes.length === 0) return;
   const lane = freeLanes[Math.floor(Math.random() * freeLanes.length)];
-  const { h } = obstacleSize(type);
   const colour = SLOW_CAR_COLOURS[Math.floor(Math.random() * SLOW_CAR_COLOURS.length)];
-  obstacles.push({ type, lane, y: -h / height, colour });
+  obstacles.push({ type, lane, y, colour });
 }
 
 function hitsPlayer(o) {
@@ -171,6 +201,11 @@ function update(dt) {
     obstacles = obstacles.filter((o) => o !== hit);
     speed = HIT_SPEED;
     hitTimer = HIT_FLASH_TIME;
+    loseHealth(HIT_COST);
+    if (health === 0) {
+      endRun(true);
+      return;
+    }
   }
   // Drop obstacles that left the screen at the bottom (or, rarely, the top).
   obstacles = obstacles.filter((o) => o.y < 1.05 && o.y > -0.6);
@@ -346,6 +381,67 @@ function drawPlayer() {
   drawCar(carX + shake, PLAYER_Y * height, "#e94b3c", "#c73a2d");
 }
 
+function drawHud() {
+  // Can bar at the top left
+  const x = 16;
+  const y = 16;
+  const barWidth = Math.min(160, width * 0.4);
+  const shake = healthFlash > 0 ? Math.sin(healthFlash * 50) * 3 : 0;
+  ctx.save();
+  ctx.translate(shake, 0);
+  ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
+  ctx.beginPath();
+  ctx.roundRect(x, y, barWidth + 44, 32, 16);
+  ctx.fill();
+  // Heart
+  const hx = x + 18;
+  const hy = y + 16;
+  ctx.fillStyle = "#ef4444";
+  ctx.beginPath();
+  ctx.arc(hx - 4, hy - 2, 5, Math.PI, 0);
+  ctx.arc(hx + 4, hy - 2, 5, Math.PI, 0);
+  ctx.lineTo(hx, hy + 8);
+  ctx.closePath();
+  ctx.fill();
+  // Bar
+  const bx = x + 34;
+  ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+  ctx.beginPath();
+  ctx.roundRect(bx, y + 9, barWidth, 14, 7);
+  ctx.fill();
+  const share = health / MAX_HEALTH;
+  if (share > 0) {
+    ctx.fillStyle = share > 0.5 ? "#22c55e" : share > 0.2 ? "#f59e0b" : "#ef4444";
+    ctx.beginPath();
+    ctx.roundRect(bx, y + 9, barWidth * share, 14, 7);
+    ctx.fill();
+  }
+  if (healthFlash > 0) {
+    ctx.strokeStyle = "#ef4444";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.roundRect(x, y, barWidth + 44, 32, 16);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // Question counter at the top right
+  const current = runOver ? eventIndex : Math.min(eventIndex + 1, runEvents.length);
+  const label = `Soru ${current}/${runEvents.length}`;
+  ctx.save();
+  ctx.font = "700 16px system-ui, -apple-system, sans-serif";
+  const labelWidth = ctx.measureText(label).width + 28;
+  ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
+  ctx.beginPath();
+  ctx.roundRect(width - 16 - labelWidth, y, labelWidth, 32, 16);
+  ctx.fill();
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(label, width - 16 - labelWidth / 2, y + 17);
+  ctx.restore();
+}
+
 function drawHint() {
   if (elapsed > HINT_TIME) return;
   const alpha = Math.min(1, (HINT_TIME - elapsed) / 0.5);
@@ -369,6 +465,7 @@ function draw() {
   drawEventMarker();
   drawPlayer();
   if (scene) drawScene();
+  else if (running) drawHud();
   if (running) drawHint();
 }
 
@@ -384,6 +481,7 @@ function frame(time) {
   ) {
     resize();
   }
+  healthFlash = Math.max(0, healthFlash - dt);
   if (scene) {
     scene.t += dt;
     if (scene.t >= SCENE_DURATION) endScene();
@@ -420,6 +518,9 @@ function openQuestion() {
   eventMarker = null;
 
   card.category.textContent = CATEGORY_NAMES[q.category];
+  card.situation.hidden = false;
+  card.result.hidden = false;
+  card.explanation.hidden = false;
   card.situation.textContent = q.situation;
   card.text.textContent = q.question;
   card.feedback.hidden = true;
@@ -456,6 +557,7 @@ function answerQuestion(q, chosen) {
     showFeedback();
     return;
   }
+  loseHealth(WRONG_ANSWER_COST);
   // Let the player see their red answer for a moment, then play the scene.
   setTimeout(() => {
     card.root.hidden = true;
@@ -481,8 +583,8 @@ function showFeedback() {
 
 function closeQuestion() {
   eventIndex++;
-  if (eventIndex >= runEvents.length) {
-    showRunEnd();
+  if (health === 0 || eventIndex >= runEvents.length) {
+    endRun();
     return;
   }
   card.root.hidden = true;
@@ -493,18 +595,83 @@ function closeQuestion() {
   lastTime = performance.now();
 }
 
-// For now the run simply ends with the score; mistakes and game over come in step 6.
-function showRunEnd() {
-  card.category.textContent = "Tur bitti";
-  card.situation.hidden = true;
-  card.text.textContent = `${runEvents.length} sorudan ${correctCount} doğru`;
+function loseHealth(amount) {
+  health = Math.max(0, health - amount);
+  healthFlash = HEALTH_FLASH_TIME;
+}
+
+// Browser storage can be missing (private mode), so the game must work without it.
+function loadBestScore() {
+  try {
+    return Number(window.localStorage.getItem(BEST_SCORE_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function saveBestScore(score) {
+  try {
+    window.localStorage.setItem(BEST_SCORE_KEY, String(score));
+  } catch {
+    // Nothing to do: the best score just is not kept.
+  }
+}
+
+function showBestScore() {
+  const best = loadBestScore();
+  bestScoreText.hidden = best === 0;
+  bestScoreText.textContent = `En iyi skor: ${best}`;
+}
+
+function endRun(crashedOut = false) {
+  runOver = true;
+  questionOpen = true;
+  eventMarker = null;
+  obstacles = [];
+  const passed = health > 0;
+  const score = correctCount * 100 + health;
+  const best = loadBestScore();
+  const newBest = score > best;
+  if (newBest) saveBestScore(score);
+
+  card.category.textContent = passed ? "Geçtin" : "Kaldın";
+  card.text.textContent = passed ? "Tebrikler, ehliyetini aldın!" : "Ehliyetini alamadın, tekrar dene!";
+  card.situation.hidden = eventIndex === 0;
+  card.situation.textContent = `${eventIndex} sorudan ${correctCount} doğru`;
   card.options.replaceChildren();
-  card.result.hidden = true;
-  card.explanation.hidden = true;
+  card.result.hidden = false;
+  card.result.textContent = newBest ? `Puan: ${score} · Yeni rekor!` : `Puan: ${score} · En iyi: ${best}`;
+  card.result.className = passed ? "result good" : "result bad";
+  // Say why the run ended when it was the obstacles, not a question.
+  card.explanation.hidden = !crashedOut;
+  card.explanation.textContent = "Çok fazla çarptın, canın bitti.";
   card.continueButton.textContent = "Tekrar oyna";
-  card.continueButton.onclick = () => window.location.reload();
+  card.continueButton.onclick = restartRun;
   card.feedback.hidden = false;
   card.root.hidden = false;
+  card.root.scrollTop = 0;
+}
+
+function restartRun() {
+  card.root.hidden = true;
+  card.continueButton.textContent = "Devam";
+  card.continueButton.onclick = closeQuestion;
+  runOver = false;
+  health = MAX_HEALTH;
+  healthFlash = 0;
+  speed = ROAD_SPEED;
+  hitTimer = 0;
+  obstacles = [];
+  eventMarker = null;
+  scene = null;
+  lane = 1;
+  carX = laneCentre(lane);
+  untilSpawn = SPAWN_GAP;
+  untilEvent = EVENT_GAP;
+  elapsed = HINT_TIME; // the control hint was already shown in this session
+  buildRun();
+  questionOpen = false;
+  lastTime = performance.now();
 }
 
 async function loadQuestions() {
@@ -552,4 +719,5 @@ window.addEventListener("keydown", (event) => {
 window.addEventListener("resize", resize);
 startButton.addEventListener("click", start);
 card.continueButton.onclick = closeQuestion;
+showBestScore();
 loadQuestions();
