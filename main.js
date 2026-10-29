@@ -66,6 +66,7 @@ let deck = []; // questions not yet asked in this round
 let untilEvent = EVENT_GAP;
 let eventMarker = null; // { y } while a question event is on the road
 let questionOpen = false;
+let scene = null; // { category, t } while a fail scene plays
 
 function layout() {
   const roadWidth = Math.min(width * 0.84, 420);
@@ -302,6 +303,54 @@ function drawEventMarker() {
   ctx.fillText("?", width / 2, y + band / 2 + 1);
 }
 
+function drawSceneCaption(text) {
+  ctx.save();
+  ctx.font = "800 20px system-ui, -apple-system, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  // Wrap the text into lines that fit the screen.
+  const maxWidth = Math.min(width - 64, 360);
+  const lines = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  lines.push(line);
+  const lineHeight = 26;
+  const boxHeight = lines.length * lineHeight + 24;
+  const top = 24;
+  ctx.fillStyle = "#dc2626";
+  ctx.beginPath();
+  ctx.roundRect(width / 2 - maxWidth / 2 - 16, top, maxWidth + 32, boxHeight, 16);
+  ctx.fill();
+  ctx.fillStyle = "#ffffff";
+  lines.forEach((l, i) => ctx.fillText(l, width / 2, top + 12 + lineHeight * (i + 0.5)));
+  ctx.restore();
+}
+
+function drawScene() {
+  const { carWidth, carHeight } = layout();
+  drawFailScene(scene.category, scene.t, {
+    ctx,
+    width,
+    height,
+    lane,
+    carX,
+    carTop: PLAYER_Y * height,
+    carWidth,
+    carHeight,
+    laneCentre,
+    drawCar,
+  });
+  drawSceneCaption(FAIL_OUTCOMES[scene.category]);
+}
+
 function drawPlayer() {
   // Blink after a hit, and shake the car a little.
   if (hitTimer > 0 && Math.floor(hitTimer * 12) % 2 === 0) return;
@@ -331,6 +380,7 @@ function draw() {
   drawObstacles();
   drawEventMarker();
   drawPlayer();
+  if (scene) drawScene();
   if (running) drawHint();
 }
 
@@ -346,7 +396,12 @@ function frame(time) {
   ) {
     resize();
   }
-  if (!questionOpen) update(dt);
+  if (scene) {
+    scene.t += dt;
+    if (scene.t >= SCENE_DURATION) endScene();
+  } else if (!questionOpen) {
+    update(dt);
+  }
   draw();
   requestAnimationFrame(frame);
 }
@@ -401,8 +456,32 @@ function answerQuestion(q, chosen) {
   card.result.textContent = right ? "Doğru!" : FAIL_OUTCOMES[q.category];
   card.result.className = right ? "result good" : "result bad";
   card.explanation.textContent = q.explanation;
+
+  if (right) {
+    showFeedback();
+    return;
+  }
+  // Let the player see their red answer for a moment, then play the scene.
+  setTimeout(() => {
+    card.root.hidden = true;
+    obstacles = [];
+    scene = { category: q.category, t: 0 };
+  }, 700);
+}
+
+function endScene() {
+  scene = null;
+  card.root.hidden = false;
+  showFeedback();
+}
+
+function showFeedback() {
+  // Keep the card short: only the right answer and the player's wrong one stay.
+  for (const button of card.options.children) {
+    button.hidden = !button.classList.contains("correct") && !button.classList.contains("wrong");
+  }
   card.feedback.hidden = false;
-  card.continueButton.scrollIntoView({ behavior: "smooth", block: "end" });
+  card.root.scrollTop = 0;
 }
 
 function closeQuestion() {
@@ -437,6 +516,12 @@ canvas.addEventListener("pointerdown", (event) => {
 });
 
 canvas.addEventListener("pointerup", (event) => {
+  // A tap during a fail scene skips to the end of it.
+  if (scene) {
+    scene.t = SCENE_DURATION;
+    pointerStartX = null;
+    return;
+  }
   if (pointerStartX === null) return;
   const dx = event.clientX - pointerStartX;
   pointerStartX = null;
