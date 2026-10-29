@@ -1,0 +1,133 @@
+{
+  "about": "Bas Gaza question content. Every question is written in our own words from the official source listed with it. Only questions with \"reviewed\": true appear in the game; Sude sets this after checking the question against the source.",
+  "sources": {
+    "meb-ilk-yardim-2025": {
+      "title": "Genel İlk Yardım Bilgileri (eğitim sunumu)",
+      "publisher": "T.C. Millî Eğitim Bakanlığı, prepared under the Sağlık Bakanlığı \"İlk Yardım Uygulamaları Beceri Rehberi ve İlk Yardım Eğitim Kitabı\", Eylül 2025",
+      "url": "https://ilkyardim.meb.gov.tr/media/w4nb0htr/genel-ilk-yardim-bilgileri.pdf",
+      "checked": "2026-10-29"
+    },
+    "kanun-2918": {
+      "title": "Karayolları Trafik Kanunu, Kanun No. 2918 (consolidated text, includes the 12/2/2026 amendments)",
+      "publisher": "T.C. Cumhurbaşkanlığı Mevzuat Bilgi Sistemi",
+      "url": "https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2918.pdf",
+      "checked": "2026-10-29"
+    }
+  },
+  "questions": [
+    {
+      "id": "iy-001",
+      "category": "ilk_yardim",
+      "situation": "Yolun kenarında bir kaza olmuş, bir kişi yaralı. Arabanı güvenli bir yere çekip durdun.",
+      "question": "Yaralıya yardım etmeden önce ilk ne yapmalısın?",
+      "options": [
+        "Olay yerinin kendin, yaralı ve çevredekiler için güvenli olup olmadığını kontrol etmek",
+        "Yaralıyı hemen araçtan çıkarıp yolun kenarına taşımak",
+        "Yaralıya su içirmek",
+        "Hiçbir şey yapmadan yoluna devam etmek"
+      ],
+      "answer": 0,
+      "explanation": "Acil bir durumda ilk adım olay yerini güvenli hâle getirmektir. İlk yardımcı önce kendi can güvenliğini korur. Yaralı, zorunda kalınmadıkça hareket ettirilmez.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slides 14–18: \"Acil durum ile başa çıkma\" and \"Olay yerinin güvenli hâle getirilmesi\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-002",
+      "category": "ilk_yardim",
+      "situation": "Şehir içinde bir trafik kazasına yardım ediyorsun.",
+      "question": "Uyarı işaretlerini kazanın önüne ve arkasına en az kaç metre uzağa koymalısın?",
+      "options": ["5 metre", "30 metre", "150 metre", "500 metre"],
+      "answer": 1,
+      "explanation": "Uyarı işaretleri kazanın önüne ve arkasına şehir içinde en az 30 metre, şehirlerarası yolda en az 150 metre uzağa konur.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 17: \"Trafik kazasına müdahale ediyorsanız\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-003",
+      "category": "ilk_yardim",
+      "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor ama normal nefes alıyor. 112 aranmış.",
+      "question": "Yaralıyı hangi pozisyona getirmelisin?",
+      "options": [
+        "Derlenme (sabit yan yatış) pozisyonuna",
+        "Ayağa kaldırmaya çalışmalısın",
+        "Oturtup su içirmelisin",
+        "Sırtüstü yatırıp yalnız bırakmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Bilinci kapalı ve nefes alan kişiye derlenme pozisyonu verilir. Böylece dil hava yolunu tıkamaz, kan ya da kusmuk nedeniyle boğulma riski önlenir. Solunumu izlemeye devam edilir.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slides 24 and 34–42: \"Yanıt vermeyen hasta/yaralıda izlenecek adımlar\" and \"Derlenme pozisyonu\"",
+      "reviewed": true
+    },
+    {
+      "id": "tc-001",
+      "category": "trafik_cevre",
+      "situation": "Işık, levha ya da trafik polisi olmayan bir kavşaktasın. Tali yoldan anayola çıkacaksın.",
+      "question": "Önce kim geçmeli?",
+      "options": [
+        "Anayoldan gelen araçlar",
+        "Sen, çünkü kavşağa önce sen geldin",
+        "Hangi araç daha hızlıysa o",
+        "Kornaya ilk basan"
+      ],
+      "answer": 0,
+      "explanation": "Işık, levha ya da polis olmayan kavşaklarda tali yoldan anayola çıkan sürücü, anayoldan gelen araçlara geçiş hakkını verir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 57 (b) 5",
+      "reviewed": true
+    },
+    {
+      "id": "tc-002",
+      "category": "trafik_cevre",
+      "situation": "Işık, levha ya da trafik polisi olmayan bir dönel kavşağa (göbekli kavşak) geldin. İçeride dönen araçlar var.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Dönel kavşağın içindeki araçlara yol vermek",
+        "Hemen girmek, içeridekiler seni beklemeli",
+        "Kornaya basıp önce girmek",
+        "Kavşağa ters yönden girmek"
+      ],
+      "answer": 0,
+      "explanation": "Işık, levha ya da polis olmayan kavşaklarda dönel kavşağa gelen sürücü, kavşağın içindeki araçlara geçiş hakkını verir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 57 (b) 6",
+      "reviewed": true
+    },
+    {
+      "id": "ta-001",
+      "category": "trafik_adabi",
+      "situation": "Arkandan ışıklarını yakmış, sirenini çalan bir ambulans geliyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Ambulansın kolayca geçmesi için yolda yer açmak, gerekirse durmak",
+        "Hızlanıp ambulansın önünde gitmeye devam etmek",
+        "Hiçbir şey değiştirmeden aynı şekilde gitmeye devam etmek",
+        "Ambulansın arkasına takılıp onu hızla takip etmek"
+      ],
+      "answer": 0,
+      "explanation": "Işıklı ya da sesli işaret veren, geçiş üstünlüğü olan bir araç (örneğin ambulans) geldiğinde sürücüler ona yolda yer açmak, gerekirse durmak zorundadır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 55 (c)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-002",
+      "category": "trafik_adabi",
+      "situation": "Işıklı trafik işareti ve görevli olmayan bir yaya geçidine yaklaşıyorsun. Bir yaya karşıya geçmek üzere bekliyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yavaşlayıp durmak ve yayaya ilk geçiş hakkını vermek",
+        "Korna çalıp yayanın beklemesini sağlamak",
+        "Hızlanıp yaya geçmeden geçidi geçmek",
+        "Selektör yapıp geçmek"
+      ],
+      "answer": 0,
+      "explanation": "Görevli ya da trafik ışığı olmayan yaya geçitlerine yaklaşırken sürücüler yavaşlar ve geçen ya da geçmek üzere olan yayalara durarak ilk geçiş hakkını verir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 74",
+      "reviewed": true
+    }
+  ]
+}

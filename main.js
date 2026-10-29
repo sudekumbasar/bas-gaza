@@ -1,5 +1,6 @@
-// Step 3: scrolling road, one-finger lane switching, and obstacles to dodge.
-// Hitting an obstacle only slows the car down; it is not a mistake.
+// Step 4: scrolling road, one-finger lane switching, obstacles to dodge,
+// and question events. Hitting an obstacle only slows the car down.
+// Questions come only from questions.json, and only reviewed ones are used.
 
 const startScreen = document.getElementById("start-screen");
 const startButton = document.getElementById("start-button");
@@ -20,6 +21,33 @@ const RECOVER_RATE = 0.35; // speed regained per second after a hit
 const HIT_FLASH_TIME = 0.6; // seconds the car blinks after a hit
 const SLOW_CAR_COLOURS = ["#3c7be9", "#f5c518", "#8a5cd6", "#ffffff"];
 
+// Question events
+const EVENT_GAP = 5; // road travelled between two events
+const CATEGORY_NAMES = {
+  ilk_yardim: "İlk Yardım",
+  trafik_cevre: "Trafik ve Çevre",
+  arac_teknigi: "Araç Tekniği",
+  trafik_adabi: "Trafik Adabı",
+};
+const FAIL_OUTCOMES = {
+  ilk_yardim: "Ambulans geç kaldı, yaralıya yardım edemedin.",
+  trafik_cevre: "Polis seni durdurdu, ceza yazdı.",
+  arac_teknigi: "Araban yolda kaldı, çekici çağırdın.",
+  trafik_adabi: "Sınav görevlisi seni arabadan indirdi.",
+};
+
+const card = {
+  root: document.getElementById("question-card"),
+  category: document.getElementById("q-category"),
+  situation: document.getElementById("q-situation"),
+  text: document.getElementById("q-text"),
+  options: document.getElementById("q-options"),
+  feedback: document.getElementById("q-feedback"),
+  result: document.getElementById("q-result"),
+  explanation: document.getElementById("q-explanation"),
+  continueButton: document.getElementById("q-continue"),
+};
+
 let width = 0;
 let height = 0;
 let ratio = 1;
@@ -33,6 +61,11 @@ let speed = ROAD_SPEED;
 let untilSpawn = SPAWN_GAP;
 let obstacles = []; // { type: "cone" | "car", lane, y, colour }
 let hitTimer = 0;
+let questions = []; // reviewed questions from questions.json
+let deck = []; // questions not yet asked in this round
+let untilEvent = EVENT_GAP;
+let eventMarker = null; // { y } while a question event is on the road
+let questionOpen = false;
 
 function layout() {
   const roadWidth = Math.min(width * 0.84, 420);
@@ -60,6 +93,7 @@ function resize() {
 }
 
 function moveLane(direction) {
+  if (questionOpen) return;
   lane = Math.max(0, Math.min(LANES - 1, lane + direction));
 }
 
@@ -104,9 +138,22 @@ function update(dt) {
   hitTimer = Math.max(0, hitTimer - dt);
   scroll += speed * height * dt;
 
+  untilEvent -= speed * dt;
+  if (untilEvent <= 0 && !eventMarker && questions.length > 0) {
+    eventMarker = { y: -0.1 };
+  }
+  if (eventMarker) {
+    eventMarker.y += speed * dt;
+    if (eventMarker.y >= PLAYER_Y) {
+      openQuestion();
+      return;
+    }
+  }
+
   untilSpawn -= speed * dt;
   if (untilSpawn <= 0) {
-    spawnObstacle();
+    // Keep the road clear while a question event is coming.
+    if (!eventMarker) spawnObstacle();
     untilSpawn = SPAWN_GAP * (0.8 + Math.random() * 0.4);
   }
 
@@ -221,6 +268,40 @@ function drawObstacles() {
   }
 }
 
+function drawEventMarker() {
+  if (!eventMarker) return;
+  const { roadWidth, roadLeft } = layout();
+  const y = eventMarker.y * height;
+  const band = 28;
+  // Yellow and black stripes across the road, with a question badge.
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(roadLeft, y, roadWidth, band);
+  ctx.clip();
+  for (let x = roadLeft - band; x < roadLeft + roadWidth; x += band) {
+    ctx.fillStyle = Math.round((x - roadLeft) / band) % 2 === 0 ? "#f5c518" : "#1f2328";
+    ctx.beginPath();
+    ctx.moveTo(x, y + band);
+    ctx.lineTo(x + band / 2, y);
+    ctx.lineTo(x + band * 1.5, y);
+    ctx.lineTo(x + band, y + band);
+    ctx.fill();
+  }
+  ctx.restore();
+  ctx.fillStyle = "#f5c518";
+  ctx.strokeStyle = "#1f2328";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(width / 2, y + band / 2, 26, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#1f2328";
+  ctx.font = "900 30px system-ui, -apple-system, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("?", width / 2, y + band / 2 + 1);
+}
+
 function drawPlayer() {
   // Blink after a hit, and shake the car a little.
   if (hitTimer > 0 && Math.floor(hitTimer * 12) % 2 === 0) return;
@@ -248,6 +329,7 @@ function drawHint() {
 function draw() {
   drawRoad();
   drawObstacles();
+  drawEventMarker();
   drawPlayer();
   if (running) drawHint();
 }
@@ -264,9 +346,78 @@ function frame(time) {
   ) {
     resize();
   }
-  update(dt);
+  if (!questionOpen) update(dt);
   draw();
   requestAnimationFrame(frame);
+}
+
+function shuffle(items) {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function nextQuestion() {
+  if (deck.length === 0) deck = shuffle(questions);
+  return deck.pop();
+}
+
+function openQuestion() {
+  const q = nextQuestion();
+  questionOpen = true;
+  eventMarker = null;
+
+  card.category.textContent = CATEGORY_NAMES[q.category];
+  card.situation.textContent = q.situation;
+  card.text.textContent = q.question;
+  card.feedback.hidden = true;
+  card.options.replaceChildren();
+
+  // Show the options in a random order, remembering which one is right.
+  const order = shuffle(q.options.map((text, index) => ({ text, index })));
+  for (const option of order) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = option.text;
+    button.dataset.correct = option.index === q.answer ? "yes" : "no";
+    button.addEventListener("click", () => answerQuestion(q, button));
+    card.options.append(button);
+  }
+  card.root.hidden = false;
+  card.root.scrollTop = 0;
+}
+
+function answerQuestion(q, chosen) {
+  const right = chosen.dataset.correct === "yes";
+  for (const button of card.options.children) {
+    button.disabled = true;
+    if (button.dataset.correct === "yes") button.classList.add("correct");
+  }
+  if (!right) chosen.classList.add("wrong");
+
+  card.result.textContent = right ? "Doğru!" : FAIL_OUTCOMES[q.category];
+  card.result.className = right ? "result good" : "result bad";
+  card.explanation.textContent = q.explanation;
+  card.feedback.hidden = false;
+  card.continueButton.scrollIntoView({ behavior: "smooth", block: "end" });
+}
+
+function closeQuestion() {
+  card.root.hidden = true;
+  questionOpen = false;
+  obstacles = [];
+  untilSpawn = SPAWN_GAP;
+  untilEvent = EVENT_GAP;
+  lastTime = performance.now();
+}
+
+async function loadQuestions() {
+  const response = await fetch("questions.json");
+  const data = await response.json();
+  questions = data.questions.filter((q) => q.reviewed);
 }
 
 function start() {
@@ -300,3 +451,5 @@ window.addEventListener("keydown", (event) => {
 
 window.addEventListener("resize", resize);
 startButton.addEventListener("click", start);
+card.continueButton.addEventListener("click", closeQuestion);
+loadQuestions();
