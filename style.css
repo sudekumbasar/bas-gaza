@@ -72,9 +72,13 @@ h1 {
   box-shadow: 0 2px 0 #b48f0c;
 }
 
-.message {
-  font-size: 18px;
-  background: #2b2f36;
-  padding: 4px 12px;
-  border-radius: 8px;
+[hidden] {
+  display: none !important;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
 }
