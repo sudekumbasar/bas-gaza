@@ -38,7 +38,7 @@ Source: T.C. Millî Eğitim Bakanlığı, *Motorlu Taşıt Sürücü Kursiyerler
 4. The player taps an answer.
    - Right: a short "Doğru!" with a one-line explanation, then the car drives on.
    - Wrong: a short scene shows the outcome (see below), then the correct answer with its explanation. This costs one mistake.
-5. A run has **8 events**: 2 from each of the four courses, in random order. The questions are picked at random from the content file, so each run is a little different.
+5. A run has **2 events from each course that has questions**, in random order: 8 events with all four courses, 6 while Araç Tekniği is missing (see Version 1). The questions are picked at random from the content file, so each run is a little different.
 6. At the end:
    - **Passed:** "Tebrikler, ehliyetini aldın!" with the score.
    - **Failed:** "Ehliyetini alamadın, tekrar dene!" with the score and a "Tekrar oyna" button.
@@ -61,9 +61,10 @@ The exact wording above can still change during playtesting.
 ## Scoring and game over
 
 - The game follows the real pass mark: you need at least 70%.
-  With 8 questions, 6 right (75%) passes and 5 right (62.5%) fails.
-  So **the 3rd wrong answer ends the run at once** ("Ehliyetini alamadın").
-- Mistakes are shown at the top of the screen as 3 small licence cards; one is crossed out per mistake.
+  With 8 questions, 6 right (75%) passes and 5 right (62.5%) fails, so **the 3rd wrong answer ends the run**.
+  With 6 questions, 5 right (83%) passes and 4 right (67%) fails, so **the 2nd wrong answer ends the run**.
+  The run ends at once with "Ehliyetini alamadın".
+- Mistakes are shown at the top of the screen as small licence cards (one per allowed mistake plus the last one); one is crossed out per mistake.
 - Score: 100 points per right answer, plus a small bonus for distance driven without hitting obstacles.
 - The best score is kept on the phone only (browser storage). No account.
 
@@ -80,8 +81,9 @@ These rules matter more than anything else in the project.
 
 ## Version 1
 
-- One road, one run of 8 events (2 per course).
-- A content file with at least 4 checked questions per course (16 in total), so runs are not all the same.
+- One road, one run of 2 events per course.
+- A content file with at least 4 checked questions per course, so runs are not all the same.
+- **Araç Tekniği is left out for now** (decided 29 October 2026): we found no openly available official MEB material for it. It comes back, with its tow-truck fail scene already built, once an official source is found.
 - Lane switching with one finger, a few obstacles.
 - A simple picture for each of the four event types, and a short scene for each fail outcome.
 - Question card, right/wrong feedback with explanation, 3 mistakes = game over.
@@ -114,6 +116,6 @@ Small steps. Each step ends with something Sude can open and play on her own pho
 2. **Road and car.** The road scrolls, the car moves between lanes with one finger.
 3. **Obstacles.** Cones and slow cars appear; hitting them slows you down.
 4. **First question.** A content file with a few checked questions. One event appears, the game pauses and shows the question card; right/wrong feedback works.
-5. **All four events.** Each course has its own picture on the road and its own fail scene. 8 events per run.
+5. **All events.** Each course has its own picture on the road and its own fail scene (done). 2 events per course in a run.
 6. **Mistakes and the end.** 3 licence cards, game over on the 3rd mistake, pass/fail end screen, score, "Tekrar oyna", best score saved.
 7. **Full content and playtest.** At least 16 checked questions. Sude and a few friends play it and say whether it is fun. We decide what comes next from that.
