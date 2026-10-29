@@ -257,6 +257,11 @@ function drawRoadPicture(name, front, progress, t, view) {
     roundabout: drawRoundaboutPicture,
     ambulance: drawAmbulancePicture,
     crossing: drawCrossingPicture,
+    junctionJam: drawJunctionJamPicture,
+    railway: drawRailwayPicture,
+    schoolbus: drawSchoolBusPicture,
+    pedestrianOnRoad: drawPedestrianOnRoadPicture,
+    overtake: drawOvertakePicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -386,4 +391,142 @@ function drawCrossingPicture(front, progress, t, v) {
   // A pedestrian waits at the kerb, shifting a little.
   const sway = Math.sin(t * 4) * 2;
   drawPerson(ctx, roadLeft + roadWidth - carWidth * 0.35 + sway, top + depth / 2, carWidth * 0.7, "#f97316", Math.PI);
+}
+
+function drawTrafficLight(ctx, x, y, colour) {
+  ctx.fillStyle = "#1f2328";
+  ctx.beginPath();
+  ctx.roundRect(x - 9, y, 18, 46, 5);
+  ctx.fill();
+  const lamps = ["#ef4444", "#f59e0b", "#22c55e"];
+  lamps.forEach((lamp, i) => {
+    ctx.fillStyle = lamp === colour ? lamp : "#4b5563";
+    ctx.beginPath();
+    ctx.arc(x, y + 9 + i * 14, 5, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+function drawJunctionJamPicture(front, progress, t, v) {
+  const { ctx, carHeight } = v;
+  drawJunctionPicture(front, progress, t, v);
+  // Beyond the junction our road is full of waiting cars.
+  const band = carHeight * 1.5;
+  const beyond = front - band - 8;
+  const colours = ["#3c7be9", "#ffffff", "#8a5cd6", "#f5c518", "#9ca3af", "#3c7be9"];
+  for (let lane = 0; lane < 3; lane++) {
+    for (let row = 0; row < 2; row++) {
+      v.drawCar(v.laneCentre(lane), beyond - carHeight * (1.15 + row * 1.15), colours[lane * 2 + row], "rgba(0, 0, 0, 0.15)");
+    }
+  }
+  // Green light at the corner
+  drawTrafficLight(ctx, v.roadLeft + v.roadWidth + 12, front - 50, "#22c55e");
+}
+
+function drawRailwayPicture(front, progress, t, v) {
+  const { ctx, width, roadLeft, roadWidth } = v;
+  const band = 56;
+  const top = front - band - 30;
+  // Gravel bed, sleepers and two rails across the road
+  ctx.fillStyle = "#8b7355";
+  ctx.fillRect(0, top, width, band);
+  ctx.fillStyle = "#5b4636";
+  for (let x = 4; x < width; x += 18) ctx.fillRect(x, top + 6, 8, band - 12);
+  ctx.fillStyle = "#9ca3af";
+  ctx.fillRect(0, top + 14, width, 5);
+  ctx.fillRect(0, top + band - 19, width, 5);
+  // Barriers swing down across the road from both sides.
+  const down = easeOut(sceneProgress(progress, 0.2, 0.75));
+  const length = (roadWidth / 2 - 4) * (0.15 + 0.85 * down);
+  const y = front - 22;
+  for (const side of [-1, 1]) {
+    const postX = side < 0 ? roadLeft - 6 : roadLeft + roadWidth + 6;
+    ctx.save();
+    ctx.translate(postX, y);
+    for (let i = 0; i * 14 < length; i++) {
+      ctx.fillStyle = i % 2 === 0 ? "#ef4444" : "#ffffff";
+      const x = side < 0 ? i * 14 : -(i + 1) * 14;
+      ctx.fillRect(x, -4, Math.min(14, length - i * 14), 8);
+    }
+    ctx.fillStyle = "#1f2328";
+    ctx.beginPath();
+    ctx.arc(0, 0, 7, 0, Math.PI * 2);
+    ctx.fill();
+    // Flashing red light on the post
+    ctx.fillStyle = flashOn(t + (side < 0 ? 0 : 0.17), 3) ? "#ef4444" : "#4b5563";
+    ctx.beginPath();
+    ctx.arc(0, -16, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+function drawSchoolBusPicture(front, progress, t, v) {
+  const { ctx, carWidth, carHeight } = v;
+  const x = v.laneCentre(1);
+  const w = carWidth * 1.15;
+  const h = carHeight * 1.7;
+  const top = front - h - 14;
+  ctx.fillStyle = "#f5b301";
+  ctx.beginPath();
+  ctx.roundRect(x - w / 2, top, w, h, 8);
+  ctx.fill();
+  ctx.fillStyle = "#bfe3f5";
+  for (let i = 0; i < 4; i++) ctx.fillRect(x - w * 0.38, top + h * (0.12 + i * 0.18), w * 0.76, h * 0.1);
+  // Red stop sign at the back, blinking
+  if (flashOn(t, 2)) {
+    const cx = x;
+    const cy = top + h - 10;
+    ctx.fillStyle = "#dc2626";
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const a = Math.PI / 8 + (i * Math.PI) / 4;
+      ctx.lineTo(cx + Math.cos(a) * 14, cy + Math.sin(a) * 14);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "800 9px system-ui, -apple-system, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("DUR", cx, cy + 1);
+  }
+  // Children stepping out on the right side
+  const walk = (t * 0.5) % 1;
+  for (let i = 0; i < 2; i++) {
+    drawPerson(ctx, x + w / 2 + carWidth * (0.35 + 0.4 * ((walk + i * 0.5) % 1)), top + h * (0.35 + i * 0.25), carWidth * 0.5, i ? "#22c55e" : "#ec4899");
+  }
+}
+
+function drawPedestrianOnRoadPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  // The person crosses slowly, with a long white stick in front.
+  const x = roadLeft + roadWidth * (0.75 - 0.35 * progress);
+  const y = front - 30;
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
+  const tap = Math.sin(t * 5) * 0.25;
+  ctx.beginPath();
+  ctx.moveTo(x - 4, y);
+  ctx.lineTo(x - 4 - Math.cos(tap) * carWidth * 0.8, y + Math.sin(tap) * carWidth * 0.8);
+  ctx.stroke();
+  drawPerson(ctx, x, y, carWidth * 0.7, "#0ea5e9", Math.PI / 2);
+}
+
+function drawOvertakePicture(front, progress, t, v) {
+  const { ctx, height, carWidth, carHeight } = v;
+  // A car comes up from behind in the lane to your left, blinking left.
+  const lane = v.lane > 0 ? v.lane - 1 : v.lane + 1;
+  const x = v.laneCentre(lane);
+  const p = easeOut(progress);
+  const top = height + carHeight * 0.2 - p * (height + carHeight * 0.2 - (front + carHeight * 0.3));
+  v.drawCar(x, top, "#22c55e", "rgba(0, 0, 0, 0.15)");
+  if (flashOn(t, 3)) {
+    ctx.fillStyle = "#f59e0b";
+    ctx.beginPath();
+    ctx.arc(x - carWidth * 0.4, top + carHeight * 0.06, 5, 0, Math.PI * 2);
+    ctx.arc(x - carWidth * 0.4, top + carHeight * 0.94, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
 }

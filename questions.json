@@ -39,7 +39,12 @@
       "category": "ilk_yardim",
       "situation": "Şehir içinde bir trafik kazasına yardım ediyorsun.",
       "question": "Uyarı işaretlerini kazanın önüne ve arkasına en az kaç metre uzağa koymalısın?",
-      "options": ["5 metre", "30 metre", "150 metre", "500 metre"],
+      "options": [
+        "5 metre",
+        "30 metre",
+        "150 metre",
+        "500 metre"
+      ],
       "answer": 1,
       "explanation": "Uyarı işaretleri kazanın önüne ve arkasına şehir içinde en az 30 metre, şehirlerarası yolda en az 150 metre uzağa konur.",
       "source": "meb-ilk-yardim-2025",
@@ -134,6 +139,168 @@
       "explanation": "Görevli ya da trafik ışığı olmayan yaya geçitlerine yaklaşırken sürücüler yavaşlar ve geçen ya da geçmek üzere olan yayalara durarak ilk geçiş hakkını verir.",
       "source": "kanun-2918",
       "sourceSection": "Madde 74",
+      "reviewed": true
+    },
+    {
+      "id": "iy-004",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor. 112 aranmış.",
+      "question": "Yaralının nefes alıp almadığını nasıl kontrol edersin?",
+      "options": [
+        "Göğsüne bakıp yükselip alçaldığını kontrol ederek",
+        "Yüzüne su dökerek",
+        "Ayağa kaldırmaya çalışarak",
+        "Kollarından tutup sallayarak"
+      ],
+      "answer": 0,
+      "explanation": "Yanıt vermeyen kişide solunumu değerlendirmek için göğsüne bakılır ve göğsün yükselip alçaldığı kontrol edilir. Solunum varsa derlenme pozisyonu verilir, yoksa zaman kaybetmeden temel yaşam desteğine başlanır.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 24: \"Yanıt vermeyen hasta/yaralıda izlenecek adımlar\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-005",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Bir trafik kazasına yardım ediyorsun. Kazaya karışan arabalar yolda duruyor.",
+      "question": "Bu arabalar için ne yapmalısın?",
+      "options": [
+        "Motorlarını kapatıp el frenlerini çekmek",
+        "Motorlarını çalışır hâlde bırakmak",
+        "Arabaları iterek yolun ortasına çekmek",
+        "Kapılarını kilitleyip uzaklaşmak"
+      ],
+      "answer": 0,
+      "explanation": "Trafik kazasında olay yerini güvenli hâle getirmek için araçların motorları kapatılır, el frenleri çekilir ve lastiklerin önüne takoz benzeri bir engel konur.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 17: \"Trafik kazasına müdahale ediyorsanız\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-006",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Kaza yerinden 112'yi arıyorsun.",
+      "question": "Görevliye hangisini mutlaka söylemelisin?",
+      "options": [
+        "Olay yerinin adresini (konumunu) tam olarak",
+        "Hiçbir şey söylemeden beklemek",
+        "Sadece \"kaza oldu\" deyip telefonu kapatmak",
+        "Arabanın rengini ve markasını"
+      ],
+      "answer": 0,
+      "explanation": "112 arandığında sakin ve net konuşulur, önce kendini tanıtırsın. Olayın ne olduğunu, yaralı sayısını, yaralının durumunu ve yaptığın ilk yardımı söylersin. Adres (konum) bilgisi olay yerini tam olarak belirtecek şekilde verilir.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 33: \"112'nin aranmasında dikkat edilecek noktalar\"",
+      "reviewed": true
+    },
+    {
+      "id": "tc-003",
+      "roadPicture": "junction",
+      "category": "trafik_cevre",
+      "situation": "Işık, levha ya da trafik polisi olmayan bir kavşaktasın. Hangi yolun öncelikli olduğunu gösteren bir işaret de yok. Sağından bir araç geliyor.",
+      "question": "Önce kim geçmeli?",
+      "options": [
+        "Sağdan gelen araç",
+        "Sen, çünkü daha hızlısın",
+        "Kornaya ilk basan",
+        "Daha büyük olan araç"
+      ],
+      "answer": 0,
+      "explanation": "Işık, levha ya da polis olmayan ve yolların önceliği işaretle belirlenmemiş kavşaklarda, motorlu araçlardan soldaki, sağdan gelen araca geçiş hakkını verir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 57 (c) 2",
+      "reviewed": true
+    },
+    {
+      "id": "tc-004",
+      "roadPicture": "junctionJam",
+      "category": "trafik_cevre",
+      "situation": "Kavşağa yaklaşıyorsun ve ışık yeşil. Ama kavşağın ilerisinde trafik sıkışık; girersen kavşağın ortasında durmak zorunda kalacaksın.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Kavşağa girmeyip trafiğin açılmasını beklemek",
+        "Işık yeşil olduğu için kavşağa girmek",
+        "Korna çalarak kavşağa girmek",
+        "Karşı şeride geçip sıkışıklığı aşmak"
+      ],
+      "answer": 0,
+      "explanation": "Işık izin verse bile trafik seni kavşağın içinde durmaya zorlayacaksa ya da diğer yöndeki trafiğin geçişini engelleyecekse kavşağa girmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 57 (d)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-005",
+      "roadPicture": "railway",
+      "category": "trafik_cevre",
+      "situation": "Bariyerli bir demiryolu (tren yolu) geçidine yaklaşıyorsun. Işıklar yanıyor ve bariyerler inmeye başladı.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Durup beklemek, bariyerler inerken geçide girmemek",
+        "Bariyerler tam inmeden hızla geçmek",
+        "Korna çalarak geçmek",
+        "Bariyerlerin yanından dolaşarak geçmek"
+      ],
+      "answer": 0,
+      "explanation": "Demiryolu geçitlerinde ışıklı ya da sesli işaretin verdiği \"DUR\" talimatına uyulur. Bariyerler inmekteyken ya da inmişken geçide girmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 76 (a)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-003",
+      "roadPicture": "schoolbus",
+      "category": "trafik_adabi",
+      "situation": "Önündeki okul servisi durdu ve \"DUR\" işaretini yaktı. Öğrenciler iniyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Durup beklemek",
+        "Servisi hızla geçmek",
+        "Korna çalıp acele etmelerini istemek",
+        "Yavaşlamadan yanından geçmek"
+      ],
+      "answer": 0,
+      "explanation": "Okul taşıtları \"DUR\" işaretini yaktığında bütün araçların durması zorunludur. Bu işaret öğrenciler binerken ya da inerken yakılır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 75",
+      "reviewed": true
+    },
+    {
+      "id": "ta-004",
+      "roadPicture": "pedestrianOnRoad",
+      "category": "trafik_adabi",
+      "situation": "Yolda, gözlerinin görmediğini gösteren özel işareti taşıyan bir yaya var.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yavaşlamak, gerekirse durmak ve yardımcı olmak",
+        "Korna çalarak yoldan çekilmesini istemek",
+        "Hızlanıp yanından geçmek",
+        "Selektör yapıp beklemeden geçmek"
+      ],
+      "answer": 0,
+      "explanation": "Gözleri görmeyen ve bunu gösteren özel işareti taşıyan biri yolda olduğunda bütün sürücüler yavaşlar, gerekirse durur ve ona yardımcı olur.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 77 (b)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-005",
+      "roadPicture": "overtake",
+      "category": "trafik_adabi",
+      "situation": "İki yönlü bir yolda gidiyorsun. Arkandaki araç seni geçmek istediğini işaretle belli etti.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yolun sağ kenarından gitmek ve hızını artırmamak",
+        "Hızlanıp geçmesine izin vermemek",
+        "Yolun ortasına doğru kaymak",
+        "Ani fren yapıp onu korkutmak"
+      ],
+      "answer": 0,
+      "explanation": "Geçilmek istenen sürücü, duyulur ya da görülür bir geçiş işareti alınca iki yönlü yollarda taşıt yolunun sağ kenarından gider ve hızını artırmaz.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 55 (a)",
       "reviewed": true
     }
   ]
