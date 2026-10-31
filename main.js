@@ -12,6 +12,7 @@ const LANES = 3;
 const ROAD_SPEED = 0.6; // road heights per second
 const LANE_CHANGE_TIME = 0.15; // seconds
 const HINT_TIME = 3; // seconds the control hint stays on screen
+const SWIPE_STEP = 35; // finger travel in pixels that moves the car one lane
 const PLAYER_Y = 0.72; // top of the player's car, as a share of screen height
 
 // Obstacles. Positions and speeds are in screen heights so they survive a resize.
@@ -455,7 +456,7 @@ function drawHint() {
   ctx.font = "600 18px system-ui, -apple-system, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("Sola ya da sağa dokun", width / 2, height * 0.3 + 24);
+  ctx.fillText("Sağa sola kaydır ya da dokun", width / 2, height * 0.3 + 24);
   ctx.restore();
 }
 
@@ -690,25 +691,39 @@ function start() {
   requestAnimationFrame(frame);
 }
 
-// One finger: a swipe moves the car that way; a tap moves it towards that side.
-let pointerStartX = null;
+// One finger: a swipe moves the car as soon as the finger has travelled far enough
+// (a long swipe can cross two lanes); a tap moves it towards that side.
+let pointerAnchorX = null; // where the current swipe step started
+let swiped = false;
 
 canvas.addEventListener("pointerdown", (event) => {
-  pointerStartX = event.clientX;
+  pointerAnchorX = event.clientX;
+  swiped = false;
+  canvas.setPointerCapture(event.pointerId);
+});
+
+canvas.addEventListener("pointermove", (event) => {
+  if (pointerAnchorX === null || scene) return;
+  const dx = event.clientX - pointerAnchorX;
+  if (Math.abs(dx) >= SWIPE_STEP) {
+    moveLane(Math.sign(dx));
+    pointerAnchorX = event.clientX;
+    swiped = true;
+  }
 });
 
 canvas.addEventListener("pointerup", (event) => {
   // A tap during a fail scene skips to the end of it.
   if (scene) {
     scene.t = SCENE_DURATION;
-    pointerStartX = null;
-    return;
+  } else if (pointerAnchorX !== null && !swiped) {
+    moveLane(event.clientX < width / 2 ? -1 : 1);
   }
-  if (pointerStartX === null) return;
-  const dx = event.clientX - pointerStartX;
-  pointerStartX = null;
-  if (Math.abs(dx) > 30) moveLane(Math.sign(dx));
-  else moveLane(event.clientX < width / 2 ? -1 : 1);
+  pointerAnchorX = null;
+});
+
+canvas.addEventListener("pointercancel", () => {
+  pointerAnchorX = null;
 });
 
 window.addEventListener("keydown", (event) => {
