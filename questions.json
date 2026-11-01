@@ -1062,8 +1062,8 @@
       "options": [
         "Katalitik konvertör",
         "Egzoz manifoldu",
-        "Hava filtresi",
-        "Radyatör"
+        "Egzoz susturucusu",
+        "Hava filtresi"
       ],
       "answer": 0,
       "explanation": "Katalitik konvertör, araçlarda egzoz gazı emisyonlarını, yani egzozdan çıkan zararlı gazları azaltmak için kullanılır.",
@@ -1080,8 +1080,8 @@
       "options": [
         "Benzinli motor",
         "Dizel motor",
-        "Marş motoru",
-        "Silecek motoru"
+        "Elektrik motoru",
+        "Marş motoru"
       ],
       "answer": 0,
       "explanation": "Benzinli motorlarda silindirde sıkıştırılan yakıt-hava karışımı buji ile ateşlenir.",
@@ -1097,9 +1097,9 @@
       "question": "Motorda hava filtresinin görevi nedir?",
       "options": [
         "Silindire alınan havayı temizlemek",
-        "Yakıtı temizlemek",
-        "Motor yağını temizlemek",
-        "Soğutma suyunu temizlemek"
+        "Depodan gelen yakıtı temizlemek",
+        "Motorda dolaşan yağı temizlemek",
+        "Araç içine giren havayı temizlemek"
       ],
       "answer": 0,
       "explanation": "Hava filtresi, motorun silindirlerine alınan havayı temizler.",
@@ -1133,9 +1133,9 @@
       "question": "Bunun sebebi ne olabilir?",
       "options": [
         "Akünün şarjı yetersiz olabilir",
+        "Enjektörler arızalanmış olabilir",
         "Hava filtresi kirlenmiş olabilir",
-        "Lastik basıncı düşük olabilir",
-        "Far ampulü yanmış olabilir"
+        "Far kabloları oksitlenmiş olabilir"
       ],
       "answer": 0,
       "explanation": "Marş yapıldığında marş motoru yavaş dönüyorsa, sebebi akünün şarjının yetersiz olması olabilir.",
@@ -1205,9 +1205,9 @@
       "question": "Bu alışkanlık hangi parçanın sık sık bozulmasına yol açar?",
       "options": [
         "Debriyaj bilyası",
-        "Hava filtresi",
-        "Silecek motoru",
-        "Far ampulü"
+        "Fren balataları",
+        "Marş motoru",
+        "Hava filtresi"
       ],
       "answer": 0,
       "explanation": "Araç giderken ayağın sürekli debriyaj pedalının üstünde tutulması, debriyaj bilyasının sık sık bozulmasının sebebidir.",
