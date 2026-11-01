@@ -124,5 +124,5 @@ Small steps. Each step ends with something Sude can open and play on her own pho
 7. **Full content and playtest.** At least 16 checked questions. Sude and a few friends play it and say whether it is fun. We decide what comes next from that.
 8. **Practise one course** (after the playtest, 1 November 2026). The real exam has 4 courses (12 İlk Yardım, 23 Trafik ve Çevre, 9 Araç Tekniği, 6 Trafik Adabı). Sude wants both mixed runs and runs for one course.
    - First: a course choice on the start screen (done).
-   - Then: more checked questions, at least 15 per course, starting with Trafik ve Çevre (the biggest course). Sude reviews each batch.
+   - Then: more checked questions, at least 15 per course, starting with Trafik ve Çevre (the biggest course). Sude reviews each batch. Done 1 November 2026: 16 İlk Yardım, 15 Trafik ve Çevre, 15 Trafik Adabı. The MEB first aid deck we use covers only general first aid (scene safety, checking the casualty, 112, recovery position); bleeding, burns, fractures and CPR need another official source.
    - Maybe later: make mixed runs follow the exam's share of questions per course.
