@@ -76,9 +76,9 @@
       "roadPicture": "crash",
       "category": "ilk_yardim",
       "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor ama normal nefes alıyor. 112 aranmış.",
-      "question": "Yaralıyı hangi pozisyona getirmelisin?",
+      "question": "Ne yapmalısın?",
       "options": [
-        "Derlenme (sabit yan yatış) pozisyonuna",
+        "Derlenme (sabit yan yatış) pozisyonuna getirmelisin",
         "Ayağa kaldırmaya çalışmalısın",
         "Oturtup su içirmelisin",
         "Sırtüstü yatırıp yalnız bırakmalısın"
@@ -953,9 +953,9 @@
         "50 metre ileride durmalısın"
       ],
       "answer": 0,
-      "explanation": "Kırmızı çerçeveli yuvarlak levhadaki sayı, uyulması gereken azami (en yüksek) hız sınırını bildirir.",
+      "explanation": "Bu levha, uyulması gereken azami (en yüksek) hız sınırını bildirir. Dikkat: üstünde sayı olan her kırmızı çerçeveli yuvarlak levha hız sınırı değildir; genişliği ya da yüklü ağırlığı belli bir sınırdan fazla olan taşıtların giremeyeceğini bildiren levhalar da vardır.",
       "source": "kgm-isaretleme-2020",
-      "sourceSection": "Azami hız sınırlaması levhası (TT-29a)",
+      "sourceSection": "Azami hız sınırlaması levhası (TT-29a); also TT-20 and TT-24",
       "reviewed": true
     },
     {
@@ -1042,13 +1042,13 @@
       "situation": "Yolun kenarında bu üçgen levhayı görüyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yol kaygan: fren yapmamaya, hızlanmamaya ve ani manevra yapmamaya dikkat etmelisin",
+        "Yol kaygan: ani fren, ani hızlanma ve ani manevradan kaçınmalısın",
         "Kaygan kısmı çabuk geçmek için hızlanmalısın",
         "Sert fren yapıp hemen durmalısın",
         "Yol virajlı, dönüşe hazırlanmalısın"
       ],
       "answer": 0,
-      "explanation": "Kaygan yol levhası, yol yüzeyinin kaygan olduğunu bildirir ve sürücülerin fren yapmamaları, hızlanmamaları ve ani manevra yapmamaları gerektiğini anlatır.",
+      "explanation": "Kaygan yol levhası, yol yüzeyinin kaygan olduğunu bildirir. Böyle bir yolda sürücüler fren yapmaktan, hızlanmaktan ve ani manevralardan kaçınmalıdır.",
       "source": "kgm-isaretleme-2020",
       "sourceSection": "Kaygan yol levhası (T-8)",
       "reviewed": true
