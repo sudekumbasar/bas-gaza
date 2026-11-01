@@ -262,6 +262,10 @@ function drawRoadPicture(name, front, progress, t, view) {
     schoolbus: drawSchoolBusPicture,
     pedestrianOnRoad: drawPedestrianOnRoadPicture,
     overtake: drawOvertakePicture,
+    policeJunction: drawPoliceJunctionPicture,
+    slowAhead: drawSlowAheadPicture,
+    kerbStop: drawKerbStopPicture,
+    night: drawNightPicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -529,4 +533,120 @@ function drawOvertakePicture(front, progress, t, v) {
     ctx.arc(x - carWidth * 0.4, top + carHeight * 0.94, 5, 0, Math.PI * 2);
     ctx.fill();
   }
+}
+
+function drawPoliceJunctionPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth, carHeight } = v;
+  drawJunctionPicture(front, progress, t, v);
+  drawTrafficLight(ctx, roadLeft + roadWidth + 12, front - 50, "#ef4444");
+  // A traffic officer stands in the junction and waves us on.
+  const band = carHeight * 1.5;
+  const x = roadLeft + roadWidth / 2;
+  const y = front - 8 - band / 2;
+  const wave = Math.sin(t * 6) * 0.5;
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(x + carWidth * 0.3, y);
+  ctx.lineTo(x + carWidth * 0.3 + Math.cos(wave) * carWidth * 0.45, y + Math.sin(wave) * carWidth * 0.45);
+  ctx.stroke();
+  drawPerson(ctx, x, y, carWidth * 0.8, "#1d4ed8");
+  ctx.fillStyle = "#ffffff";
+  ctx.beginPath();
+  ctx.arc(x, y, carWidth * 0.18, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function drawSlowAheadPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth, carHeight } = v;
+  // A slow green tractor in our lane, just before a hill top we cannot see over.
+  const x = v.laneCentre(v.lane);
+  const top = front - carHeight;
+  ctx.fillStyle = "#15803d";
+  ctx.beginPath();
+  ctx.roundRect(x - carWidth * 0.4, top + carHeight * 0.15, carWidth * 0.8, carHeight * 0.7, 6);
+  ctx.fill();
+  ctx.fillStyle = "#1f2328";
+  ctx.fillRect(x - carWidth * 0.55, top + carHeight * 0.55, carWidth * 0.18, carHeight * 0.4);
+  ctx.fillRect(x + carWidth * 0.37, top + carHeight * 0.55, carWidth * 0.18, carHeight * 0.4);
+  ctx.fillRect(x - carWidth * 0.45, top, carWidth * 0.12, carHeight * 0.25);
+  ctx.fillRect(x + carWidth * 0.33, top, carWidth * 0.12, carHeight * 0.25);
+  ctx.fillStyle = "#bfe3f5";
+  ctx.fillRect(x - carWidth * 0.25, top + carHeight * 0.25, carWidth * 0.5, carHeight * 0.18);
+  // Past the hill top the road cannot be seen: it fades into the grass.
+  const hillTop = top - carHeight * 1.2;
+  ctx.fillStyle = "rgb(114, 168, 87)";
+  ctx.fillRect(0, 0, v.width, hillTop);
+  const fade = ctx.createLinearGradient(0, hillTop, 0, top);
+  fade.addColorStop(0, "rgba(114, 168, 87, 1)");
+  fade.addColorStop(1, "rgba(114, 168, 87, 0)");
+  ctx.fillStyle = fade;
+  ctx.fillRect(0, hillTop, v.width, top - hillTop);
+  // Warning sign on the right kerb: red triangle with a hill
+  const signX = roadLeft + roadWidth - 16;
+  const signY = top + carHeight * 0.4;
+  ctx.fillStyle = "#ffffff";
+  ctx.strokeStyle = "#dc2626";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(signX, signY - 12);
+  ctx.lineTo(signX - 12, signY + 10);
+  ctx.lineTo(signX + 12, signY + 10);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#1f2328";
+  ctx.beginPath();
+  ctx.moveTo(signX - 7, signY + 7);
+  ctx.quadraticCurveTo(signX, signY - 6, signX + 7, signY + 7);
+  ctx.fill();
+}
+
+function drawKerbStopPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  // Someone waits at the right kerb and waves.
+  const x = roadLeft + roadWidth - carWidth * 0.3;
+  const y = front - 24;
+  const wave = Math.sin(t * 7) * 0.6;
+  ctx.strokeStyle = "#f97316";
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(x, y - carWidth * 0.2);
+  ctx.lineTo(x + Math.sin(wave) * carWidth * 0.3, y - carWidth * 0.6);
+  ctx.stroke();
+  drawPerson(ctx, x, y, carWidth * 0.7, "#f97316", Math.PI);
+  // A free stretch of kerb in front of them, marked with a dashed box
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.7)";
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8, 6]);
+  ctx.strokeRect(v.laneCentre(2) - carWidth * 0.6, y + 14, carWidth * 1.2, carWidth * 2.2);
+  ctx.setLineDash([]);
+}
+
+function drawNightPicture(front, progress, t, v) {
+  const { ctx, width, height, carWidth, carHeight } = v;
+  // Night falls over the whole road while the event is on screen.
+  ctx.fillStyle = `rgba(10, 15, 40, ${0.55 * Math.min(1, progress * 3)})`;
+  ctx.fillRect(0, 0, width, height);
+  // An oncoming car in the far left lane, with bright headlights pointing at us.
+  const x = v.laneCentre(0);
+  const top = front - carHeight;
+  ctx.save();
+  ctx.translate(x, top + carHeight / 2);
+  ctx.rotate(Math.PI);
+  v.drawCar(0, -carHeight / 2, "#9ca3af", "rgba(0, 0, 0, 0.15)");
+  ctx.restore();
+  const beam = ctx.createLinearGradient(0, front, 0, front + carHeight * 2.5);
+  beam.addColorStop(0, "rgba(255, 246, 200, 0.75)");
+  beam.addColorStop(1, "rgba(255, 246, 200, 0)");
+  ctx.fillStyle = beam;
+  ctx.beginPath();
+  ctx.moveTo(x - carWidth * 0.35, front);
+  ctx.lineTo(x + carWidth * 0.35, front);
+  ctx.lineTo(x + carWidth * 1.3, front + carHeight * 2.5);
+  ctx.lineTo(x - carWidth * 1.1, front + carHeight * 2.5);
+  ctx.closePath();
+  ctx.fill();
 }

@@ -302,6 +302,186 @@
       "source": "kanun-2918",
       "sourceSection": "Madde 55 (a)",
       "reviewed": true
+    },
+    {
+      "id": "tc-006",
+      "roadPicture": "policeJunction",
+      "category": "trafik_cevre",
+      "situation": "Kavşakta ışık kırmızı yanıyor ama trafik polisi sana geçmeni işaret ediyor.",
+      "question": "Kime uymalısın?",
+      "options": [
+        "Trafik polisinin işaretine",
+        "Kırmızı ışığa",
+        "Kavşaktaki levhaya",
+        "Arkandaki araçların kornasına"
+      ],
+      "answer": 0,
+      "explanation": "Kurallara uyma sırasında ilk sırada trafik polisi gibi görevlilerin işaretleri gelir; sonra trafik ışıkları, sonra levhalar ve yol çizgileri.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 47",
+      "reviewed": true
+    },
+    {
+      "id": "tc-007",
+      "roadPicture": "overtake",
+      "category": "trafik_cevre",
+      "situation": "Üç şeritli bir yolda öndeki aracı geçtin. Önünde başka geçeceğin araç yok.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Hızına uygun bir şeride geçmelisin",
+        "En sol şeritte gitmeye devam etmelisin",
+        "Yolun kenarındaki emniyet şeridine geçmelisin",
+        "Hemen arka arkaya iki şerit değiştirmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Sürücüler en soldaki şeridi sürekli işgal etmemeli ve hızlarının gerektirdiği şeritte gitmelidir. Trafiği tehlikeye sokacak şekilde arka arkaya şerit değiştirmek ve emniyet şeridini kullanmak da yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 46 (a), (d), (f), (g)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-008",
+      "roadPicture": "slowAhead",
+      "category": "trafik_cevre",
+      "situation": "Önünde yavaş giden bir traktör var. Yol, ötesini göremediğin bir tepeye çıkıyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Tepeyi aşıp yol görünene kadar traktörü geçmemelisin",
+        "Hızlanıp tepeden önce traktörü geçmelisin",
+        "Traktörü sağından, yol kenarından geçmelisin",
+        "Korna çalıp traktörün durmasını beklemelisin"
+      ],
+      "answer": 0,
+      "explanation": "Görüşün yetersiz olduğu tepelerde ve dönemeçlerde öndeki aracı geçmek yasaktır. Araçların sağından veya yol kenarından (banketten) geçmek de yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 54 (a), (b) 2",
+      "reviewed": true
+    },
+    {
+      "id": "tc-009",
+      "roadPicture": "slowAhead",
+      "category": "trafik_cevre",
+      "situation": "Sağ şeritte gidiyorsun. Sol şeritteki araç yavaş gidiyor ve dönüş işareti vermiyor.",
+      "question": "Bu aracı nasıl geçmelisin?",
+      "options": [
+        "Soldan geçmelisin, sağından geçmek yasak",
+        "Sağından geçmelisin, çünkü sağ şerit boş",
+        "Yol kenarındaki banketten geçmelisin",
+        "Arkasına yapışıp selektör yapmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Geçme, geçilecek aracın solundaki şeritten yapılır; araçların sağından veya banketten geçmek yasaktır. Bunun tek istisnası, öndeki aracın sola dönmek için sola dönüş işareti vermiş olmasıdır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 54 (a)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-010",
+      "roadPicture": "junction",
+      "category": "trafik_cevre",
+      "situation": "Kavşakta sağa döneceksin.",
+      "question": "Nasıl dönmelisin?",
+      "options": [
+        "Sağa işaret verip sağ şeride girerek, yavaşlayıp dar bir kavisle",
+        "Sol şeritten geniş bir kavisle, hızını koruyarak",
+        "İşaret vermeden, en kısa yoldan",
+        "Önce karşı şeride geçip oradan"
+      ],
+      "answer": 0,
+      "explanation": "Sağa dönerken sağa dönüş işareti verilir, sağ şeride veya dönüş şeridine girilir, hız azaltılır, dar bir kavisle dönülür ve girilen yolun en sağ şeridine geçilir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 53 (a)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-011",
+      "roadPicture": "junction",
+      "category": "trafik_cevre",
+      "situation": "Kavşakta sola dönmek için bekliyorsun. Karşıdan bir araç kavşağa çok yaklaşmış geliyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Karşıdan gelen aracın geçmesini beklemelisin",
+        "Önce sen dönmelisin, çünkü işaret verdin",
+        "Korna çalıp hızlıca dönmelisin",
+        "Sağ şeride geçip oradan sola dönmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Sola dönen sürücü, karşıdan gelen ve durdurulamayacak kadar kavşağa yaklaşmış araçların geçmesini bekler. Sola dönüşlerde sağdan ve karşıdan gelen trafiğe ilk geçiş hakkı verilir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 53 (b) 4–5",
+      "reviewed": true
+    },
+    {
+      "id": "tc-012",
+      "roadPicture": "junction",
+      "category": "trafik_cevre",
+      "situation": "Şehir içinde bir kavşağa yaklaşıyorsun.",
+      "question": "Kavşağa kaç metre kala şerit değiştirmek yasaktır?",
+      "options": [
+        "30 metre",
+        "5 metre",
+        "10 metre",
+        "300 metre"
+      ],
+      "answer": 0,
+      "explanation": "Yerleşim yerlerinde kavşağa 30 metre, yerleşim yeri dışında 150 metre kala ve kavşağın içinde şerit değiştirmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 56 (a) 2",
+      "reviewed": true
+    },
+    {
+      "id": "tc-013",
+      "roadPicture": "kerbStop",
+      "category": "trafik_cevre",
+      "situation": "Şehir içinde arkadaşını arabadan indireceksin.",
+      "question": "Nerede durmalısın?",
+      "options": [
+        "Yolun sağ kenarında, durmanın yasak olmadığı bir yerde",
+        "Yaya geçidinin üstünde",
+        "Otobüs durağında",
+        "Kavşağın içinde"
+      ],
+      "answer": 0,
+      "explanation": "Yolcu indirirken araç yolun en sağında durdurulur ve yolcu sağ taraftan iner. Yaya geçitlerinde, otobüs duraklarında ve kavşaklarda duraklamak yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 58, Madde 60 (c), (d), (f)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-014",
+      "roadPicture": "night",
+      "category": "trafik_cevre",
+      "situation": "Gece şehir dışında uzağı gösteren farlarla gidiyorsun. Karşıdan bir araç geliyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yakını gösteren farları (kısa far) yakmalısın",
+        "Uzağı gösteren farlarla devam etmelisin",
+        "Farları tamamen söndürmelisin",
+        "Sadece park lambalarıyla gitmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Gece şehir dışında karşılaşmalarda yakını gösteren farlar yakılır. Karşılaşmada ışıkları söndürmek ve sadece park lambalarıyla gitmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 64 (a) 2, (b) 3, (b) 6",
+      "reviewed": true
+    },
+    {
+      "id": "tc-015",
+      "roadPicture": "kerbStop",
+      "category": "trafik_cevre",
+      "situation": "Arkadaşının 10 yaşındaki çocuğunu okula bırakacaksın. Çocuk arka koltuğa oturdu.",
+      "question": "Çocuğun emniyet kemeri ya da çocuk koltuğu kimin sorumluluğunda?",
+      "options": [
+        "Sürücü olarak senin",
+        "Sadece çocuğun",
+        "Sadece çocuğun ailesinin",
+        "Kimsenin, arka koltukta gerek yok"
+      ],
+      "answer": 0,
+      "explanation": "Araç giderken sürücü ve yolcuların emniyet kemeri gibi koruyucu sistemleri kullanması zorunludur. 15 yaşını doldurmamış çocukların bunları kullanmasını sağlamak sürücünün görevidir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 78",
+      "reviewed": true
     }
   ]
 }
