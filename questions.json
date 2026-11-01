@@ -12,6 +12,12 @@
       "publisher": "T.C. Cumhurbaşkanlığı Mevzuat Bilgi Sistemi",
       "url": "https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2918.pdf",
       "checked": "2026-10-29"
+    },
+    "kgm-isaretleme-2020": {
+      "title": "Karayolu Trafik İşaretleme Standartları - 1 (sign meanings, sections 23 and 24)",
+      "publisher": "T.C. Karayolları Genel Müdürlüğü, Trafik Güvenliği Dairesi Başkanlığı, 2020 (replaces the Trafik İşaretleri El Kitabı named in the Trafik İşaretleri Hakkında Yönetmelik, Madde 3)",
+      "url": "https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Trafik/IsaretlerElKitabi/KarayoluTrafikIsaretlemeStandartlari1.pdf",
+      "checked": "2026-11-01"
     }
   },
   "questions": [
@@ -841,6 +847,196 @@
       "explanation": "İlk yardımcının kendi can güvenliği her zaman önce gelir. Olay yeri güvenli hâle getirilemiyorsa ortamdan uzaklaşılır ve uzaklaştırılır, 112 aranır ya da aratılır.",
       "source": "meb-ilk-yardim-2025",
       "sourceSection": "Slides 15–16: \"Olay yerinin güvenli hale getirilmesi\"",
+      "reviewed": true
+    },
+    {
+      "id": "tc-016",
+      "roadPicture": "sign",
+      "sign": "dur",
+      "category": "trafik_cevre",
+      "situation": "Bir kavşağa yaklaşıyorsun ve bu levhayı görüyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Kavşağa girmeden durup kavşaktaki bütün araçlara yol vermelisin",
+        "Yavaşlayıp araç yoksa durmadan geçmelisin",
+        "Korna çalıp kavşağa girmelisin",
+        "Sadece gece durmalısın"
+      ],
+      "answer": 0,
+      "explanation": "DUR levhası, sürücünün kavşağa girmeden önce durması ve kavşaktaki bütün araçlara yol vermesi gerektiğini bildirir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "DUR levhası (TT-2)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-017",
+      "roadPicture": "sign",
+      "sign": "yolVer",
+      "category": "trafik_cevre",
+      "situation": "Tali yoldan bir kavşağa yaklaşıyorsun ve bu levhayı görüyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Ana yoldan araç geliyorsa durup yol vermeli, gelmiyorsa dikkatle geçmelisin",
+        "Araç gelse de gelmese de mutlaka tam durmalısın",
+        "Önceliğin sende olduğu için hızla geçmelisin",
+        "Sadece yayalara yol vermelisin"
+      ],
+      "answer": 0,
+      "explanation": "YOL VER levhası, tali yoldan gelen sürücünün ana yoldan araç geliyorsa durarak yol vermesi, araç yoksa kontrollü olarak geçebileceği anlamına gelir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "YOL VER levhası (TT-1)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-018",
+      "roadPicture": "sign",
+      "sign": "girisiOlmayan",
+      "category": "trafik_cevre",
+      "situation": "Bir sokağa girmek üzeresin ve girişinde bu levha var.",
+      "question": "Bu levha ne anlama gelir?",
+      "options": [
+        "Girişi olmayan yol: bu yola hiçbir taşıt giremez",
+        "Bu yolda park etmek yasaktır",
+        "Bu yol ileride bitiyor",
+        "Bu yolda yavaş gitmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Girişi olmayan yol levhası, her türlü taşıtın girişinin yasak olduğu yolların başına konur. Bu yol genellikle karşı yönden tek yönlü trafiğe ayrılmıştır.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Girişi olmayan yol levhası (TT-4)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-019",
+      "roadPicture": "sign",
+      "sign": "gecmeYasak",
+      "category": "trafik_cevre",
+      "situation": "Bu levhayı geçtin. Önünde yavaş giden bir kamyon var.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Kamyonu geçmemelisin, öndeki taşıtı geçmek yasak",
+        "Kamyonu sağından geçebilirsin",
+        "Korna çalıp hemen geçebilirsin",
+        "Sadece kırmızı arabalar geçemez, sen geçebilirsin"
+      ],
+      "answer": 0,
+      "explanation": "Bu levha, öndeki taşıtı geçmenin yasak olduğunu bildirir. Yasak; bisiklet, motorlu bisiklet ve sepetsiz iki tekerlekli motosiklet dışındaki taşıtları geçmek için geçerlidir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Öndeki taşıtı geçmek yasaktır levhası (TT-27)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-020",
+      "roadPicture": "sign",
+      "sign": "hiz50",
+      "category": "trafik_cevre",
+      "situation": "Yolun kenarında bu levhayı görüyorsun.",
+      "question": "Bu levha ne anlama gelir?",
+      "options": [
+        "En fazla 50 km/saat hızla gidebilirsin",
+        "En az 50 km/saat hızla gitmelisin",
+        "50 metre sonra kavşak var",
+        "50 metre ileride durmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Kırmızı çerçeveli yuvarlak levhadaki sayı, uyulması gereken azami (en yüksek) hız sınırını bildirir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Azami hız sınırlaması levhası (TT-29a)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-021",
+      "roadPicture": "sign",
+      "sign": "kornaYasak",
+      "category": "trafik_cevre",
+      "situation": "Bir hastanenin yakınından geçiyorsun ve bu levhayı görüyorsun.",
+      "question": "Bu levha ne anlama gelir?",
+      "options": [
+        "Kazadan kaçınmak dışında korna çalmak yasaktır",
+        "Burada korna çalmak zorunludur",
+        "İleride oto tamircisi var",
+        "Araçta müzik dinlemek yasaktır"
+      ],
+      "answer": 0,
+      "explanation": "Bu levha, bir kazadan kaçınma durumu dışında korna gibi sesli ikaz cihazlarını kullanmanın yasak olduğunu bildirir. Hastane ve okul gibi yerlerin yakınında kullanılır.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Sesli ikaz cihazlarının kullanımı yasaktır levhası (TT-30)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-022",
+      "roadPicture": "sign",
+      "sign": "solaDonulmez",
+      "category": "trafik_cevre",
+      "situation": "Kavşakta sola dönmek istiyorsun ve bu levhayı görüyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Sola dönmemelisin, sola dönüş yasak",
+        "Sadece sola dönebilirsin",
+        "Sola dönmeden önce durman yeterli",
+        "Sola dönüş şeridine geçip dönmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Bu levha, sola dönüşlerin yasak olduğunu bildirir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Sola dönülmez levhası (TT-26b)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-023",
+      "roadPicture": "sign",
+      "sign": "adaEtrafinda",
+      "category": "trafik_cevre",
+      "situation": "Dönel kavşağa yaklaşıyorsun ve bu mavi levhayı görüyorsun.",
+      "question": "Bu levha ne anlama gelir?",
+      "options": [
+        "Adanın etrafında oklar yönünde dönmelisin",
+        "Adanın etrafında istediğin yönde dönebilirsin",
+        "Bu kavşağa girmek yasaktır",
+        "Kavşağın içinde park edebilirsin"
+      ],
+      "answer": 0,
+      "explanation": "Bu levha, dönel kavşakta izlenmesi gereken yönü gösterir. Dönel kavşağa giren sürücü kavşağın içindeki araçlara yol verir; bu yüzden levha YOL VER ya da DUR levhasıyla birlikte konur.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Ada etrafında dönünüz levhası (TT-37)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-024",
+      "roadPicture": "sign",
+      "sign": "yayaGecidi",
+      "category": "trafik_cevre",
+      "situation": "Yolun kenarında bu üçgen levhayı görüyorsun.",
+      "question": "Bu levha ne anlatır?",
+      "options": [
+        "İleride yaya geçidi var",
+        "Bu yola yayalar giremez",
+        "Burası araçlara kapalı bir yaya yolu",
+        "İleride yolda çalışma var"
+      ],
+      "answer": 0,
+      "explanation": "Bu tehlike uyarı levhası, ileride yaya geçidi olduğunu bildirir. Aynı zamanda öndeki taşıtı geçmenin yasak olduğunu da belirtir.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Yaya geçidi tehlike uyarı levhası (bölüm 23)",
+      "reviewed": true
+    },
+    {
+      "id": "tc-025",
+      "roadPicture": "sign",
+      "sign": "kayganYol",
+      "category": "trafik_cevre",
+      "situation": "Yolun kenarında bu üçgen levhayı görüyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yol kaygan: fren yapmamaya, hızlanmamaya ve ani manevra yapmamaya dikkat etmelisin",
+        "Kaygan kısmı çabuk geçmek için hızlanmalısın",
+        "Sert fren yapıp hemen durmalısın",
+        "Yol virajlı, dönüşe hazırlanmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Kaygan yol levhası, yol yüzeyinin kaygan olduğunu bildirir ve sürücülerin fren yapmamaları, hızlanmamaları ve ani manevra yapmamaları gerektiğini anlatır.",
+      "source": "kgm-isaretleme-2020",
+      "sourceSection": "Kaygan yol levhası (T-8)",
       "reviewed": true
     }
   ]

@@ -73,6 +73,7 @@ const card = {
   root: document.getElementById("question-card"),
   category: document.getElementById("q-category"),
   situation: document.getElementById("q-situation"),
+  sign: document.getElementById("q-sign"),
   text: document.getElementById("q-text"),
   options: document.getElementById("q-options"),
   feedback: document.getElementById("q-feedback"),
@@ -353,6 +354,7 @@ function drawEventMarker() {
     drawCar,
     carX,
     carTop: PLAYER_Y * height,
+    sign: eventMarker.q.sign,
   });
 }
 
@@ -579,6 +581,9 @@ function openQuestion() {
   card.result.hidden = false;
   card.explanation.hidden = false;
   card.situation.textContent = q.situation;
+  // Sign questions show the sign itself on the card.
+  card.sign.hidden = !q.sign;
+  card.sign.innerHTML = q.sign ? signSvg(q.sign) : "";
   card.text.textContent = q.question;
   card.feedback.hidden = true;
   card.options.replaceChildren();
@@ -707,6 +712,7 @@ function endRun(crashedOut = false) {
   }
   card.situation.hidden = eventIndex === 0;
   card.situation.textContent = `${eventIndex} sorudan ${correctCount} doğru`;
+  card.sign.hidden = true;
   card.options.replaceChildren();
   card.result.hidden = false;
   card.result.textContent = newBest ? `Puan: ${score} · Yeni rekor!` : `Puan: ${score} · En iyi: ${best}`;
@@ -733,6 +739,12 @@ function showReview() {
   const items = wrongAnswers.map(({ q, chosen }) => {
     const item = document.createElement("div");
     item.className = "review-item";
+    if (q.sign) {
+      const sign = document.createElement("div");
+      sign.className = "review-sign";
+      sign.innerHTML = signSvg(q.sign);
+      item.append(sign);
+    }
     const parts = [
       ["review-category", CATEGORY_NAMES[q.category]],
       ["review-question", `${q.situation} ${q.question}`],
@@ -780,6 +792,7 @@ async function loadQuestions() {
   const response = await fetch("questions.json");
   const data = await response.json();
   questions = data.questions.filter((q) => q.reviewed);
+  for (const q of questions) if (q.sign) signImage(q.sign); // load sign pictures before they are needed
   showCourseButtons();
   startButton.disabled = false;
 }

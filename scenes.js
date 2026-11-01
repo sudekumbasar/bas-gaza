@@ -276,6 +276,7 @@ function drawRoadPicture(name, front, progress, t, view) {
     nightAhead: drawNightAheadPicture,
     personDown: drawPersonDownPicture,
     dangerCrash: drawDangerCrashPicture,
+    sign: drawSignPicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -903,4 +904,16 @@ function drawDangerCrashPicture(front, progress, t, v) {
       ctx.stroke();
     }
   }
+}
+
+function drawSignPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  // A traffic sign on a grey post at the right edge of the road
+  const size = carWidth * 1.3;
+  const x = roadLeft + roadWidth - size * 0.55;
+  const top = front - size * 2.2;
+  ctx.fillStyle = "#9ca3af";
+  ctx.fillRect(x - 3, top + size * 0.8, 6, size * 1.4);
+  const image = signImage(v.sign);
+  if (image.complete) ctx.drawImage(image, x - size / 2, top, size, size);
 }

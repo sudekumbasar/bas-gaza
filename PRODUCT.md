@@ -127,3 +127,4 @@ Small steps. Each step ends with something Sude can open and play on her own pho
    - First: a course choice on the start screen (done).
    - Then: more checked questions, at least 15 per course, starting with Trafik ve Çevre (the biggest course). Sude reviews each batch. Done 1 November 2026: 16 İlk Yardım, 15 Trafik ve Çevre, 15 Trafik Adabı. The MEB first aid deck we use covers only general first aid (scene safety, checking the casualty, 112, recovery position); bleeding, burns, fractures and CPR need another official source.
    - Mixed runs follow the exam's share of questions per course (done).
+   - Traffic sign questions (done, 1 November 2026): 10 signs drawn by us as SVG in `signs.js`, meanings from KGM "Karayolu Trafik İşaretleme Standartları" (2020). A sign question has `"roadPicture": "sign"` and a `"sign"` name; the sign stands at the roadside and is shown on the card.
