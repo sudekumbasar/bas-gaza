@@ -881,3 +881,10 @@ card.continueButton.onclick = closeQuestion;
 card.menuButton.onclick = goToMenu;
 showBestScore();
 loadQuestions();
+
+// Save the game on the phone so it also opens without internet (see sw.js).
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {
+    // The game still works online without it.
+  });
+}

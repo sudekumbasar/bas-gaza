@@ -94,6 +94,7 @@ These rules matter more than anything else in the project.
 - Start screen, end screen, "Tekrar oyna", best score saved on the phone.
 - Turkish text only.
 - A static web app: it works by opening a web link on the phone. No server, no accounts, no AI model.
+- It can be added to the phone's home screen with its own icon and opens full screen (added 1 November 2026). After one visit it also opens without internet; when online it always loads the newest version first (`sw.js`, network first).
 
 ## Not in version 1
 
