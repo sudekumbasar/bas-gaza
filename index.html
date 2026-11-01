@@ -20,8 +20,12 @@
     </svg>
     <h1>Bas Gaza</h1>
     <p class="tagline">Sür, soruları bil, ehliyetini al!</p>
-    <button id="start-button" type="button">Başla</button>
+    <button id="start-button" type="button" disabled>Karma tur</button>
     <p id="best-score" class="tagline" hidden></p>
+    <div id="course-picker" class="course-picker" hidden>
+      <p class="tagline">Ya da bir bölüm çalış:</p>
+      <div id="course-buttons" class="course-buttons"></div>
+    </div>
   </main>
   <canvas id="game" hidden></canvas>
   <section id="question-card" class="card" hidden>
@@ -33,6 +37,7 @@
       <p id="q-result" class="result"></p>
       <p id="q-explanation"></p>
       <button id="q-continue" type="button">Devam</button>
+      <button id="q-menu" type="button" hidden>Ana menü</button>
     </div>
   </section>
   <script src="scenes.js"></script>

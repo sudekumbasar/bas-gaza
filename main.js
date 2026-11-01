@@ -5,6 +5,8 @@
 const startScreen = document.getElementById("start-screen");
 const startButton = document.getElementById("start-button");
 const bestScoreText = document.getElementById("best-score");
+const coursePicker = document.getElementById("course-picker");
+const courseButtons = document.getElementById("course-buttons");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
@@ -33,7 +35,8 @@ const BEST_SCORE_KEY = "basgaza.bestScore";
 // Question events
 const EVENT_GAP = 3; // road travelled between two events (about 5 seconds)
 const EVENT_START_Y = -0.35; // road pictures start above the screen
-const EVENTS_PER_COURSE = 2;
+const EVENTS_PER_COURSE = 2; // in a mixed run
+const COURSE_RUN_LENGTH = 6; // a one-course run is as long as a mixed run
 const CATEGORY_NAMES = {
   ilk_yardim: "İlk Yardım",
   trafik_cevre: "Trafik ve Çevre",
@@ -57,6 +60,7 @@ const card = {
   result: document.getElementById("q-result"),
   explanation: document.getElementById("q-explanation"),
   continueButton: document.getElementById("q-continue"),
+  menuButton: document.getElementById("q-menu"),
 };
 
 let width = 0;
@@ -73,7 +77,9 @@ let untilSpawn = SPAWN_GAP;
 let obstacles = []; // { type: "cone" | "car", lane, y, colour }
 let hitTimer = 0;
 let questions = []; // reviewed questions from questions.json
+let runCourse = null; // null for a mixed run, otherwise the one course being practised
 let runEvents = []; // the questions of this run, in order
+let hintShown = false;
 let eventIndex = 0;
 let correctCount = 0;
 let untilEvent = EVENT_GAP;
@@ -471,6 +477,7 @@ function draw() {
 }
 
 function frame(time) {
+  if (!running) return;
   // Cap the step so a paused tab does not make the car jump.
   const dt = Math.min(0.05, (time - lastTime) / 1000);
   lastTime = time;
@@ -502,13 +509,17 @@ function shuffle(items) {
   return copy;
 }
 
-// A run asks a few questions from every course that has reviewed questions.
+// A mixed run asks a few questions from every course that has reviewed questions;
+// a course run asks only that course's questions.
 function buildRun() {
-  const courses = [...new Set(questions.map((q) => q.category))];
-  const picked = courses.flatMap((course) =>
-    shuffle(questions.filter((q) => q.category === course)).slice(0, EVENTS_PER_COURSE),
-  );
-  runEvents = shuffle(picked);
+  if (runCourse) {
+    runEvents = shuffle(questions.filter((q) => q.category === runCourse)).slice(0, COURSE_RUN_LENGTH);
+  } else {
+    const picked = availableCourses().flatMap((course) =>
+      shuffle(questions.filter((q) => q.category === course)).slice(0, EVENTS_PER_COURSE),
+    );
+    runEvents = shuffle(picked);
+  }
   eventIndex = 0;
   correctCount = 0;
 }
@@ -602,17 +613,22 @@ function loseHealth(amount) {
 }
 
 // Browser storage can be missing (private mode), so the game must work without it.
-function loadBestScore() {
+// Mixed runs and each course keep their own best score.
+function bestScoreKey(course) {
+  return course ? `${BEST_SCORE_KEY}.${course}` : BEST_SCORE_KEY;
+}
+
+function loadBestScore(course = null) {
   try {
-    return Number(window.localStorage.getItem(BEST_SCORE_KEY)) || 0;
+    return Number(window.localStorage.getItem(bestScoreKey(course))) || 0;
   } catch {
     return 0;
   }
 }
 
-function saveBestScore(score) {
+function saveBestScore(course, score) {
   try {
-    window.localStorage.setItem(BEST_SCORE_KEY, String(score));
+    window.localStorage.setItem(bestScoreKey(course), String(score));
   } catch {
     // Nothing to do: the best score just is not kept.
   }
@@ -631,12 +647,18 @@ function endRun(crashedOut = false) {
   obstacles = [];
   const passed = health > 0;
   const score = correctCount * 100 + health;
-  const best = loadBestScore();
+  const best = loadBestScore(runCourse);
   const newBest = score > best;
-  if (newBest) saveBestScore(score);
+  if (newBest) saveBestScore(runCourse, score);
 
-  card.category.textContent = passed ? "Geçtin" : "Kaldın";
-  card.text.textContent = passed ? "Tebrikler, ehliyetini aldın!" : "Ehliyetini alamadın, tekrar dene!";
+  card.category.textContent = runCourse
+    ? `${CATEGORY_NAMES[runCourse]} · ${passed ? "Geçtin" : "Kaldın"}`
+    : passed ? "Geçtin" : "Kaldın";
+  if (runCourse) {
+    card.text.textContent = passed ? "Tebrikler, bu bölümü geçtin!" : "Bu bölümü geçemedin, tekrar dene!";
+  } else {
+    card.text.textContent = passed ? "Tebrikler, ehliyetini aldın!" : "Ehliyetini alamadın, tekrar dene!";
+  }
   card.situation.hidden = eventIndex === 0;
   card.situation.textContent = `${eventIndex} sorudan ${correctCount} doğru`;
   card.options.replaceChildren();
@@ -648,6 +670,7 @@ function endRun(crashedOut = false) {
   card.explanation.textContent = "Çok fazla çarptın, canın bitti.";
   card.continueButton.textContent = "Tekrar oyna";
   card.continueButton.onclick = restartRun;
+  card.menuButton.hidden = false;
   card.feedback.hidden = false;
   card.root.hidden = false;
   card.root.scrollTop = 0;
@@ -655,6 +678,7 @@ function endRun(crashedOut = false) {
 
 function restartRun() {
   card.root.hidden = true;
+  card.menuButton.hidden = true;
   card.continueButton.textContent = "Devam";
   card.continueButton.onclick = closeQuestion;
   runOver = false;
@@ -669,7 +693,8 @@ function restartRun() {
   carX = laneCentre(lane);
   untilSpawn = SPAWN_GAP;
   untilEvent = EVENT_GAP;
-  elapsed = HINT_TIME; // the control hint was already shown in this session
+  elapsed = hintShown ? HINT_TIME : 0; // show the control hint only on the first run
+  hintShown = true;
   buildRun();
   questionOpen = false;
   lastTime = performance.now();
@@ -679,16 +704,45 @@ async function loadQuestions() {
   const response = await fetch("questions.json");
   const data = await response.json();
   questions = data.questions.filter((q) => q.reviewed);
-  buildRun();
+  showCourseButtons();
+  startButton.disabled = false;
 }
 
-function start() {
+// Courses that have reviewed questions, in the official order.
+function availableCourses() {
+  return Object.keys(CATEGORY_NAMES).filter((course) => questions.some((q) => q.category === course));
+}
+
+function showCourseButtons() {
+  courseButtons.replaceChildren(
+    ...availableCourses().map((course) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = CATEGORY_NAMES[course];
+      button.addEventListener("click", () => start(course));
+      return button;
+    }),
+  );
+  coursePicker.hidden = false;
+}
+
+function start(course = null) {
   startScreen.hidden = true;
   canvas.hidden = false;
   resize();
+  runCourse = course;
+  restartRun();
   running = true;
   lastTime = performance.now();
   requestAnimationFrame(frame);
+}
+
+function goToMenu() {
+  running = false; // stops the frame loop
+  card.root.hidden = true;
+  canvas.hidden = true;
+  startScreen.hidden = false;
+  showBestScore();
 }
 
 // One finger: a swipe moves the car as soon as the finger has travelled far enough
@@ -732,7 +786,8 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("resize", resize);
-startButton.addEventListener("click", start);
+startButton.addEventListener("click", () => start());
 card.continueButton.onclick = closeQuestion;
+card.menuButton.onclick = goToMenu;
 showBestScore();
 loadQuestions();

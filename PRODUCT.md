@@ -32,13 +32,14 @@ Source: T.C. Millî Eğitim Bakanlığı, *Motorlu Taşıt Sürücü Kursiyerler
 
 ## How one run plays
 
-1. The start screen shows the name, a "Başla" button and the best score.
+1. The start screen shows the name, a "Karma tur" button (mixed run), a button for each course ("Ya da bir bölüm çalış") and the best score.
 2. The car drives forward on its own along one road. The player moves it between lanes with one finger (swipe or tap left/right) to avoid cones and slow cars. Hitting one slows you down and costs a little can (health, see Scoring).
 3. An event appears ahead (for example, a crashed car at the side of the road). The car stops and a question card opens with the situation, the question and the answer options.
 4. The player taps an answer.
    - Right: a short "Doğru!" with a one-line explanation, then the car drives on.
    - Wrong: a short scene shows the outcome (see below), then the correct answer with its explanation. This costs a lot of can.
 5. A run has **2 events from each course that has questions**, in random order: 8 events with all four courses, 6 while Araç Tekniği is missing (see Version 1). The questions are picked at random from the content file, so each run is a little different.
+   - **Course run** (added 1 November 2026): the player picks one course and gets up to 6 questions from that course only. Each course and the mixed run keep their own best score; the end screen has "Tekrar oyna" and "Ana menü".
 6. At the end:
    - **Passed:** "Tebrikler, ehliyetini aldın!" with the score.
    - **Failed:** "Ehliyetini alamadın, tekrar dene!" with the score and a "Tekrar oyna" button.
@@ -83,7 +84,7 @@ These rules matter more than anything else in the project.
 
 ## Version 1
 
-- One road, one run of 2 events per course.
+- One road, one run of 2 events per course, and a run for a single course.
 - A content file with at least 4 checked questions per course, so runs are not all the same.
 - **Araç Tekniği is left out for now** (decided 29 October 2026): we found no openly available official MEB material for it. It comes back, with its tow-truck fail scene already built, once an official source is found.
 - Lane switching with one finger, a few obstacles.
@@ -121,3 +122,7 @@ Small steps. Each step ends with something Sude can open and play on her own pho
 5. **All events.** Each course has its own picture on the road and its own fail scene (done). 2 events per course in a run.
 6. **Mistakes and the end.** 3 licence cards, game over on the 3rd mistake, pass/fail end screen, score, "Tekrar oyna", best score saved.
 7. **Full content and playtest.** At least 16 checked questions. Sude and a few friends play it and say whether it is fun. We decide what comes next from that.
+8. **Practise one course** (after the playtest, 1 November 2026). The real exam has 4 courses (12 İlk Yardım, 23 Trafik ve Çevre, 9 Araç Tekniği, 6 Trafik Adabı). Sude wants both mixed runs and runs for one course.
+   - First: a course choice on the start screen (done).
+   - Then: more checked questions, at least 15 per course, starting with Trafik ve Çevre (the biggest course). Sude reviews each batch.
+   - Maybe later: make mixed runs follow the exam's share of questions per course.
