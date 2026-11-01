@@ -67,7 +67,7 @@ The exact wording above can still change during playtesting.
   - At 0 can the run ends at once with "Ehliyetini alamadın, tekrar dene!".
   - So 2 wrong answers always end the run. This keeps the real pass mark: with 6 questions, 5 right (83%) passes and 4 right (67%) fails.
     After many hits, even 1 wrong answer can be enough.
-  - When Araç Tekniği returns and a run has 8 questions, the costs must be changed so that the 3rd wrong answer ends the run (for example 34 per wrong answer).
+  - The cost of a wrong answer follows the run length so the run ends exactly when 70% is out of reach: 50 in a 6-question run (2nd wrong ends it), 34 in the 8-question mixed run (3rd wrong ends it).
 - If you reach the end of the run with some can left, you pass: "Tebrikler, ehliyetini aldın!".
 - Score: 100 points per right answer, plus the can you have left at the end (so driving carefully counts).
 - The best score is kept on the phone only (browser storage). No account.
@@ -87,7 +87,7 @@ These rules matter more than anything else in the project.
 
 - One road, one run of 2 events per course, and a run for a single course.
 - A content file with at least 4 checked questions per course, so runs are not all the same.
-- **Araç Tekniği is left out for now** (decided 29 October 2026): we found no openly available official MEB material for it. It comes back, with its tow-truck fail scene already built, once an official source is found.
+- **Araç Tekniği** was left out on 29 October 2026 for lack of an open official source. It came back on 1 November 2026: the source is MEB's own published past exam booklets with official answer keys (02.11.2013 and 13.02.2016). We use the facts only and write our own questions; the booklets are copyrighted.
 - Lane switching with one finger, a few obstacles.
 - A simple picture for each of the four event types, and a short scene for each fail outcome.
 - Question card, right/wrong feedback with explanation, 3 mistakes = game over.

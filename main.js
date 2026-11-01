@@ -25,9 +25,10 @@ const RECOVER_RATE = 0.35; // speed regained per second after a hit
 const HIT_FLASH_TIME = 0.6; // seconds the car blinks after a hit
 const SLOW_CAR_COLOURS = ["#3c7be9", "#f5c518", "#8a5cd6", "#ffffff"];
 
-// Can (health). With 6 questions, 2 wrong answers always end the run (the real 70% pass mark).
+// Can (health). Wrong answers cost so much that the run is lost exactly when the player
+// can no longer reach the real exam's 70% pass mark (see wrongAnswerCost).
 const MAX_HEALTH = 100;
-const WRONG_ANSWER_COST = 50;
+const PASS_SHARE = 0.7;
 const HIT_COST = 10;
 const HEALTH_FLASH_TIME = 0.6;
 const BEST_SCORE_KEY = "basgaza.bestScore";
@@ -58,7 +59,8 @@ const COURSE_ICONS = {
     '<rect x="7" y="1" width="10" height="22" rx="3" fill="#1f2328"/>' +
     '<circle cx="12" cy="6" r="2.4" fill="#ef4444"/><circle cx="12" cy="12" r="2.4" fill="#f59e0b"/>' +
     '<circle cx="12" cy="18" r="2.4" fill="#22c55e"/>',
-  arac_teknigi: '<circle cx="12" cy="12" r="8" fill="none" stroke="#2563eb" stroke-width="4"/>',
+  arac_teknigi:
+    '<path d="M14.5 3a5 5 0 0 0-4.6 6.9L3.3 16.5a2 2 0 0 0 2.8 2.8l6.6-6.6A5 5 0 0 0 19.6 8l-3 3-2.6-.7-.7-2.6 3-3a5 5 0 0 0-1.8-.7z" fill="#2563eb"/>',
   trafik_adabi:
     '<path d="M12 21s-7.5-4.6-9.6-9.2A5.3 5.3 0 0 1 12 6.3a5.3 5.3 0 0 1 9.6 5.5C19.5 16.4 12 21 12 21z" fill="#ec4899"/>',
 };
@@ -554,6 +556,13 @@ function buildRun() {
 // Split a mixed run between the courses like the real exam does: each course gets its
 // share of the run, rounded so the total stays the same (largest remainder first).
 // Every course gets at least one question.
+// 6 questions: 1 wrong answer is still a pass, so each costs 50 and the 2nd ends the run.
+// 8 questions: 2 wrong answers are still a pass, so each costs 34 and the 3rd ends the run.
+function wrongAnswerCost() {
+  const allowedWrong = Math.floor(runEvents.length * (1 - PASS_SHARE) + 1e-9);
+  return Math.ceil(MAX_HEALTH / (allowedWrong + 1));
+}
+
 function mixedRunCounts(courses) {
   const runLength = EVENTS_PER_COURSE * courses.length;
   const examTotal = courses.reduce((sum, course) => sum + EXAM_QUESTIONS[course], 0);
@@ -620,7 +629,7 @@ function answerQuestion(q, chosen) {
     return;
   }
   wrongAnswers.push({ q, chosen: chosen.textContent });
-  loseHealth(WRONG_ANSWER_COST);
+  loseHealth(wrongAnswerCost());
   // Let the player see their red answer for a moment, then play the scene.
   setTimeout(() => {
     card.root.hidden = true;

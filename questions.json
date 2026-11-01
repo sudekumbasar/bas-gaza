@@ -18,6 +18,20 @@
       "publisher": "T.C. Karayolları Genel Müdürlüğü, Trafik Güvenliği Dairesi Başkanlığı, 2020 (replaces the Trafik İşaretleri El Kitabı named in the Trafik İşaretleri Hakkında Yönetmelik, Madde 3)",
       "url": "https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Trafik/IsaretlerElKitabi/KarayoluTrafikIsaretlemeStandartlari1.pdf",
       "checked": "2026-11-01"
+    },
+    "meb-mtsk-2016-02-13": {
+      "title": "13.02.2016 Motorlu Taşıt Sürücü Kursiyerleri Sınavı, 2. grup, K kitapçığı, with the official answer key",
+      "publisher": "T.C. Millî Eğitim Bakanlığı, Ölçme, Değerlendirme ve Sınav Hizmetleri Genel Müdürlüğü",
+      "url": "https://www.meb.gov.tr/13022016-tarihli-motorlu-tasit-surucu-kursiyerleri-sinavi-sorulari-ve-cevap-anahtari/duyuru/10630/tr",
+      "note": "Facts only; our questions are written in our own words. The booklet is copyrighted.",
+      "checked": "2026-11-01"
+    },
+    "meb-mtsas-2013-11-02": {
+      "title": "02.11.2013 Motorlu Taşıtlar Sürücü Adayları Sınavı, B sınıfı, K kitapçığı (Motor ve Araç Tekniği Bilgisi testi), with the official answer key",
+      "publisher": "T.C. Millî Eğitim Bakanlığı",
+      "url": "https://meb.gov.tr/02-kasim-2013-tarihli-motorlu-tasitlar-surucu-adaylari-sinavi-sorulari-ve-cevap-anahtari/duyuru/6454",
+      "note": "Facts only; our questions are written in our own words. The booklet is copyrighted.",
+      "checked": "2026-11-01"
     }
   },
   "questions": [
@@ -1037,6 +1051,186 @@
       "explanation": "Kaygan yol levhası, yol yüzeyinin kaygan olduğunu bildirir ve sürücülerin fren yapmamaları, hızlanmamaları ve ani manevra yapmamaları gerektiğini anlatır.",
       "source": "kgm-isaretleme-2020",
       "sourceSection": "Kaygan yol levhası (T-8)",
+      "reviewed": true
+    },
+    {
+      "id": "at-001",
+      "roadPicture": "garage",
+      "category": "arac_teknigi",
+      "situation": "Servis ustası arabanın egzozunu kontrol ediyor.",
+      "question": "Egzoz gazlarının çevreye verdiği zararı azaltan parça hangisidir?",
+      "options": [
+        "Katalitik konvertör",
+        "Egzoz manifoldu",
+        "Hava filtresi",
+        "Radyatör"
+      ],
+      "answer": 0,
+      "explanation": "Katalitik konvertör, araçlarda egzoz gazı emisyonlarını, yani egzozdan çıkan zararlı gazları azaltmak için kullanılır.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 1 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-002",
+      "roadPicture": "garage",
+      "category": "arac_teknigi",
+      "situation": "Sürücü kursunda motor çeşitlerini öğreniyorsun.",
+      "question": "Sıkıştırılmış yakıt-hava karışımını buji ile ateşleyerek çalışan motor hangisidir?",
+      "options": [
+        "Benzinli motor",
+        "Dizel motor",
+        "Marş motoru",
+        "Silecek motoru"
+      ],
+      "answer": 0,
+      "explanation": "Benzinli motorlarda silindirde sıkıştırılan yakıt-hava karışımı buji ile ateşlenir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 2 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-003",
+      "roadPicture": "garage",
+      "category": "arac_teknigi",
+      "situation": "Serviste hava filtren değiştiriliyor.",
+      "question": "Motorda hava filtresinin görevi nedir?",
+      "options": [
+        "Silindire alınan havayı temizlemek",
+        "Yakıtı temizlemek",
+        "Motor yağını temizlemek",
+        "Soğutma suyunu temizlemek"
+      ],
+      "answer": 0,
+      "explanation": "Hava filtresi, motorun silindirlerine alınan havayı temizler.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 8 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-004",
+      "roadPicture": "garage",
+      "category": "arac_teknigi",
+      "situation": "Motorun içinde birbirine sürtünerek çalışan birçok parça var.",
+      "question": "Bu parçaların aşınmasını önleyen ve onları temiz tutan sistem hangisidir?",
+      "options": [
+        "Yağlama sistemi",
+        "Şarj sistemi",
+        "Ateşleme sistemi",
+        "Marş sistemi"
+      ],
+      "answer": 0,
+      "explanation": "Yağlama sistemi, birbiri üzerinde hareket eden motor parçalarının doğrudan temas etmesini önler; böylece parçalar aşınmadan uzun süre çalışır. Motordaki parçaların temizliğini de bu sistem sağlar.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 10 and answer key; 2016 soru 39",
+      "reviewed": true
+    },
+    {
+      "id": "at-005",
+      "roadPicture": "engineSmoke",
+      "category": "arac_teknigi",
+      "situation": "Sabah arabayı çalıştırmak istiyorsun ama marş motoru çok yavaş dönüyor.",
+      "question": "Bunun sebebi ne olabilir?",
+      "options": [
+        "Akünün şarjı yetersiz olabilir",
+        "Hava filtresi kirlenmiş olabilir",
+        "Lastik basıncı düşük olabilir",
+        "Far ampulü yanmış olabilir"
+      ],
+      "answer": 0,
+      "explanation": "Marş yapıldığında marş motoru yavaş dönüyorsa, sebebi akünün şarjının yetersiz olması olabilir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 11 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-006",
+      "roadPicture": "engineSmoke",
+      "category": "arac_teknigi",
+      "situation": "Yolda giderken motorun hararet yaptığını fark ettin.",
+      "question": "Aşağıdakilerden hangisini yapmalısın?",
+      "options": [
+        "Motor kaputunu açmalısın",
+        "Motorun üzerine su dökmelisin",
+        "Motoru durdurup hemen soğuk su eklemelisin",
+        "Motoru durdurup hemen soğuk antifriz eklemelisin"
+      ],
+      "answer": 0,
+      "explanation": "MEB sınavının cevap anahtarına göre, motor hararet yaptığında yapılması gereken işlem motor kaputunun açılmasıdır. Sıcak motorun üzerine su dökmek ya da hemen soğuk su veya soğuk antifriz eklemek doğru cevap değildir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 15 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-007",
+      "roadPicture": "engineSmoke",
+      "category": "arac_teknigi",
+      "situation": "Kış geliyor ve hava sıcaklığı sıfırın altına düşecek.",
+      "question": "Motor soğutma suyunun donmaması için suya ne karıştırılır?",
+      "options": [
+        "Antifriz",
+        "Saf su",
+        "Motor yağı",
+        "Fren hidroliği"
+      ],
+      "answer": 0,
+      "explanation": "Kışın motor soğutma suyunun donmaması için suya yeterli miktarda antifriz karıştırılır.",
+      "source": "meb-mtsk-2016-02-13",
+      "sourceSection": "soru 42 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-008",
+      "roadPicture": "warningLight",
+      "category": "arac_teknigi",
+      "situation": "Arabanın bir lambası birden çalışmayı bıraktı. Usta elektrik devresine bakıyor.",
+      "question": "Araçta elektrik devresini yüksek akıma karşı koruyan parça hangisidir?",
+      "options": [
+        "Sigorta",
+        "Buji",
+        "Ampul",
+        "Soket"
+      ],
+      "answer": 0,
+      "explanation": "Sigorta, araçtaki elektrik devresini yüksek akıma karşı koruyan devre elemanıdır.",
+      "source": "meb-mtsk-2016-02-13",
+      "sourceSection": "soru 41 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-009",
+      "roadPicture": "garage",
+      "category": "arac_teknigi",
+      "situation": "Arkadaşın araba giderken sol ayağını hep debriyaj pedalının üstünde tutuyor.",
+      "question": "Bu alışkanlık hangi parçanın sık sık bozulmasına yol açar?",
+      "options": [
+        "Debriyaj bilyası",
+        "Hava filtresi",
+        "Silecek motoru",
+        "Far ampulü"
+      ],
+      "answer": 0,
+      "explanation": "Araç giderken ayağın sürekli debriyaj pedalının üstünde tutulması, debriyaj bilyasının sık sık bozulmasının sebebidir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 17 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-010",
+      "roadPicture": "warningLight",
+      "category": "arac_teknigi",
+      "situation": "Uzun bir yolculuğa çıkıyorsun ve daha az yakıt harcamak istiyorsun.",
+      "question": "Hangisi yakıt tasarrufu sağlar?",
+      "options": [
+        "Tam gazdan ve ani hızlanmalardan kaçınmak",
+        "Aracın üstüne tavan bagajı takmak",
+        "Aracın bakımlarını ertelemek",
+        "Önerilmeyen boyutta lastik kullanmak"
+      ],
+      "answer": 0,
+      "explanation": "Tam gazdan ve ani hızlanmalardan kaçınmak yakıt tasarrufu sağlar. Tavan bagajı kullanmak, bakımları ihmal etmek ve önerilmeyen lastikler kullanmak ise tasarruf sağlamaz.",
+      "source": "meb-mtsk-2016-02-13",
+      "sourceSection": "soru 44 and answer key",
       "reviewed": true
     }
   ]

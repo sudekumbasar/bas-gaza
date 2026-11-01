@@ -277,6 +277,9 @@ function drawRoadPicture(name, front, progress, t, view) {
     personDown: drawPersonDownPicture,
     dangerCrash: drawDangerCrashPicture,
     sign: drawSignPicture,
+    engineSmoke: drawEngineSmokePicture,
+    warningLight: drawWarningLightPicture,
+    garage: drawGaragePicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -916,4 +919,68 @@ function drawSignPicture(front, progress, t, v) {
   ctx.fillRect(x - 3, top + size * 0.8, 6, size * 1.4);
   const image = signImage(v.sign);
   if (image.complete) ctx.drawImage(image, x - size / 2, top, size, size);
+}
+
+function drawEngineSmokePicture(front, progress, t, v) {
+  const { ctx, carWidth, carTop } = v;
+  // Grey steam rises from the bonnet of our own car.
+  for (let i = 0; i < 5; i++) {
+    const rise = (t * 0.7 + i / 5) % 1;
+    const x = v.carX + Math.sin(t * 3 + i * 1.7) * carWidth * 0.25;
+    const y = carTop + carWidth * 0.2 - rise * carWidth * 1.8;
+    ctx.fillStyle = `rgba(229, 231, 235, ${0.75 * (1 - rise)})`;
+    ctx.beginPath();
+    ctx.arc(x, y, carWidth * (0.18 + rise * 0.3), 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawWarningLightPicture(front, progress, t, v) {
+  const { ctx, carWidth, carTop } = v;
+  // A dark dashboard bubble above our car with a blinking amber warning light
+  const x = v.carX;
+  const y = carTop - carWidth * 1.1;
+  const r = carWidth * 0.55;
+  ctx.fillStyle = "#1f2328";
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = flashOn(t, 2) ? "#f59e0b" : "#78350f";
+  ctx.beginPath();
+  ctx.moveTo(x, y - r * 0.6);
+  ctx.lineTo(x - r * 0.6, y + r * 0.45);
+  ctx.lineTo(x + r * 0.6, y + r * 0.45);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = "#1f2328";
+  ctx.fillRect(x - r * 0.07, y - r * 0.25, r * 0.14, r * 0.4);
+  ctx.fillRect(x - r * 0.07, y + r * 0.22, r * 0.14, r * 0.12);
+}
+
+function drawGaragePicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  // A small service garage at the right edge of the road, with a wrench sign
+  const w = carWidth * 1.6;
+  const x = roadLeft + roadWidth - w + carWidth * 0.2;
+  const top = front - w * 1.1;
+  ctx.fillStyle = "#e5e7eb";
+  ctx.fillRect(x, top, w, w);
+  ctx.fillStyle = "#1d4ed8";
+  ctx.fillRect(x, top, w, w * 0.25);
+  ctx.fillStyle = "#4b5563";
+  ctx.fillRect(x + w * 0.15, top + w * 0.4, w * 0.7, w * 0.6);
+  for (let i = 1; i < 4; i++) {
+    ctx.fillStyle = "#6b7280";
+    ctx.fillRect(x + w * 0.15, top + w * (0.4 + i * 0.15), w * 0.7, 2);
+  }
+  // Wrench on the blue band
+  ctx.save();
+  ctx.translate(x + w / 2, top + w * 0.125);
+  ctx.rotate(-0.6);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(-w * 0.18, -2.5, w * 0.36, 5);
+  ctx.beginPath();
+  ctx.arc(w * 0.18, 0, 6, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
 }
