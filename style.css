@@ -304,3 +304,52 @@ h1 {
   padding: 10px;
   cursor: pointer;
 }
+
+/* End-of-run list of wrong answers */
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid #e5e7eb;
+}
+
+.review h3 {
+  font-size: 17px;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #f6f8fa;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.review-category {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #57606a;
+}
+
+.review-question {
+  font-weight: 700;
+}
+
+.review-wrong {
+  color: #dc2626;
+}
+
+.review-right {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.review-explanation {
+  color: #57606a;
+}

@@ -80,6 +80,7 @@ const card = {
   explanation: document.getElementById("q-explanation"),
   continueButton: document.getElementById("q-continue"),
   menuButton: document.getElementById("q-menu"),
+  review: document.getElementById("q-review"),
 };
 
 let width = 0;
@@ -101,6 +102,7 @@ let runEvents = []; // the questions of this run, in order
 let hintShown = false;
 let eventIndex = 0;
 let correctCount = 0;
+let wrongAnswers = []; // { q, chosen } for the end-of-run review
 let untilEvent = EVENT_GAP;
 let eventMarker = null; // { y, q } while a question event is on the road
 let questionOpen = false;
@@ -544,6 +546,7 @@ function buildRun() {
   }
   eventIndex = 0;
   correctCount = 0;
+  wrongAnswers = [];
 }
 
 // Split a mixed run between the courses like the real exam does: each course gets its
@@ -611,6 +614,7 @@ function answerQuestion(q, chosen) {
     showFeedback();
     return;
   }
+  wrongAnswers.push({ q, chosen: chosen.textContent });
   loseHealth(WRONG_ANSWER_COST);
   // Let the player see their red answer for a moment, then play the scene.
   setTimeout(() => {
@@ -713,14 +717,44 @@ function endRun(crashedOut = false) {
   card.continueButton.textContent = "Tekrar oyna";
   card.continueButton.onclick = restartRun;
   card.menuButton.hidden = false;
+  showReview();
   card.feedback.hidden = false;
   card.root.hidden = false;
   card.root.scrollTop = 0;
 }
 
+// Under the end-of-run buttons: every question answered wrong, with the right answer
+// and its explanation, so the run teaches something even when it is lost.
+function showReview() {
+  card.review.hidden = wrongAnswers.length === 0;
+  if (card.review.hidden) return;
+  const heading = document.createElement("h3");
+  heading.textContent = `Yanlış yaptıkların (${wrongAnswers.length})`;
+  const items = wrongAnswers.map(({ q, chosen }) => {
+    const item = document.createElement("div");
+    item.className = "review-item";
+    const parts = [
+      ["review-category", CATEGORY_NAMES[q.category]],
+      ["review-question", `${q.situation} ${q.question}`],
+      ["review-wrong", `Senin cevabın: ${chosen}`],
+      ["review-right", `Doğrusu: ${q.options[q.answer]}`],
+      ["review-explanation", q.explanation],
+    ];
+    for (const [className, text] of parts) {
+      const line = document.createElement("p");
+      line.className = className;
+      line.textContent = text;
+      item.append(line);
+    }
+    return item;
+  });
+  card.review.replaceChildren(heading, ...items);
+}
+
 function restartRun() {
   card.root.hidden = true;
   card.menuButton.hidden = true;
+  card.review.hidden = true;
   card.continueButton.textContent = "Devam";
   card.continueButton.onclick = closeQuestion;
   runOver = false;

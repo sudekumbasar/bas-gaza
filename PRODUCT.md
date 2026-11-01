@@ -43,6 +43,7 @@ Source: T.C. Millî Eğitim Bakanlığı, *Motorlu Taşıt Sürücü Kursiyerler
 6. At the end:
    - **Passed:** "Tebrikler, ehliyetini aldın!" with the score.
    - **Failed:** "Ehliyetini alamadın, tekrar dene!" with the score and a "Tekrar oyna" button.
+   - Below the buttons (added 1 November 2026): "Yanlış yaptıkların", every question answered wrong in this run with the player's answer, the right answer and the explanation.
 
 One run should take about 2–3 minutes.
 
