@@ -97,9 +97,9 @@
       "question": "Önce kim geçmeli?",
       "options": [
         "Anayoldan gelen araçlar",
-        "Sen, çünkü kavşağa önce sen geldin",
-        "Hangi araç daha hızlıysa o",
-        "Kornaya ilk basan"
+        "Kavşağa ilk gelen araç",
+        "Tali yoldan çıkan sen",
+        "Daha büyük olan araç"
       ],
       "answer": 0,
       "explanation": "Işık, levha ya da polis olmayan kavşaklarda tali yoldan anayola çıkan sürücü, anayoldan gelen araçlara geçiş hakkını verir.",
@@ -114,10 +114,10 @@
       "situation": "Işık, levha ya da trafik polisi olmayan bir dönel kavşağa (göbekli kavşak) geldin. İçeride dönen araçlar var.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Dönel kavşağın içindeki araçlara yol vermek",
-        "Hemen girmek, içeridekiler seni beklemeli",
-        "Kornaya basıp önce girmek",
-        "Kavşağa ters yönden girmek"
+        "Kavşağın içindeki araçlara yol vermelisin",
+        "İçeridekiler seni bekleyeceği için girmelisin",
+        "Sadece büyük araçlara yol vermelisin",
+        "Kavşağa ilk sen geldiğin için girmelisin"
       ],
       "answer": 0,
       "explanation": "Işık, levha ya da polis olmayan kavşaklarda dönel kavşağa gelen sürücü, kavşağın içindeki araçlara geçiş hakkını verir.",
@@ -223,8 +223,8 @@
       "question": "Önce kim geçmeli?",
       "options": [
         "Sağdan gelen araç",
-        "Sen, çünkü daha hızlısın",
-        "Kornaya ilk basan",
+        "Sen, çünkü sen soldasın",
+        "Kavşağa ilk gelen araç",
         "Daha büyük olan araç"
       ],
       "answer": 0,
@@ -240,10 +240,10 @@
       "situation": "Kavşağa yaklaşıyorsun ve ışık yeşil. Ama kavşağın ilerisinde trafik sıkışık; girersen kavşağın ortasında durmak zorunda kalacaksın.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Kavşağa girmeyip trafiğin açılmasını beklemek",
-        "Işık yeşil olduğu için kavşağa girmek",
-        "Korna çalarak kavşağa girmek",
-        "Karşı şeride geçip sıkışıklığı aşmak"
+        "Kavşağa girmeden beklemelisin",
+        "Işık yeşil olduğu için girmelisin",
+        "Yavaşça girip kavşakta beklemelisin",
+        "Korna çalarak kavşağa girmelisin"
       ],
       "answer": 0,
       "explanation": "Işık izin verse bile trafik seni kavşağın içinde durmaya zorlayacaksa ya da diğer yöndeki trafiğin geçişini engelleyecekse kavşağa girmek yasaktır.",
@@ -258,10 +258,10 @@
       "situation": "Bariyerli bir demiryolu (tren yolu) geçidine yaklaşıyorsun. Işıklar yanıyor ve bariyerler inmeye başladı.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Durup beklemek, bariyerler inerken geçide girmemek",
-        "Bariyerler tam inmeden hızla geçmek",
-        "Korna çalarak geçmek",
-        "Bariyerlerin yanından dolaşarak geçmek"
+        "Durmalı, geçide girmemelisin",
+        "Bariyer inmeden hızla geçmelisin",
+        "Tren görünmüyorsa geçebilirsin",
+        "Yavaşlayıp dikkatle geçmelisin"
       ],
       "answer": 0,
       "explanation": "Demiryolu geçitlerinde ışıklı ya da sesli işaretin verdiği \"DUR\" talimatına uyulur. Bariyerler inmekteyken ya da inmişken geçide girmek yasaktır.",
@@ -331,9 +331,9 @@
       "question": "Kime uymalısın?",
       "options": [
         "Trafik polisinin işaretine",
-        "Kırmızı ışığa",
-        "Kavşaktaki levhaya",
-        "Arkandaki araçların kornasına"
+        "Kırmızı yandığı için ışığa",
+        "Kavşaktaki trafik levhasına",
+        "Önce ışığa, sonra polise"
       ],
       "answer": 0,
       "explanation": "Kurallara uyma sırasında ilk sırada trafik polisi gibi görevlilerin işaretleri gelir; sonra trafik ışıkları, sonra levhalar ve yol çizgileri.",
@@ -349,9 +349,9 @@
       "question": "Ne yapmalısın?",
       "options": [
         "Hızına uygun bir şeride geçmelisin",
-        "En sol şeritte gitmeye devam etmelisin",
-        "Yolun kenarındaki emniyet şeridine geçmelisin",
-        "Hemen arka arkaya iki şerit değiştirmelisin"
+        "En sol şeritte devam etmelisin",
+        "Emniyet şeridine geçmelisin",
+        "Arka arkaya iki şerit geçmelisin"
       ],
       "answer": 0,
       "explanation": "Sürücüler en soldaki şeridi sürekli işgal etmemeli ve hızlarının gerektirdiği şeritte gitmelidir. Trafiği tehlikeye sokacak şekilde arka arkaya şerit değiştirmek ve emniyet şeridini kullanmak da yasaktır.",
@@ -366,10 +366,10 @@
       "situation": "Önünde yavaş giden bir traktör var. Yol, ötesini göremediğin bir tepeye çıkıyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Tepeyi aşıp yol görünene kadar traktörü geçmemelisin",
-        "Hızlanıp tepeden önce traktörü geçmelisin",
-        "Traktörü sağından, yol kenarından geçmelisin",
-        "Korna çalıp traktörün durmasını beklemelisin"
+        "Tepe aşılana kadar geçmemelisin",
+        "Hızlanıp tepeden önce geçmelisin",
+        "Sağından, yol kenarından geçmelisin",
+        "Korna çalıp hemen geçmelisin"
       ],
       "answer": 0,
       "explanation": "Görüşün yetersiz olduğu tepelerde ve dönemeçlerde öndeki aracı geçmek yasaktır. Araçların sağından veya yol kenarından (banketten) geçmek de yasaktır.",
@@ -381,12 +381,12 @@
       "id": "tc-009",
       "roadPicture": "slowAhead",
       "category": "trafik_cevre",
-      "situation": "Sağ şeritte gidiyorsun. Sol şeritteki araç yavaş gidiyor ve dönüş işareti vermiyor.",
-      "question": "Bu aracı nasıl geçmelisin?",
+      "situation": "İki yönlü, her yönde tek şeridi olan bir yoldasın. Önündeki araç yavaş gidiyor ve dönüş işareti vermiyor. Onu geçmek istiyorsun.",
+      "question": "Nasıl geçmelisin?",
       "options": [
-        "Soldan geçmelisin, sağından geçmek yasak",
-        "Sağından geçmelisin, çünkü sağ şerit boş",
-        "Yol kenarındaki banketten geçmelisin",
+        "Solundan geçmelisin",
+        "Sağından, yol kenarından geçmelisin",
+        "Hangi taraf boşsa oradan geçmelisin",
         "Arkasına yapışıp selektör yapmalısın"
       ],
       "answer": 0,
@@ -402,10 +402,10 @@
       "situation": "Kavşakta sağa döneceksin.",
       "question": "Nasıl dönmelisin?",
       "options": [
-        "Sağa işaret verip sağ şeride girerek, yavaşlayıp dar bir kavisle",
-        "Sol şeritten geniş bir kavisle, hızını koruyarak",
-        "İşaret vermeden, en kısa yoldan",
-        "Önce karşı şeride geçip oradan"
+        "Sağ şeritten, yavaşlayıp dar bir kavisle",
+        "Sol şeritten, hızını koruyup geniş kavisle",
+        "Sağ şeritten, hızını koruyup geniş kavisle",
+        "Orta şeritten, yavaşlayıp geniş kavisle"
       ],
       "answer": 0,
       "explanation": "Sağa dönerken sağa dönüş işareti verilir, sağ şeride veya dönüş şeridine girilir, hız azaltılır, dar bir kavisle dönülür ve girilen yolun en sağ şeridine geçilir.",
@@ -421,9 +421,9 @@
       "question": "Ne yapmalısın?",
       "options": [
         "Karşıdan gelen aracın geçmesini beklemelisin",
-        "Önce sen dönmelisin, çünkü işaret verdin",
-        "Korna çalıp hızlıca dönmelisin",
-        "Sağ şeride geçip oradan sola dönmelisin"
+        "İşaret verdiğin için önce dönmelisin",
+        "Hızlanıp araçtan önce dönmelisin",
+        "Selektör yapıp önce dönmelisin"
       ],
       "answer": 0,
       "explanation": "Sola dönen sürücü, karşıdan gelen ve durdurulamayacak kadar kavşağa yaklaşmış araçların geçmesini bekler. Sola dönüşlerde sağdan ve karşıdan gelen trafiğe ilk geçiş hakkı verilir.",
@@ -439,9 +439,9 @@
       "question": "Kavşağa kaç metre kala şerit değiştirmek yasaktır?",
       "options": [
         "30 metre",
-        "5 metre",
         "10 metre",
-        "300 metre"
+        "50 metre",
+        "150 metre"
       ],
       "answer": 0,
       "explanation": "Yerleşim yerlerinde kavşağa 30 metre, yerleşim yeri dışında 150 metre kala ve kavşağın içinde şerit değiştirmek yasaktır.",
@@ -456,33 +456,33 @@
       "situation": "Şehir içinde arkadaşını arabadan indireceksin.",
       "question": "Nerede durmalısın?",
       "options": [
-        "Yolun sağ kenarında, durmanın yasak olmadığı bir yerde",
-        "Yaya geçidinin üstünde",
-        "Otobüs durağında",
-        "Kavşağın içinde"
+        "Sağ kenarda, durmaya izin verilen yerde",
+        "Otobüs durağında, otobüs yokken",
+        "Sol şeritte, dörtlüleri yakarak",
+        "Kavşağın köşesinde, trafiği engellemeden"
       ],
       "answer": 0,
-      "explanation": "Yolcu indirirken araç yolun en sağında durdurulur ve yolcu sağ taraftan iner. Yaya geçitlerinde, otobüs duraklarında ve kavşaklarda duraklamak yasaktır.",
+      "explanation": "Yolcu indirirken araç yolun en sağında durdurulur ve yolcu sağ taraftan iner. Sol şeritte, otobüs duraklarında, kavşaklarda ve şehir içinde kavşağa 5 metreden yakın yerlerde duraklamak yasaktır.",
       "source": "kanun-2918",
-      "sourceSection": "Madde 58, Madde 60 (c), (d), (f)",
+      "sourceSection": "Madde 58, Madde 60 (b), (c), (d), (f)",
       "reviewed": true
     },
     {
       "id": "tc-014",
       "roadPicture": "night",
       "category": "trafik_cevre",
-      "situation": "Gece şehir dışında uzağı gösteren farlarla gidiyorsun. Karşıdan bir araç geliyor.",
+      "situation": "Gece, hava açık. Şehir dışında uzağı gösteren farlarla gidiyorsun. Karşıdan bir araç geliyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yakını gösteren farları (kısa far) yakmalısın",
-        "Uzağı gösteren farlarla devam etmelisin",
-        "Farları tamamen söndürmelisin",
-        "Sadece park lambalarıyla gitmelisin"
+        "Kısa farları yakmalısın",
+        "Uzun farla devam etmelisin",
+        "Farları söndürmelisin",
+        "Sis farlarını yakmalısın"
       ],
       "answer": 0,
-      "explanation": "Gece şehir dışında karşılaşmalarda yakını gösteren farlar yakılır. Karşılaşmada ışıkları söndürmek ve sadece park lambalarıyla gitmek yasaktır.",
+      "explanation": "Gece şehir dışında karşılaşmalarda yakını gösteren farlar (kısa far) yakılır. Karşılaşmada ışıkları söndürmek yasaktır. Sis farları gece sadece sisli, karlı ve sağanak yağışlı havalarda diğer farlarla birlikte yakılabilir.",
       "source": "kanun-2918",
-      "sourceSection": "Madde 64 (a) 2, (b) 3, (b) 6",
+      "sourceSection": "Madde 64 (a) 2, (b) 1, (b) 3",
       "reviewed": true
     },
     {
@@ -495,7 +495,7 @@
         "Sürücü olarak senin",
         "Sadece çocuğun",
         "Sadece çocuğun ailesinin",
-        "Kimsenin, arka koltukta gerek yok"
+        "Ön koltukta olsa senin, arkada değil"
       ],
       "answer": 0,
       "explanation": "Araç giderken sürücü ve yolcuların emniyet kemeri gibi koruyucu sistemleri kullanması zorunludur. 15 yaşını doldurmamış çocukların bunları kullanmasını sağlamak sürücünün görevidir.",
@@ -871,10 +871,10 @@
       "situation": "Bir kavşağa yaklaşıyorsun ve bu levhayı görüyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Kavşağa girmeden durup kavşaktaki bütün araçlara yol vermelisin",
+        "Durup kavşaktaki tüm araçlara yol vermelisin",
         "Yavaşlayıp araç yoksa durmadan geçmelisin",
-        "Korna çalıp kavşağa girmelisin",
-        "Sadece gece durmalısın"
+        "Sadece sağdan gelenlere yol vermelisin",
+        "Durup sadece yayalara yol vermelisin"
       ],
       "answer": 0,
       "explanation": "DUR levhası, sürücünün kavşağa girmeden önce durması ve kavşaktaki bütün araçlara yol vermesi gerektiğini bildirir.",
@@ -890,9 +890,9 @@
       "situation": "Tali yoldan bir kavşağa yaklaşıyorsun ve bu levhayı görüyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Ana yoldan araç geliyorsa durup yol vermeli, gelmiyorsa dikkatle geçmelisin",
-        "Araç gelse de gelmese de mutlaka tam durmalısın",
-        "Önceliğin sende olduğu için hızla geçmelisin",
+        "Ana yoldan araç varsa durup yol vermelisin",
+        "Araç olsa da olmasa da tam durmalısın",
+        "Önceliğin sende, ana yol beklemeli",
         "Sadece yayalara yol vermelisin"
       ],
       "answer": 0,
@@ -909,10 +909,10 @@
       "situation": "Bir sokağa girmek üzeresin ve girişinde bu levha var.",
       "question": "Bu levha ne anlama gelir?",
       "options": [
-        "Girişi olmayan yol: bu yola hiçbir taşıt giremez",
+        "Bu yola hiçbir taşıt giremez",
         "Bu yolda park etmek yasaktır",
-        "Bu yol ileride bitiyor",
-        "Bu yolda yavaş gitmelisin"
+        "Bu yol ileride çıkmaz sokak",
+        "Bu yola sadece kamyon giremez"
       ],
       "answer": 0,
       "explanation": "Girişi olmayan yol levhası, her türlü taşıtın girişinin yasak olduğu yolların başına konur. Bu yol genellikle karşı yönden tek yönlü trafiğe ayrılmıştır.",
@@ -928,10 +928,10 @@
       "situation": "Bu levhayı geçtin. Önünde yavaş giden bir kamyon var.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Kamyonu geçmemelisin, öndeki taşıtı geçmek yasak",
-        "Kamyonu sağından geçebilirsin",
-        "Korna çalıp hemen geçebilirsin",
-        "Sadece kırmızı arabalar geçemez, sen geçebilirsin"
+        "Kamyonu geçmeden arkasında gitmelisin",
+        "Yol boşsa kamyonu geçebilirsin",
+        "Kornayla uyarıp geçebilirsin",
+        "Kamyonu sağından geçebilirsin"
       ],
       "answer": 0,
       "explanation": "Bu levha, öndeki taşıtı geçmenin yasak olduğunu bildirir. Yasak; bisiklet, motorlu bisiklet ve sepetsiz iki tekerlekli motosiklet dışındaki taşıtları geçmek için geçerlidir.",
@@ -949,8 +949,8 @@
       "options": [
         "En fazla 50 km/saat hızla gidebilirsin",
         "En az 50 km/saat hızla gitmelisin",
-        "50 metre sonra kavşak var",
-        "50 metre ileride durmalısın"
+        "Tavsiye edilen hız 50 km/saattir",
+        "50 metreden yakın takip etmemelisin"
       ],
       "answer": 0,
       "explanation": "Bu levha, uyulması gereken azami (en yüksek) hız sınırını bildirir. Dikkat: üstünde sayı olan her kırmızı çerçeveli yuvarlak levha hız sınırı değildir; genişliği ya da yüklü ağırlığı belli bir sınırdan fazla olan taşıtların giremeyeceğini bildiren levhalar da vardır.",
@@ -966,10 +966,10 @@
       "situation": "Bir hastanenin yakınından geçiyorsun ve bu levhayı görüyorsun.",
       "question": "Bu levha ne anlama gelir?",
       "options": [
-        "Kazadan kaçınmak dışında korna çalmak yasaktır",
-        "Burada korna çalmak zorunludur",
-        "İleride oto tamircisi var",
-        "Araçta müzik dinlemek yasaktır"
+        "Kazadan kaçınmak dışında korna çalınmaz",
+        "Burada yüksek sesle müzik dinlenmez",
+        "Kornayı sadece gündüz çalabilirsin",
+        "Burada korna çalmak zorunludur"
       ],
       "answer": 0,
       "explanation": "Bu levha, bir kazadan kaçınma durumu dışında korna gibi sesli ikaz cihazlarını kullanmanın yasak olduğunu bildirir. Hastane ve okul gibi yerlerin yakınında kullanılır.",
@@ -985,10 +985,10 @@
       "situation": "Kavşakta sola dönmek istiyorsun ve bu levhayı görüyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Sola dönmemelisin, sola dönüş yasak",
+        "Sola dönmemeli, başka yön seçmelisin",
         "Sadece sola dönebilirsin",
-        "Sola dönmeden önce durman yeterli",
-        "Sola dönüş şeridine geçip dönmelisin"
+        "Durup yol boşsa sola dönebilirsin",
+        "Yavaşlayıp dikkatle sola dönebilirsin"
       ],
       "answer": 0,
       "explanation": "Bu levha, sola dönüşlerin yasak olduğunu bildirir.",
@@ -1007,7 +1007,7 @@
         "Adanın etrafında oklar yönünde dönmelisin",
         "Adanın etrafında istediğin yönde dönebilirsin",
         "Bu kavşağa girmek yasaktır",
-        "Kavşağın içinde park edebilirsin"
+        "İçeridekiler sana yol vermelidir"
       ],
       "answer": 0,
       "explanation": "Bu levha, dönel kavşakta izlenmesi gereken yönü gösterir. Dönel kavşağa giren sürücü kavşağın içindeki araçlara yol verir; bu yüzden levha YOL VER ya da DUR levhasıyla birlikte konur.",
@@ -1042,10 +1042,10 @@
       "situation": "Yolun kenarında bu üçgen levhayı görüyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yol kaygan: ani fren, ani hızlanma ve ani manevradan kaçınmalısın",
-        "Kaygan kısmı çabuk geçmek için hızlanmalısın",
+        "Ani fren, hızlanma ve manevradan kaçınmalısın",
+        "Kaygan kısmı hızlanarak çabuk geçmelisin",
         "Sert fren yapıp hemen durmalısın",
-        "Yol virajlı, dönüşe hazırlanmalısın"
+        "Virajlı yol, dönüşe hazırlanmalısın"
       ],
       "answer": 0,
       "explanation": "Kaygan yol levhası, yol yüzeyinin kaygan olduğunu bildirir. Böyle bir yolda sürücüler fren yapmaktan, hızlanmaktan ve ani manevralardan kaçınmalıdır.",
