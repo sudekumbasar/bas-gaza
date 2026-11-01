@@ -35,13 +35,21 @@ const BEST_SCORE_KEY = "basgaza.bestScore";
 // Question events
 const EVENT_GAP = 3; // road travelled between two events (about 5 seconds)
 const EVENT_START_Y = -0.35; // road pictures start above the screen
-const EVENTS_PER_COURSE = 2; // in a mixed run
+const EVENTS_PER_COURSE = 2; // a mixed run has 2 events for each course that has questions
 const COURSE_RUN_LENGTH = 6; // a one-course run is as long as a mixed run
 const CATEGORY_NAMES = {
   ilk_yardim: "İlk Yardım",
   trafik_cevre: "Trafik ve Çevre",
   arac_teknigi: "Araç Tekniği",
   trafik_adabi: "Trafik Adabı",
+};
+// Questions per course in the real 50-question exam (MEB e-Sınav Kılavuzu). A mixed run
+// shares its events between the courses in the same proportion.
+const EXAM_QUESTIONS = {
+  ilk_yardim: 12,
+  trafik_cevre: 23,
+  arac_teknigi: 9,
+  trafik_adabi: 6,
 };
 const FAIL_OUTCOMES = {
   ilk_yardim: "Ambulans geç kaldı, yaralıya yardım edemedin.",
@@ -517,13 +525,34 @@ function buildRun() {
   if (runCourse) {
     runEvents = shuffle(questions.filter((q) => q.category === runCourse)).slice(0, COURSE_RUN_LENGTH);
   } else {
-    const picked = availableCourses().flatMap((course) =>
-      shuffle(questions.filter((q) => q.category === course)).slice(0, EVENTS_PER_COURSE),
+    const counts = mixedRunCounts(availableCourses());
+    const picked = Object.entries(counts).flatMap(([course, count]) =>
+      shuffle(questions.filter((q) => q.category === course)).slice(0, count),
     );
     runEvents = shuffle(picked);
   }
   eventIndex = 0;
   correctCount = 0;
+}
+
+// Split a mixed run between the courses like the real exam does: each course gets its
+// share of the run, rounded so the total stays the same (largest remainder first).
+// Every course gets at least one question.
+function mixedRunCounts(courses) {
+  const runLength = EVENTS_PER_COURSE * courses.length;
+  const examTotal = courses.reduce((sum, course) => sum + EXAM_QUESTIONS[course], 0);
+  const shares = courses.map((course) => {
+    const exact = (runLength * EXAM_QUESTIONS[course]) / examTotal;
+    const count = Math.max(1, Math.floor(exact));
+    return { course, count, rest: exact - count }; // negative when the minimum of 1 already rounded up
+  });
+  let left = runLength - shares.reduce((sum, share) => sum + share.count, 0);
+  for (const share of [...shares].sort((a, b) => b.rest - a.rest)) {
+    if (left <= 0) break;
+    share.count++;
+    left--;
+  }
+  return Object.fromEntries(shares.map((share) => [share.course, share.count]));
 }
 
 function openQuestion() {

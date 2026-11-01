@@ -38,7 +38,7 @@ Source: T.C. Millî Eğitim Bakanlığı, *Motorlu Taşıt Sürücü Kursiyerler
 4. The player taps an answer.
    - Right: a short "Doğru!" with a one-line explanation, then the car drives on.
    - Wrong: a short scene shows the outcome (see below), then the correct answer with its explanation. This costs a lot of can.
-5. A run has **2 events from each course that has questions**, in random order: 8 events with all four courses, 6 while Araç Tekniği is missing (see Version 1). The questions are picked at random from the content file, so each run is a little different.
+5. A mixed run has **2 events for each course that has questions**: 8 events with all four courses, 6 while Araç Tekniği is missing (see Version 1). Since 1 November 2026 the events are shared between the courses like the real exam (12 / 23 / 9 / 6), so a 6-event run has 3 Trafik ve Çevre, 2 İlk Yardım and 1 Trafik Adabı; with Araç Tekniği an 8-event run has 4 / 2 / 1 / 1. Every course gets at least one event. The questions are picked at random from the content file and come in random order, so each run is a little different.
    - **Course run** (added 1 November 2026): the player picks one course and gets up to 6 questions from that course only. Each course and the mixed run keep their own best score; the end screen has "Tekrar oyna" and "Ana menü".
 6. At the end:
    - **Passed:** "Tebrikler, ehliyetini aldın!" with the score.
@@ -125,4 +125,4 @@ Small steps. Each step ends with something Sude can open and play on her own pho
 8. **Practise one course** (after the playtest, 1 November 2026). The real exam has 4 courses (12 İlk Yardım, 23 Trafik ve Çevre, 9 Araç Tekniği, 6 Trafik Adabı). Sude wants both mixed runs and runs for one course.
    - First: a course choice on the start screen (done).
    - Then: more checked questions, at least 15 per course, starting with Trafik ve Çevre (the biggest course). Sude reviews each batch. Done 1 November 2026: 16 İlk Yardım, 15 Trafik ve Çevre, 15 Trafik Adabı. The MEB first aid deck we use covers only general first aid (scene safety, checking the casualty, 112, recovery position); bleeding, burns, fractures and CPR need another official source.
-   - Maybe later: make mixed runs follow the exam's share of questions per course.
+   - Mixed runs follow the exam's share of questions per course (done).
