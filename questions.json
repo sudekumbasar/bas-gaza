@@ -662,6 +662,186 @@
       "source": "kanun-2918",
       "sourceSection": "Madde 64 (a) 2, (b) 4",
       "reviewed": true
+    },
+    {
+      "id": "iy-007",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Şehirlerarası bir yolda bir trafik kazasına yardım ediyorsun.",
+      "question": "Uyarı işaretlerini kazanın önüne ve arkasına en az kaç metre uzağa koymalısın?",
+      "options": [
+        "150 metre",
+        "30 metre",
+        "10 metre",
+        "500 metre"
+      ],
+      "answer": 0,
+      "explanation": "Trafik kazasında uyarı işaretleri kazanın önüne ve arkasına şehir içinde en az 30 metre, şehirlerarası yolda en az 150 metre uzağa konur.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 17: \"Trafik kazasına müdahale ediyorsanız\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-008",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Olay yeri güvenli, 112 arandı ve ambulans yolda. Yaralı yerde yatıyor; bulunduğu yerde ek bir tehlike yok.",
+      "question": "Yaralıyı başka bir yere taşımalı mısın?",
+      "options": [
+        "Hayır, zorunda kalmadıkça hareket ettirmemelisin",
+        "Evet, hemen arabana alıp hastaneye götürmelisin",
+        "Evet, ayağa kaldırıp yürütmelisin",
+        "Evet, yolun karşı tarafına taşımalısın"
+      ],
+      "answer": 0,
+      "explanation": "Genel kural olarak yaralı zorda kalmadıkça hareket ettirilmez. Yalnızca orada kalması daha fazla tehlike oluşturuyorsa, olay yeri güvenli hâle getirilemiyorsa ya da ambulans yakın zamanda gelemeyecekse, kendini tehlikeye atmadan taşınabilir.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 18: \"Olay yerinin güvenli hale getirilmesi\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-009",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Yerde hareketsiz yatan bir yaralı var.",
+      "question": "Bilincinin yerinde olup olmadığını nasıl kontrol edersin?",
+      "options": [
+        "Omuzlarına hafifçe dokunup yüksek sesle \"İyi misiniz?\" diye sorarak",
+        "Yüzüne su dökerek",
+        "Onu sertçe sarsarak",
+        "Başını kaldırıp bırakarak"
+      ],
+      "answer": 0,
+      "explanation": "Hareketsiz yatan kişinin omuzlarına hafifçe dokunulur ve uyuyan birini uyandıracak kadar yüksek sesle \"İyi misiniz?\" diye sorulur.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 21: \"Yanıtın (bilincin) değerlendirilmesi\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-010",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Yaralı inliyor ve seninle konuşabiliyor.",
+      "question": "Nefes alıyor mu?",
+      "options": [
+        "Evet, konuşabilen kişi nefes alıyordur",
+        "Hayır, konuşmak nefes aldığını göstermez",
+        "Bilemezsin, gözleri açık mı diye bakmalısın",
+        "Sadece ayağa kalkabiliyorsa nefes alıyordur"
+      ],
+      "answer": 0,
+      "explanation": "Birincil kontrolde kişinin yeterli nefes alıp almadığına bakılır. Kişi konuşabiliyorsa nefes alıyordur.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 20: \"Birincil kontrolün gerçekleştirilmesi\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-011",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Yaralının bilinci yerinde ve seninle konuşuyor.",
+      "question": "Yardıma başlamadan önce ne yapmalısın?",
+      "options": [
+        "Kendini tanıtıp ne yapacağını açıklamalı ve izin almalısın",
+        "Hiçbir şey söylemeden hemen müdahale etmelisin",
+        "Önce ona bir şeyler yedirmelisin",
+        "Ayağa kalkıp yürümesini istemelisin"
+      ],
+      "answer": 0,
+      "explanation": "Bilinci yerinde olan yaralıya kendini tanıtırsın, adını sorarsın, ne yapacağını açıklarsın ve ilk yardım için onun rızasını (iznini) alırsın.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 23: \"Yanıt veren hasta/yaralıda izlenecek adımlar\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-012",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Yaralı \"İyi misiniz?\" sorusuna cevap vermiyor ve göğsü inip kalkmıyor. 112 arandı.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Zaman kaybetmeden temel yaşam desteğine başlamalısın",
+        "Derlenme pozisyonu verip beklemelisin",
+        "Ağzına biraz su vermelisin",
+        "Ambulans gelene kadar hiçbir şey yapmamalısın"
+      ],
+      "answer": 0,
+      "explanation": "Yanıt vermeyen yaralının göğsüne bakarak nefesi kontrol edilir. Nefes alıyorsa derlenme pozisyonu verilir; nefes almıyorsa zaman kaybetmeden temel yaşam desteğine başlanır.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 25: \"Yanıt vermeyen hasta/yaralıda izlenecek adımlar\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-013",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Ağır yaralı birinin midesi bulanıyor ve uyuyacak gibi. Senden su istiyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Su vermemelisin",
+        "Biraz su vermelisin",
+        "Şekerli bir içecek vermelisin",
+        "Uyanık kalsın diye kahve vermelisin"
+      ],
+      "answer": 0,
+      "explanation": "Kişi ağır yaralıysa, midesi bulanıyorsa, uykuya meyli ya da bilinç kaybı varsa kesinlikle yiyecek ve içecek verilmez.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 34: \"İlk yardımın sağlanması\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-014",
+      "roadPicture": "crash",
+      "category": "ilk_yardim",
+      "situation": "Bilinci kapalı ama nefes alan bir yaralıya derlenme pozisyonu vereceksin.",
+      "question": "Derlenme pozisyonu ne işe yarar?",
+      "options": [
+        "Hava yolunu açık tutar, kan ya da kusmukla boğulmayı önler",
+        "Yaralının daha rahat uyumasını sağlar",
+        "Kanamayı durdurur",
+        "Kırık kemikleri düzeltir"
+      ],
+      "answer": 0,
+      "explanation": "Bilinci kapalı kişide kaslar gevşer ve dil hava yolunu tıkayabilir. Derlenme pozisyonu hava yolunu açık tutar; kan veya kusmuk nedeniyle boğulma riskini de önler.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 35: \"Derlenme (kurtarma, sabit yan yatış) pozisyonu\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-015",
+      "roadPicture": "personDown",
+      "category": "ilk_yardim",
+      "situation": "Bir araç bir yayaya çarptı. Yaya ayağa kalktı ve iyi olduğunu söylüyor.",
+      "question": "112'yi aramalı mısın?",
+      "options": [
+        "Evet, aracın yayaya çarpması ciddi bir yaralanma olabileceğini gösterir",
+        "Hayır, ayağa kalktıysa gerek yok",
+        "Sadece kanaması varsa aramalısın",
+        "Sadece yaya isterse aramalısın"
+      ],
+      "answer": 0,
+      "explanation": "Aracın yayaya çarpması, yaralanmanın ciddi olabileceğini düşündüren ve 112'nin aranması önerilen durumlardan biridir.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slide 29: \"112'nin aranmasının önerildiği koşullar\"",
+      "reviewed": true
+    },
+    {
+      "id": "iy-016",
+      "roadPicture": "dangerCrash",
+      "category": "ilk_yardim",
+      "situation": "Kaza yerinde bir araç yanıyor ve yere elektrik kabloları düşmüş. Olay yerini güvenli hâle getiremiyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Uzaklaşmalı, çevredekileri uzaklaştırmalı ve 112'yi aramalısın",
+        "Hemen yaralının yanına koşmalısın",
+        "Kabloları elinle kenara çekmelisin",
+        "Yanan araca yaklaşıp içine bakmalısın"
+      ],
+      "answer": 0,
+      "explanation": "İlk yardımcının kendi can güvenliği her zaman önce gelir. Olay yeri güvenli hâle getirilemiyorsa ortamdan uzaklaşılır ve uzaklaştırılır, 112 aranır ya da aratılır.",
+      "source": "meb-ilk-yardim-2025",
+      "sourceSection": "Slides 15–16: \"Olay yerinin güvenli hale getirilmesi\"",
+      "reviewed": true
     }
   ]
 }

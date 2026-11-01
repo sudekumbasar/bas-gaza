@@ -274,6 +274,8 @@ function drawRoadPicture(name, front, progress, t, view) {
     mountainPass: drawMountainPassPicture,
     parkedCar: drawParkedCarPicture,
     nightAhead: drawNightAheadPicture,
+    personDown: drawPersonDownPicture,
+    dangerCrash: drawDangerCrashPicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -847,4 +849,58 @@ function drawNightAheadPicture(front, progress, t, v) {
   ctx.lineTo(v.carX - carWidth * 0.9, carTop - reach);
   ctx.closePath();
   ctx.fill();
+}
+
+function drawPersonDownPicture(front, progress, t, v) {
+  const { ctx, carWidth, carHeight } = v;
+  // A car has stopped in the left lane; the pedestrian it hit is getting up in front of it.
+  const x = v.laneCentre(0);
+  const top = front - carHeight;
+  v.drawCar(x, top, "#ffffff", "rgba(0, 0, 0, 0.15)");
+  if (flashOn(t, 2)) {
+    ctx.fillStyle = "rgba(251, 191, 36, 0.8)";
+    ctx.beginPath();
+    ctx.arc(x - carWidth * 0.4, top + 5, 5, 0, Math.PI * 2);
+    ctx.arc(x + carWidth * 0.4, top + 5, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  const rise = Math.min(1, progress * 1.5);
+  drawPerson(ctx, x + carWidth * 0.2, top - carWidth * 0.5, carWidth * 0.7, "#ec4899", Math.PI / 2 * (1 - rise));
+}
+
+function drawDangerCrashPicture(front, progress, t, v) {
+  const { ctx, width, carWidth, carHeight } = v;
+  drawCrashPicture(front, progress, t, v);
+  // Flames on the crashed car
+  const x = v.laneCentre(0);
+  const top = front - carHeight * 1.6;
+  for (let i = 0; i < 3; i++) {
+    const flicker = Math.sin(t * 12 + i * 2) * 4;
+    ctx.fillStyle = i === 1 ? "#fbbf24" : "#f97316";
+    ctx.beginPath();
+    const fx = x - carWidth * 0.3 + i * carWidth * 0.3;
+    ctx.moveTo(fx - 9, top + carHeight * 0.3);
+    ctx.quadraticCurveTo(fx, top - 14 - flicker, fx + 9, top + carHeight * 0.3);
+    ctx.fill();
+  }
+  // A fallen power line across the road, sparking at its end
+  const y = front - carHeight * 0.4;
+  ctx.strokeStyle = "#111827";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(width, y - carHeight * 0.8);
+  ctx.quadraticCurveTo(width * 0.65, y + 20, v.laneCentre(1), y);
+  ctx.stroke();
+  if (flashOn(t, 5)) {
+    ctx.strokeStyle = "#fde047";
+    ctx.lineWidth = 2;
+    const sx = v.laneCentre(1);
+    for (let i = 0; i < 4; i++) {
+      const a = i * Math.PI / 2 + t * 3;
+      ctx.beginPath();
+      ctx.moveTo(sx, y);
+      ctx.lineTo(sx + Math.cos(a) * 10, y + Math.sin(a) * 10);
+      ctx.stroke();
+    }
+  }
 }
