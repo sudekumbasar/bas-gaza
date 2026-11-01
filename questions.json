@@ -132,10 +132,10 @@
       "situation": "Arkandan ışıklarını yakmış, sirenini çalan bir ambulans geliyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Ambulansın kolayca geçmesi için yolda yer açmak, gerekirse durmak",
-        "Hızlanıp ambulansın önünde gitmeye devam etmek",
-        "Hiçbir şey değiştirmeden aynı şekilde gitmeye devam etmek",
-        "Ambulansın arkasına takılıp onu hızla takip etmek"
+        "Kenara yanaşıp ambulansa yer açmalısın",
+        "Hızlanıp ambulansın önünde gitmelisin",
+        "Şeridini koruyup aynı hızla gitmelisin",
+        "Ambulansın arkasına takılıp onu izlemelisin"
       ],
       "answer": 0,
       "explanation": "Işıklı ya da sesli işaret veren, geçiş üstünlüğü olan bir araç (örneğin ambulans) geldiğinde sürücüler ona yolda yer açmak, gerekirse durmak zorundadır.",
@@ -150,10 +150,10 @@
       "situation": "Işıklı trafik işareti ve görevli olmayan bir yaya geçidine yaklaşıyorsun. Bir yaya karşıya geçmek üzere bekliyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yavaşlayıp durmak ve yayaya ilk geçiş hakkını vermek",
-        "Korna çalıp yayanın beklemesini sağlamak",
-        "Hızlanıp yaya geçmeden geçidi geçmek",
-        "Selektör yapıp geçmek"
+        "Durup yayaya geçiş hakkı vermelisin",
+        "Yaya henüz yolda olmadığı için geçmelisin",
+        "Kornayla uyarıp yavaşça geçmelisin",
+        "Selektör yapıp önce geçeceğini bildirmelisin"
       ],
       "answer": 0,
       "explanation": "Görevli ya da trafik ışığı olmayan yaya geçitlerine yaklaşırken sürücüler yavaşlar ve geçen ya da geçmek üzere olan yayalara durarak ilk geçiş hakkını verir.",
@@ -276,10 +276,10 @@
       "situation": "Önündeki okul servisi durdu ve \"DUR\" işaretini yaktı. Öğrenciler iniyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Durup beklemek",
-        "Servisi hızla geçmek",
-        "Korna çalıp acele etmelerini istemek",
-        "Yavaşlamadan yanından geçmek"
+        "DUR işareti sönene kadar durmalısın",
+        "Yavaşlayıp dikkatle yanından geçmelisin",
+        "Karşı şeritteysen durmadan geçebilirsin",
+        "Korna çalıp acele etmelerini istemelisin"
       ],
       "answer": 0,
       "explanation": "Okul taşıtları \"DUR\" işaretini yaktığında bütün araçların durması zorunludur. Bu işaret öğrenciler binerken ya da inerken yakılır.",
@@ -294,10 +294,10 @@
       "situation": "Yolda, gözlerinin görmediğini gösteren özel işareti taşıyan bir yaya var.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yavaşlamak, gerekirse durmak ve yardımcı olmak",
-        "Korna çalarak yoldan çekilmesini istemek",
-        "Hızlanıp yanından geçmek",
-        "Selektör yapıp beklemeden geçmek"
+        "Yavaşlayıp gerekirse durmalı, yardım etmelisin",
+        "Korna çalmalı, gerekirse selektör yapmalısın",
+        "Yavaşlamadan dikkatle yanından geçmelisin",
+        "Hızlanıp ondan önce geçmelisin"
       ],
       "answer": 0,
       "explanation": "Gözleri görmeyen ve bunu gösteren özel işareti taşıyan biri yolda olduğunda bütün sürücüler yavaşlar, gerekirse durur ve ona yardımcı olur.",
@@ -312,10 +312,10 @@
       "situation": "İki yönlü bir yolda gidiyorsun. Arkandaki araç seni geçmek istediğini işaretle belli etti.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yolun sağ kenarından gitmek ve hızını artırmamak",
-        "Hızlanıp geçmesine izin vermemek",
-        "Yolun ortasına doğru kaymak",
-        "Ani fren yapıp onu korkutmak"
+        "Sağ kenardan gitmeli, hızını artırmamalısın",
+        "Geçişini kolaylaştırmak için hızlanmalısın",
+        "Yolun ortasından gitmeye devam etmelisin",
+        "Ani fren yapıp hemen durmalısın"
       ],
       "answer": 0,
       "explanation": "Geçilmek istenen sürücü, duyulur ya da görülür bir geçiş işareti alınca iki yönlü yollarda taşıt yolunun sağ kenarından gider ve hızını artırmaz.",
@@ -528,10 +528,10 @@
       "situation": "Yolcu koltuğundaki arkadaşın boş şişeyi pencereden atmak istiyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Atmamasını söylemelisin, araçtan bir şey atmak yasak",
+        "Şişeyi atmamasını söylemelisin",
         "Yol kenarına atarsa sorun olmaz",
-        "Araba hızlıysa atabilir",
-        "Sadece gece atabilir"
+        "Çöp kutusu olmadığı için atabilir",
+        "Kimse görmüyorsa atabilir"
       ],
       "answer": 0,
       "explanation": "Karayolunda araçlardan bir şey atmak veya dökmek yasaktır.",
@@ -546,10 +546,10 @@
       "situation": "Gece bir mahallede camların açık, müzik sonuna kadar açık gidiyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Sesi kimseyi rahatsız etmeyecek kadar kısmalısın",
-        "Müziği daha da açmalısın",
-        "Camları açık tutup sesi aynı bırakmalısın",
-        "Kornayla müziğe eşlik etmelisin"
+        "Sesi rahatsız etmeyecek kadar kısmalısın",
+        "Kendi aracın olduğu için sesi açabilirsin",
+        "Camlar açıksa sorun yok, devam etmelisin",
+        "Mahalle boşsa sesi açık bırakabilirsin"
       ],
       "answer": 0,
       "explanation": "Araçlardaki ses ve müzik cihazları, insanların rahatını ve huzurunu bozmayacak şekilde kullanılır.",
@@ -564,7 +564,7 @@
       "situation": "Görevlilerin yönettiği bir yürüyüş kolu önündeki yoldan geçiyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Durup yürüyüş kolunun bitmesini beklemelisin",
+        "Kolun bitmesini durup beklemelisin",
         "Kolun arasındaki boşluktan geçmelisin",
         "Korna çalıp yol açmalarını istemelisin",
         "Yavaşça kolun arasından ilerlemelisin"
@@ -582,10 +582,10 @@
       "situation": "Dar bir yolda yavaş gidiyorsun. Arkanda seni geçmek isteyen araçlar birikti.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Yol elverdiği kadar sağa yanaşıp yavaşlamalı, gerekirse durmalısın",
+        "Sağa yanaşıp geçmelerini kolaylaştırmalısın",
+        "Hızlanıp kuyruğu kendin bitirmelisin",
         "Yolun ortasından gitmeye devam etmelisin",
-        "Hızlanıp kimsenin geçmesine izin vermemelisin",
-        "Ani fren yapıp arkadakileri uyarmalısın"
+        "Dörtlüleri yakıp aynı şekilde gitmelisin"
       ],
       "answer": 0,
       "explanation": "Dar ya da yoğun yollarda yavaş giden sürücü, arkadakilerin kolayca ve güvenle geçebilmesi için aracını sağ kenara alır, yavaşlar, gerekirse durur.",
@@ -600,9 +600,9 @@
       "situation": "Dar ve dik bir dağ yolunda yokuş aşağı iniyorsun. Karşıdan yokuş yukarı bir araç çıkıyor ve yol iki araca dar.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Varsa sığınma cebine girip, yoksa sağa yanaşıp durarak yol vermelisin",
+        "Sığınma cebine ya da sağa çekip yol vermelisin",
         "Yokuş aşağı olduğun için önce sen geçmelisin",
-        "Korna çalıp çıkan aracın geri gitmesini beklemelisin",
+        "Çıkan araç geri gidip sana yol vermelidir",
         "Hızlanıp yanından sıkışarak geçmelisin"
       ],
       "answer": 0,
@@ -618,10 +618,10 @@
       "situation": "Arkandaki araç sana çok yakın geliyor.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Ani fren yapmadan, sakin şekilde yoluna devam etmelisin",
-        "Ders olsun diye ani fren yapmalısın",
-        "Aniden yavaşlayıp onu korkutmalısın",
-        "Durup arabadan inmelisin"
+        "Sakin kalıp ani fren yapmadan gitmelisin",
+        "Uyarmak için kısa bir ani fren yapmalısın",
+        "Hızını aniden düşürüp mesafe açmalısın",
+        "Durup arabadan inip uyarmalısın"
       ],
       "answer": 0,
       "explanation": "Güvenlik nedeni dışında başkalarını rahatsız edecek veya tehlikeye sokacak şekilde gereksiz yere aniden yavaşlamak yasaktır.",
@@ -637,7 +637,7 @@
       "question": "Ne yapmalısın?",
       "options": [
         "Sakin kalıp yoluna devam etmelisin",
-        "Onu ısrarla takip etmelisin",
+        "Plakasını almak için onu takip etmelisin",
         "Önünü kesip arabadan inmelisin",
         "Arkasına yapışıp korna çalmalısın"
       ],
@@ -654,10 +654,10 @@
       "situation": "Park ederken boş, park etmiş bir araca hafifçe çarptın. Aracın sahibi ortada yok.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Sahibini aramalı, bulamazsan araca yazılı not bırakıp polise haber vermelisin",
-        "Kimse görmediyse hemen gitmelisin",
-        "Sadece hasarın fotoğrafını çekip gitmelisin",
-        "Aracın sahibi gelene kadar korna çalmalısın"
+        "Sahibini aramalı, bulamazsan not bırakıp polise bildirmelisin",
+        "Hasar küçükse kimseye haber vermeden gidebilirsin",
+        "Sadece hasarın fotoğrafını çekip yoluna devam etmelisin",
+        "Not bırakman yeterli, polise haber vermene gerek yok"
       ],
       "answer": 0,
       "explanation": "Sahibi yokken bir araca zarar veren sürücü, sahibini bulmaya çalışır; bulamazsa durumu tespit eder, zarar verdiği şeyin üzerine yazılı bilgi bırakır ve en kısa zamanda polise bilgi verir.",
@@ -673,7 +673,7 @@
       "question": "Uzağı gösteren farları (uzun far) nasıl kullanmalısın?",
       "options": [
         "Uyarmak için sadece çok kısa süre yakabilirsin",
-        "Geçene kadar sürekli yakmalısın",
+        "Geçiş boyunca sürekli uzun farla gitmelisin",
         "Arkasında beklerken sürekli yakmalısın",
         "Farları kapatıp karanlıkta geçmelisin"
       ],
