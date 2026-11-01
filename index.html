@@ -9,6 +9,23 @@
 </head>
 <body>
   <main id="start-screen" class="screen">
+    <!-- Our own daytime road scene behind the start screen -->
+    <svg class="scenery" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="400" height="800" fill="#8fd3f4"/>
+      <circle cx="325" cy="215" r="34" fill="#ffe066"/>
+      <ellipse cx="70" cy="215" rx="38" ry="14" fill="#ffffff"/>
+      <ellipse cx="98" cy="205" rx="26" ry="14" fill="#ffffff"/>
+      <ellipse cx="225" cy="265" rx="30" ry="11" fill="#ffffff"/>
+      <path d="M0 340 Q100 280 200 330 T400 310 V800 H0Z" fill="#9ad08f"/>
+      <path d="M0 390 Q120 350 240 380 T400 370 V800 H0Z" fill="#6fbf63"/>
+      <path d="M190 336 L210 336 L390 800 L10 800Z" fill="#3a3f47"/>
+      <path d="M190 336 L192 336 L22 800 L10 800Z M208 336 L210 336 L390 800 L378 800Z" fill="#f2f2f2"/>
+      <path d="M199 350 h2 l1 20 h-4Z M198 395 h4 l2 40 h-8Z M196 470 h8 l4 70 h-16Z M193 590 h14 l6 110 h-26Z" fill="#f5c518"/>
+    </svg>
+    <div class="start-top">
+      <h1>Bas Gaza</h1>
+      <p class="tagline">Sür, soruları bil, ehliyetini al!</p>
+    </div>
     <svg class="logo-car" viewBox="0 0 60 100" aria-hidden="true">
       <!-- Our own simple top-down car -->
       <rect x="6" y="4" width="48" height="92" rx="14" fill="#e94b3c"/>
@@ -18,13 +35,13 @@
       <rect x="10" y="6" width="10" height="6" rx="2" fill="#fff6c8"/>
       <rect x="40" y="6" width="10" height="6" rx="2" fill="#fff6c8"/>
     </svg>
-    <h1>Bas Gaza</h1>
-    <p class="tagline">Sür, soruları bil, ehliyetini al!</p>
-    <button id="start-button" type="button" disabled>Karma tur</button>
-    <p id="best-score" class="tagline" hidden></p>
-    <div id="course-picker" class="course-picker" hidden>
-      <p class="tagline">Ya da bir bölüm çalış:</p>
-      <div id="course-buttons" class="course-buttons"></div>
+    <div class="start-bottom">
+      <button id="start-button" type="button" disabled>Karma tur</button>
+      <p id="best-score" class="best-score" hidden></p>
+      <div id="course-picker" class="course-picker" hidden>
+        <p class="picker-label">Ya da bir bölüm çalış</p>
+        <div id="course-buttons" class="course-buttons"></div>
+      </div>
     </div>
   </main>
   <canvas id="game" hidden></canvas>

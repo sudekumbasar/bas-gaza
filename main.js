@@ -51,6 +51,17 @@ const EXAM_QUESTIONS = {
   arac_teknigi: 9,
   trafik_adabi: 6,
 };
+// Our own small icons for the course buttons on the start screen
+const COURSE_ICONS = {
+  ilk_yardim: '<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" fill="#dc2626"/>',
+  trafik_cevre:
+    '<rect x="7" y="1" width="10" height="22" rx="3" fill="#1f2328"/>' +
+    '<circle cx="12" cy="6" r="2.4" fill="#ef4444"/><circle cx="12" cy="12" r="2.4" fill="#f59e0b"/>' +
+    '<circle cx="12" cy="18" r="2.4" fill="#22c55e"/>',
+  arac_teknigi: '<circle cx="12" cy="12" r="8" fill="none" stroke="#2563eb" stroke-width="4"/>',
+  trafik_adabi:
+    '<path d="M12 21s-7.5-4.6-9.6-9.2A5.3 5.3 0 0 1 12 6.3a5.3 5.3 0 0 1 9.6 5.5C19.5 16.4 12 21 12 21z" fill="#ec4899"/>',
+};
 const FAIL_OUTCOMES = {
   ilk_yardim: "Ambulans geç kaldı, yaralıya yardım edemedin.",
   trafik_cevre: "Polis seni durdurdu, ceza yazdı.",
@@ -749,7 +760,8 @@ function showCourseButtons() {
     ...availableCourses().map((course) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.textContent = CATEGORY_NAMES[course];
+      button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${COURSE_ICONS[course]}</svg>`;
+      button.append(CATEGORY_NAMES[course]);
       button.addEventListener("click", () => start(course));
       return button;
     }),
