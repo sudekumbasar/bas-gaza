@@ -42,10 +42,10 @@
       "situation": "Yolun kenarında bir kaza olmuş, bir kişi yaralı. Arabanı güvenli bir yere çekip durdun.",
       "question": "Yaralıya yardım etmeden önce ilk ne yapmalısın?",
       "options": [
-        "Olay yerinin kendin, yaralı ve çevredekiler için güvenli olup olmadığını kontrol etmek",
-        "Yaralıyı hemen araçtan çıkarıp yolun kenarına taşımak",
-        "Yaralıya su içirmek",
-        "Hiçbir şey yapmadan yoluna devam etmek"
+        "Olay yerinin güvenli olup olmadığına bakmak",
+        "Yaralının yanına koşup bilincini kontrol etmek",
+        "Yaralıyı hemen araçtan çıkarıp taşımak",
+        "Yaralıya hemen su ya da şeker vermek"
       ],
       "answer": 0,
       "explanation": "Acil bir durumda ilk adım olay yerini güvenli hâle getirmektir. İlk yardımcı önce kendi can güvenliğini korur. Yaralı, zorunda kalınmadıkça hareket ettirilmez.",
@@ -60,12 +60,12 @@
       "situation": "Şehir içinde bir trafik kazasına yardım ediyorsun.",
       "question": "Uyarı işaretlerini kazanın önüne ve arkasına en az kaç metre uzağa koymalısın?",
       "options": [
-        "5 metre",
         "30 metre",
-        "150 metre",
-        "500 metre"
+        "10 metre",
+        "50 metre",
+        "150 metre"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Uyarı işaretleri kazanın önüne ve arkasına şehir içinde en az 30 metre, şehirlerarası yolda en az 150 metre uzağa konur.",
       "source": "meb-ilk-yardim-2025",
       "sourceSection": "Slide 17: \"Trafik kazasına müdahale ediyorsanız\"",
@@ -78,10 +78,10 @@
       "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor ama normal nefes alıyor. 112 aranmış.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Derlenme (sabit yan yatış) pozisyonuna getirmelisin",
-        "Ayağa kaldırmaya çalışmalısın",
-        "Oturtup su içirmelisin",
-        "Sırtüstü yatırıp yalnız bırakmalısın"
+        "Derlenme pozisyonuna getirmelisin",
+        "Oturtup sırtını bir yere yaslamalısın",
+        "Sırtüstü yatırıp öylece beklemelisin",
+        "Ayağa kaldırıp yürütmeye çalışmalısın"
       ],
       "answer": 0,
       "explanation": "Bilinci kapalı ve nefes alan kişiye derlenme pozisyonu verilir. Böylece dil hava yolunu tıkamaz, kan ya da kusmuk nedeniyle boğulma riski önlenir. Solunumu izlemeye devam edilir.",
@@ -168,9 +168,9 @@
       "situation": "Yaralı \"İyi misiniz?\" sorusuna yanıt vermiyor. 112 aranmış.",
       "question": "Yaralının nefes alıp almadığını nasıl kontrol edersin?",
       "options": [
-        "Göğsüne bakıp yükselip alçaldığını kontrol ederek",
-        "Yüzüne su dökerek",
-        "Ayağa kaldırmaya çalışarak",
+        "Göğsünün inip kalktığına bakarak",
+        "Nabzını bileğinden sayarak",
+        "Gözbebeklerine ışık tutarak",
         "Kollarından tutup sallayarak"
       ],
       "answer": 0,
@@ -187,9 +187,9 @@
       "question": "Bu arabalar için ne yapmalısın?",
       "options": [
         "Motorlarını kapatıp el frenlerini çekmek",
-        "Motorlarını çalışır hâlde bırakmak",
-        "Arabaları iterek yolun ortasına çekmek",
-        "Kapılarını kilitleyip uzaklaşmak"
+        "Motorları çalışır, dörtlüleri açık bırakmak",
+        "El frenlerini indirip vitesi boşa almak",
+        "Kapılarını kilitleyip anahtarları almak"
       ],
       "answer": 0,
       "explanation": "Trafik kazasında olay yerini güvenli hâle getirmek için araçların motorları kapatılır, el frenleri çekilir ve lastiklerin önüne takoz benzeri bir engel konur.",
@@ -204,10 +204,10 @@
       "situation": "Kaza yerinden 112'yi arıyorsun.",
       "question": "Görevliye hangisini mutlaka söylemelisin?",
       "options": [
-        "Olay yerinin adresini (konumunu) tam olarak",
-        "Hiçbir şey söylemeden beklemek",
-        "Sadece \"kaza oldu\" deyip telefonu kapatmak",
-        "Arabanın rengini ve markasını"
+        "Olay yerinin tam adresini (konumunu)",
+        "Yaralının yaşını ve mesleğini",
+        "Kazaya kimin sebep olduğunu",
+        "Arabaların marka ve plakasını"
       ],
       "answer": 0,
       "explanation": "112 arandığında sakin ve net konuşulur, önce kendini tanıtırsın. Olayın ne olduğunu, yaralı sayısını, yaralının durumunu ve yaptığın ilk yardımı söylersin. Adres (konum) bilgisi olay yerini tam olarak belirtecek şekilde verilir.",
@@ -692,8 +692,8 @@
       "options": [
         "150 metre",
         "30 metre",
-        "10 metre",
-        "500 metre"
+        "50 metre",
+        "100 metre"
       ],
       "answer": 0,
       "explanation": "Trafik kazasında uyarı işaretleri kazanın önüne ve arkasına şehir içinde en az 30 metre, şehirlerarası yolda en az 150 metre uzağa konur.",
@@ -708,10 +708,10 @@
       "situation": "Olay yeri güvenli, 112 arandı ve ambulans yolda. Yaralı yerde yatıyor; bulunduğu yerde ek bir tehlike yok.",
       "question": "Yaralıyı başka bir yere taşımalı mısın?",
       "options": [
-        "Hayır, zorunda kalmadıkça hareket ettirmemelisin",
-        "Evet, hemen arabana alıp hastaneye götürmelisin",
+        "Hayır, onu hareket ettirmemelisin",
+        "Evet, arabana alıp hastaneye götürmelisin",
         "Evet, ayağa kaldırıp yürütmelisin",
-        "Evet, yolun karşı tarafına taşımalısın"
+        "Evet, yolun kenarına taşımalısın"
       ],
       "answer": 0,
       "explanation": "Genel kural olarak yaralı zorda kalmadıkça hareket ettirilmez. Yalnızca orada kalması daha fazla tehlike oluşturuyorsa, olay yeri güvenli hâle getirilemiyorsa ya da ambulans yakın zamanda gelemeyecekse, kendini tehlikeye atmadan taşınabilir.",
@@ -726,10 +726,10 @@
       "situation": "Yerde hareketsiz yatan bir yaralı var.",
       "question": "Bilincinin yerinde olup olmadığını nasıl kontrol edersin?",
       "options": [
-        "Omuzlarına hafifçe dokunup yüksek sesle \"İyi misiniz?\" diye sorarak",
-        "Yüzüne su dökerek",
-        "Onu sertçe sarsarak",
-        "Başını kaldırıp bırakarak"
+        "Omuzlarına dokunup yüksek sesle \"İyi misiniz?\" diyerek",
+        "Yüzüne soğuk su serpip adını seslenerek",
+        "Omuzlarından tutup sertçe sarsarak",
+        "Göğsüne bakıp nefes alıp almadığını kontrol ederek"
       ],
       "answer": 0,
       "explanation": "Hareketsiz yatan kişinin omuzlarına hafifçe dokunulur ve uyuyan birini uyandıracak kadar yüksek sesle \"İyi misiniz?\" diye sorulur.",
@@ -762,10 +762,10 @@
       "situation": "Yaralının bilinci yerinde ve seninle konuşuyor.",
       "question": "Yardıma başlamadan önce ne yapmalısın?",
       "options": [
-        "Kendini tanıtıp ne yapacağını açıklamalı ve izin almalısın",
-        "Hiçbir şey söylemeden hemen müdahale etmelisin",
-        "Önce ona bir şeyler yedirmelisin",
-        "Ayağa kalkıp yürümesini istemelisin"
+        "Kendini tanıtıp açıklama yapmalı, izin almalısın",
+        "Vakit kaybetmemek için hiç konuşmadan başlamalısın",
+        "Önce ailesini arayıp izin istemelisin",
+        "Ayağa kalkıp yürüyebiliyor mu diye bakmalısın"
       ],
       "answer": 0,
       "explanation": "Bilinci yerinde olan yaralıya kendini tanıtırsın, adını sorarsın, ne yapacağını açıklarsın ve ilk yardım için onun rızasını (iznini) alırsın.",
@@ -780,9 +780,9 @@
       "situation": "Yaralı \"İyi misiniz?\" sorusuna cevap vermiyor ve göğsü inip kalkmıyor. 112 arandı.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Zaman kaybetmeden temel yaşam desteğine başlamalısın",
+        "Hemen temel yaşam desteğine başlamalısın",
         "Derlenme pozisyonu verip beklemelisin",
-        "Ağzına biraz su vermelisin",
+        "Yüzüne su serpip ayılmasını beklemelisin",
         "Ambulans gelene kadar hiçbir şey yapmamalısın"
       ],
       "answer": 0,
@@ -799,9 +799,9 @@
       "question": "Ne yapmalısın?",
       "options": [
         "Su vermemelisin",
-        "Biraz su vermelisin",
+        "Birkaç yudum su verebilirsin",
         "Şekerli bir içecek vermelisin",
-        "Uyanık kalsın diye kahve vermelisin"
+        "Uyanık kalsın diye çay vermelisin"
       ],
       "answer": 0,
       "explanation": "Kişi ağır yaralıysa, midesi bulanıyorsa, uykuya meyli ya da bilinç kaybı varsa kesinlikle yiyecek ve içecek verilmez.",
@@ -816,10 +816,10 @@
       "situation": "Bilinci kapalı ama nefes alan bir yaralıya derlenme pozisyonu vereceksin.",
       "question": "Derlenme pozisyonu ne işe yarar?",
       "options": [
-        "Hava yolunu açık tutar, kan ya da kusmukla boğulmayı önler",
+        "Hava yolunu açık tutar, boğulmayı önler",
         "Yaralının daha rahat uyumasını sağlar",
-        "Kanamayı durdurur",
-        "Kırık kemikleri düzeltir"
+        "Kalbin daha kolay çalışmasını sağlar",
+        "Kanın beyne daha çok gitmesini sağlar"
       ],
       "answer": 0,
       "explanation": "Bilinci kapalı kişide kaslar gevşer ve dil hava yolunu tıkayabilir. Derlenme pozisyonu hava yolunu açık tutar; kan veya kusmuk nedeniyle boğulma riskini de önler.",
@@ -834,7 +834,7 @@
       "situation": "Bir araç bir yayaya çarptı. Yaya ayağa kalktı ve iyi olduğunu söylüyor.",
       "question": "112'yi aramalı mısın?",
       "options": [
-        "Evet, aracın yayaya çarpması ciddi bir yaralanma olabileceğini gösterir",
+        "Evet, ciddi bir yaralanma olabilir",
         "Hayır, ayağa kalktıysa gerek yok",
         "Sadece kanaması varsa aramalısın",
         "Sadece yaya isterse aramalısın"
@@ -852,10 +852,10 @@
       "situation": "Kaza yerinde bir araç yanıyor ve yere elektrik kabloları düşmüş. Olay yerini güvenli hâle getiremiyorsun.",
       "question": "Ne yapmalısın?",
       "options": [
-        "Uzaklaşmalı, çevredekileri uzaklaştırmalı ve 112'yi aramalısın",
-        "Hemen yaralının yanına koşmalısın",
-        "Kabloları elinle kenara çekmelisin",
-        "Yanan araca yaklaşıp içine bakmalısın"
+        "Uzaklaşmalı, uzaklaştırmalı, 112'yi aramalısın",
+        "Önce yaralının durumuna bakmalısın",
+        "Yanan aracın içine bakıp yaralı aramalısın",
+        "Hemen yaralının yanına koşmalısın"
       ],
       "answer": 0,
       "explanation": "İlk yardımcının kendi can güvenliği her zaman önce gelir. Olay yeri güvenli hâle getirilemiyorsa ortamdan uzaklaşılır ve uzaklaştırılır, 112 aranır ya da aratılır.",
