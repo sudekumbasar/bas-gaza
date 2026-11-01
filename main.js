@@ -330,6 +330,8 @@ function drawEventMarker() {
     carHeight,
     laneCentre,
     drawCar,
+    carX,
+    carTop: PLAYER_Y * height,
   });
 }
 

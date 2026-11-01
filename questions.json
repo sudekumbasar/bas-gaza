@@ -482,6 +482,186 @@
       "source": "kanun-2918",
       "sourceSection": "Madde 78",
       "reviewed": true
+    },
+    {
+      "id": "ta-006",
+      "roadPicture": "phoneCall",
+      "category": "trafik_adabi",
+      "situation": "Araba giderken telefonun çalıyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Araç giderken telefonu kullanmamalısın",
+        "Telefonu elinde tutup kısaca konuşmalısın",
+        "Yavaşlayıp konuşmaya devam etmelisin",
+        "Konuşmak yerine mesajla cevap vermelisin"
+      ],
+      "answer": 0,
+      "explanation": "Araç giderken sürücünün cep telefonu, araç telefonu ve benzeri haberleşme cihazlarını kullanması yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 73",
+      "reviewed": true
+    },
+    {
+      "id": "ta-007",
+      "roadPicture": "litter",
+      "category": "trafik_adabi",
+      "situation": "Yolcu koltuğundaki arkadaşın boş şişeyi pencereden atmak istiyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Atmamasını söylemelisin, araçtan bir şey atmak yasak",
+        "Yol kenarına atarsa sorun olmaz",
+        "Araba hızlıysa atabilir",
+        "Sadece gece atabilir"
+      ],
+      "answer": 0,
+      "explanation": "Karayolunda araçlardan bir şey atmak veya dökmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 73",
+      "reviewed": true
+    },
+    {
+      "id": "ta-008",
+      "roadPicture": "music",
+      "category": "trafik_adabi",
+      "situation": "Gece bir mahallede camların açık, müzik sonuna kadar açık gidiyorsun.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Sesi kimseyi rahatsız etmeyecek kadar kısmalısın",
+        "Müziği daha da açmalısın",
+        "Camları açık tutup sesi aynı bırakmalısın",
+        "Kornayla müziğe eşlik etmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Araçlardaki ses ve müzik cihazları, insanların rahatını ve huzurunu bozmayacak şekilde kullanılır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 72",
+      "reviewed": true
+    },
+    {
+      "id": "ta-009",
+      "roadPicture": "march",
+      "category": "trafik_adabi",
+      "situation": "Görevlilerin yönettiği bir yürüyüş kolu önündeki yoldan geçiyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Durup yürüyüş kolunun bitmesini beklemelisin",
+        "Kolun arasındaki boşluktan geçmelisin",
+        "Korna çalıp yol açmalarını istemelisin",
+        "Yavaşça kolun arasından ilerlemelisin"
+      ],
+      "answer": 0,
+      "explanation": "Bir yetkili ya da görevlinin yönettiği yürüyüş kollarının arasından geçmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 77 (c)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-010",
+      "roadPicture": "tailgater",
+      "category": "trafik_adabi",
+      "situation": "Dar bir yolda yavaş gidiyorsun. Arkanda seni geçmek isteyen araçlar birikti.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Yol elverdiği kadar sağa yanaşıp yavaşlamalı, gerekirse durmalısın",
+        "Yolun ortasından gitmeye devam etmelisin",
+        "Hızlanıp kimsenin geçmesine izin vermemelisin",
+        "Ani fren yapıp arkadakileri uyarmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Dar ya da yoğun yollarda yavaş giden sürücü, arkadakilerin kolayca ve güvenle geçebilmesi için aracını sağ kenara alır, yavaşlar, gerekirse durur.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 55 (b)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-011",
+      "roadPicture": "mountainPass",
+      "category": "trafik_adabi",
+      "situation": "Dar ve dik bir dağ yolunda yokuş aşağı iniyorsun. Karşıdan yokuş yukarı bir araç çıkıyor ve yol iki araca dar.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Varsa sığınma cebine girip, yoksa sağa yanaşıp durarak yol vermelisin",
+        "Yokuş aşağı olduğun için önce sen geçmelisin",
+        "Korna çalıp çıkan aracın geri gitmesini beklemelisin",
+        "Hızlanıp yanından sıkışarak geçmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Dağlık ve dik yokuşlu yollarda karşılaşmada, çıkan aracın geçişi zorsa inen araç varsa sığınma cebine girer, yoksa sağa yanaşıp durur, gerekirse geri gider.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 56 (b)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-012",
+      "roadPicture": "tailgater",
+      "category": "trafik_adabi",
+      "situation": "Arkandaki araç sana çok yakın geliyor.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Ani fren yapmadan, sakin şekilde yoluna devam etmelisin",
+        "Ders olsun diye ani fren yapmalısın",
+        "Aniden yavaşlayıp onu korkutmalısın",
+        "Durup arabadan inmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Güvenlik nedeni dışında başkalarını rahatsız edecek veya tehlikeye sokacak şekilde gereksiz yere aniden yavaşlamak yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 56 (d)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-013",
+      "roadPicture": "overtake",
+      "category": "trafik_adabi",
+      "situation": "Bir sürücü aniden önüne kırdı ve çok sinirlendin.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Sakin kalıp yoluna devam etmelisin",
+        "Onu ısrarla takip etmelisin",
+        "Önünü kesip arabadan inmelisin",
+        "Arkasına yapışıp korna çalmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Trafikte saldırı amacıyla başka bir aracı ısrarla takip etmek veya bu amaçla araçtan inmek yasaktır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 46 (dördüncü fıkra)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-014",
+      "roadPicture": "parkedCar",
+      "category": "trafik_adabi",
+      "situation": "Park ederken boş, park etmiş bir araca hafifçe çarptın. Aracın sahibi ortada yok.",
+      "question": "Ne yapmalısın?",
+      "options": [
+        "Sahibini aramalı, bulamazsan araca yazılı not bırakıp polise haber vermelisin",
+        "Kimse görmediyse hemen gitmelisin",
+        "Sadece hasarın fotoğrafını çekip gitmelisin",
+        "Aracın sahibi gelene kadar korna çalmalısın"
+      ],
+      "answer": 0,
+      "explanation": "Sahibi yokken bir araca zarar veren sürücü, sahibini bulmaya çalışır; bulamazsa durumu tespit eder, zarar verdiği şeyin üzerine yazılı bilgi bırakır ve en kısa zamanda polise bilgi verir.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 81 (e)",
+      "reviewed": true
+    },
+    {
+      "id": "ta-015",
+      "roadPicture": "nightAhead",
+      "category": "trafik_adabi",
+      "situation": "Gece öndeki aracı geçmek istiyorsun.",
+      "question": "Uzağı gösteren farları (uzun far) nasıl kullanmalısın?",
+      "options": [
+        "Uyarmak için sadece çok kısa süre yakabilirsin",
+        "Geçene kadar sürekli yakmalısın",
+        "Arkasında beklerken sürekli yakmalısın",
+        "Farları kapatıp karanlıkta geçmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Öndeki aracı geçerken uyarı için çok kısa bir süre dışında uzun far yakmak yasaktır. Bir aracı takip ederken kısa far kullanılır.",
+      "source": "kanun-2918",
+      "sourceSection": "Madde 64 (a) 2, (b) 4",
+      "reviewed": true
     }
   ]
 }

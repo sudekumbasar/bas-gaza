@@ -266,6 +266,14 @@ function drawRoadPicture(name, front, progress, t, view) {
     slowAhead: drawSlowAheadPicture,
     kerbStop: drawKerbStopPicture,
     night: drawNightPicture,
+    phoneCall: drawPhoneCallPicture,
+    litter: drawLitterPicture,
+    music: drawMusicPicture,
+    march: drawMarchPicture,
+    tailgater: drawTailgaterPicture,
+    mountainPass: drawMountainPassPicture,
+    parkedCar: drawParkedCarPicture,
+    nightAhead: drawNightAheadPicture,
   };
   pictures[name](front, progress, t, view);
 }
@@ -647,6 +655,196 @@ function drawNightPicture(front, progress, t, v) {
   ctx.lineTo(x + carWidth * 0.35, front);
   ctx.lineTo(x + carWidth * 1.3, front + carHeight * 2.5);
   ctx.lineTo(x - carWidth * 1.1, front + carHeight * 2.5);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawPhoneCallPicture(front, progress, t, v) {
+  const { ctx, carWidth, carTop } = v;
+  // A ringing phone pops up above our own car.
+  const x = v.carX;
+  const y = carTop - carWidth * 0.9;
+  const shake = flashOn(t, 2) ? Math.sin(t * 40) * 3 : 0;
+  ctx.save();
+  ctx.translate(x + shake, y);
+  ctx.fillStyle = "#1f2328";
+  ctx.beginPath();
+  ctx.roundRect(-12, -20, 24, 40, 5);
+  ctx.fill();
+  ctx.fillStyle = "#22c55e";
+  ctx.fillRect(-9, -15, 18, 28);
+  ctx.restore();
+  // Ring waves on both sides
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 2;
+  if (flashOn(t, 2)) {
+    for (let i = 1; i <= 2; i++) {
+      ctx.beginPath();
+      ctx.arc(x, y, 18 + i * 8, -0.6, 0.6);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x, y, 18 + i * 8, Math.PI - 0.6, Math.PI + 0.6);
+      ctx.stroke();
+    }
+  }
+}
+
+function drawBottle(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.fillStyle = "rgba(125, 211, 252, 0.9)";
+  ctx.beginPath();
+  ctx.roundRect(-5, -12, 10, 20, 3);
+  ctx.fill();
+  ctx.fillRect(-2.5, -17, 5, 6);
+  ctx.restore();
+}
+
+function drawLitterPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth } = v;
+  // Rubbish other drivers threw out lies along the right edge of the road.
+  const x = roadLeft + roadWidth - 18;
+  drawBottle(ctx, x, front - 10, 1.2);
+  drawBottle(ctx, x - 26, front - 60, -0.4);
+  ctx.fillStyle = "#e5e7eb";
+  ctx.beginPath();
+  ctx.ellipse(x - 6, front - 110, 10, 7, 0.3, 0, Math.PI * 2);
+  ctx.fill();
+  drawBottle(ctx, x - 10, front - 150, 2.4);
+}
+
+function drawHouse(ctx, x, y, w, colour, lit) {
+  ctx.fillStyle = colour;
+  ctx.fillRect(x, y, w, w * 1.1);
+  ctx.fillStyle = lit ? "#fde68a" : "#374151";
+  for (const [dx, dy] of [[0.2, 0.25], [0.55, 0.25], [0.2, 0.65], [0.55, 0.65]]) {
+    ctx.fillRect(x + w * dx, y + w * dy, w * 0.25, w * 0.25);
+  }
+}
+
+function drawMusicPicture(front, progress, t, v) {
+  const { ctx, width, height, roadLeft, roadWidth, carWidth, carTop } = v;
+  // Evening falls over a quiet street with houses at the right edge.
+  ctx.fillStyle = `rgba(10, 15, 40, ${0.45 * Math.min(1, progress * 3)})`;
+  ctx.fillRect(0, 0, width, height);
+  const w = carWidth * 0.9;
+  drawHouse(ctx, roadLeft + roadWidth - w - 4, front - w * 1.1, w, "#a16207", true);
+  drawHouse(ctx, roadLeft + roadWidth - w - 4, front - w * 2.5, w, "#7c3aed", false);
+  // Loud music notes float out of our car.
+  ctx.fillStyle = "#f5c518";
+  ctx.font = `900 ${Math.round(carWidth * 0.5)}px system-ui, -apple-system, sans-serif`;
+  ctx.textAlign = "center";
+  for (let i = 0; i < 3; i++) {
+    const rise = (t * 0.8 + i / 3) % 1;
+    ctx.globalAlpha = 1 - rise;
+    ctx.fillText(i % 2 ? "♫" : "♪", v.carX + (i - 1) * carWidth * 0.6, carTop - rise * carWidth * 1.5);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawMarchPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth } = v;
+  // A long line of people walks across the road.
+  const y = front - 30;
+  const step = carWidth * 0.55;
+  const walk = (t * 18) % step;
+  for (let x = roadLeft - step + walk; x < roadLeft + roadWidth + step; x += step) {
+    drawPerson(ctx, x, y, carWidth * 0.55, "#f97316", Math.PI / 2);
+    drawPerson(ctx, x + step / 2, y + carWidth * 0.5, carWidth * 0.55, "#10b981", Math.PI / 2);
+  }
+  // An officer in blue looks after the line, on our side of it.
+  drawPerson(ctx, roadLeft + roadWidth - carWidth * 0.4, y + carWidth * 1.1, carWidth * 0.7, "#1d4ed8");
+}
+
+function drawTailgaterPicture(front, progress, t, v) {
+  const { ctx, height, carWidth, carHeight, carTop } = v;
+  // A car drives right up behind us with its lights on.
+  const target = carTop + carHeight * 1.08;
+  const top = height + carHeight * 0.2 - easeOut(progress) * (height + carHeight * 0.2 - target);
+  v.drawCar(v.carX, top, "#1f2328", "rgba(255, 255, 255, 0.12)");
+  if (flashOn(t, 2)) {
+    ctx.fillStyle = "rgba(255, 246, 200, 0.85)";
+    ctx.beginPath();
+    ctx.arc(v.carX - carWidth * 0.3, top + 4, 6, 0, Math.PI * 2);
+    ctx.arc(v.carX + carWidth * 0.3, top + 4, 6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawMountainPassPicture(front, progress, t, v) {
+  const { ctx, width, roadLeft, roadWidth, carWidth, carHeight } = v;
+  // Rock walls squeeze the road from both sides.
+  const narrowTop = front - carHeight * 2.6;
+  ctx.fillStyle = "#78716c";
+  ctx.fillRect(0, narrowTop, roadLeft + roadWidth * 0.2, front - narrowTop);
+  ctx.fillRect(roadLeft + roadWidth * 0.8, narrowTop, width, front - narrowTop);
+  // A pull-out bay cut into the right wall
+  ctx.fillStyle = "#3a3f47";
+  ctx.fillRect(roadLeft + roadWidth * 0.8, front - carHeight * 1.5, roadWidth * 0.2, carHeight * 1.2);
+  // A car climbs up towards us through the narrow part.
+  const x = roadLeft + roadWidth / 2;
+  const top = narrowTop + carHeight * 0.3;
+  ctx.save();
+  ctx.translate(x, top + carHeight / 2);
+  ctx.rotate(Math.PI);
+  v.drawCar(0, -carHeight / 2, "#3c7be9", "rgba(0, 0, 0, 0.15)");
+  ctx.restore();
+  // Arrows on our road show that we are going downhill.
+  ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+  for (let i = 0; i < 2; i++) {
+    const ay = front + carHeight * (0.3 + i * 0.6);
+    ctx.beginPath();
+    ctx.moveTo(x - carWidth * 0.3, ay);
+    ctx.lineTo(x + carWidth * 0.3, ay);
+    ctx.lineTo(x, ay + carWidth * 0.35);
+    ctx.fill();
+  }
+}
+
+function drawParkedCarPicture(front, progress, t, v) {
+  const { ctx, roadLeft, roadWidth, carWidth, carHeight } = v;
+  // An empty parked car at the right kerb, with a fresh dent and a note on it.
+  const x = roadLeft + roadWidth - carWidth * 0.75;
+  const top = front - carHeight;
+  v.drawCar(x, top, "#9ca3af", "#6b7280");
+  ctx.strokeStyle = "#1f2328";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x - carWidth * 0.45, top + carHeight * 0.82);
+  ctx.lineTo(x - carWidth * 0.3, top + carHeight * 0.88);
+  ctx.lineTo(x - carWidth * 0.42, top + carHeight * 0.95);
+  ctx.stroke();
+  ctx.save();
+  ctx.translate(x, top + carHeight * 0.3);
+  ctx.rotate(0.15);
+  ctx.fillStyle = "#fef08a";
+  ctx.fillRect(-9, -7, 18, 14);
+  ctx.restore();
+}
+
+function drawNightAheadPicture(front, progress, t, v) {
+  const { ctx, width, height, carWidth, carHeight, carTop } = v;
+  ctx.fillStyle = `rgba(10, 15, 40, ${0.55 * Math.min(1, progress * 3)})`;
+  ctx.fillRect(0, 0, width, height);
+  // A car ahead of us in our lane, with red tail lights; it never comes closer than two cars.
+  const x = v.laneCentre(v.lane);
+  const top = Math.min(front - carHeight, carTop - carHeight * 2.2);
+  v.drawCar(x, top, "#8a5cd6", "rgba(0, 0, 0, 0.15)");
+  ctx.fillStyle = "#ef4444";
+  ctx.fillRect(x - carWidth * 0.42, top + carHeight - 6, 10, 5);
+  ctx.fillRect(x + carWidth * 0.42 - 10, top + carHeight - 6, 10, 5);
+  // Our own low beams light the road in front of us.
+  const reach = carHeight * 1.8;
+  const beam = ctx.createLinearGradient(0, carTop, 0, carTop - reach);
+  beam.addColorStop(0, "rgba(255, 246, 200, 0.5)");
+  beam.addColorStop(1, "rgba(255, 246, 200, 0)");
+  ctx.fillStyle = beam;
+  ctx.beginPath();
+  ctx.moveTo(v.carX - carWidth * 0.35, carTop);
+  ctx.lineTo(v.carX + carWidth * 0.35, carTop);
+  ctx.lineTo(v.carX + carWidth * 0.9, carTop - reach);
+  ctx.lineTo(v.carX - carWidth * 0.9, carTop - reach);
   ctx.closePath();
   ctx.fill();
 }
