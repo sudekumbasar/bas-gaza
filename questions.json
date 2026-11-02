@@ -32,6 +32,27 @@
       "url": "https://meb.gov.tr/02-kasim-2013-tarihli-motorlu-tasitlar-surucu-adaylari-sinavi-sorulari-ve-cevap-anahtari/duyuru/6454",
       "note": "Facts only; our questions are written in our own words. The booklet is copyrighted.",
       "checked": "2026-11-01"
+    },
+    "meb-mtsas-2014-03-08": {
+      "title": "08.03.2014 Motorlu Taşıtlar Sürücü Adayları Sınavı, B sınıfı (Motor ve Araç Tekniği Bilgisi testi), with the official answer key",
+      "publisher": "T.C. Millî Eğitim Bakanlığı",
+      "url": "https://www.meb.gov.tr/08-mart-2014-tarihli-motorlu-tasitlar-surucu-adaylari-sinavi-sorulari-ve-cevap-anahtari/duyuru/6717",
+      "note": "Facts only; our questions are written in our own words and the light symbols are drawn by us. The booklet is copyrighted.",
+      "checked": "2026-11-02"
+    },
+    "meb-mtsas-2013-04-13": {
+      "title": "13.04.2013 Motorlu Taşıtlar Sürücü Adayları Sınavı, B sınıfı, K kitapçığı (Motor ve Araç Tekniği Bilgisi testi), with the official answer key",
+      "publisher": "T.C. Millî Eğitim Bakanlığı",
+      "url": "https://meb.gov.tr/13042013-tarihli-motorlu-tasitlar-surucu-adaylari-sinavi-sorulari-ve-cevap-anahtari/duyuru/6032",
+      "note": "Facts only; our questions are written in our own words and the light symbols are drawn by us. The booklet is copyrighted.",
+      "checked": "2026-11-02"
+    },
+    "meb-mtsas-2013-02-02": {
+      "title": "02.02.2013 Motorlu Taşıtlar Sürücü Adayları Sınavı, B sınıfı, K kitapçığı (Motor ve Araç Tekniği Bilgisi testi), with the official answer key",
+      "publisher": "T.C. Millî Eğitim Bakanlığı",
+      "url": "https://www.meb.gov.tr/02-subat-2013-tarihli-motorlu-tasitlar-surucu-adaylari-sinavi-sorulari-ve-cevap-anahtari/duyuru/5879/tr",
+      "note": "Facts only; our questions are written in our own words and the light symbols are drawn by us. The booklet is copyrighted.",
+      "checked": "2026-11-02"
     }
   },
   "questions": [
@@ -1231,6 +1252,196 @@
       "explanation": "Tam gazdan ve ani hızlanmalardan kaçınmak yakıt tasarrufu sağlar. Tavan bagajı kullanmak, bakımları ihmal etmek ve önerilmeyen lastikler kullanmak ise tasarruf sağlamaz.",
       "source": "meb-mtsk-2016-02-13",
       "sourceSection": "soru 44 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-011",
+      "roadPicture": "warningLight",
+      "sign": "isikYagBasinci",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde bu ışık yandı.",
+      "question": "Bu hangi ikaz ışığıdır?",
+      "options": [
+        "Motor yağ basıncı ikaz ışığı",
+        "Egzoz gazı kontrol ikaz ışığı",
+        "Fren balatası aşınma ikaz ışığı",
+        "Soğutma suyu sıcaklık ikaz ışığı"
+      ],
+      "answer": 0,
+      "explanation": "Yağdanlık şeklindeki bu ikaz ışığı, motor yağ basıncı ikaz ışığıdır. Yanması, motor yağ basıncının çok düştüğünü bildirir.",
+      "source": "meb-mtsk-2016-02-13",
+      "sourceSection": "soru 43 and answer key; also 02.02.2013 Motor soru 9",
+      "reviewed": true
+    },
+    {
+      "id": "at-012",
+      "roadPicture": "warningLight",
+      "sign": "isikYagBasinci",
+      "category": "arac_teknigi",
+      "situation": "Yolda giderken gösterge panelinde yağlama sistemiyle ilgili bu ikaz ışığı yandı.",
+      "question": "Önce ne yapmalısın?",
+      "options": [
+        "Aracı durdurup motoru kapatmalısın",
+        "Motor devrini yükseltip devam etmelisin",
+        "Motor devrini düşürüp devam etmelisin",
+        "Işığa aldırmadan sürmeye devam etmelisin"
+      ],
+      "answer": 0,
+      "explanation": "Seyir sırasında gösterge panelinde yağlama sistemiyle ilgili bir arıza bildirimi görüldüğünde öncelikle araç durdurulur ve motor kapatılır.",
+      "source": "meb-mtsas-2013-04-13",
+      "sourceSection": "Motor ve Araç Tekniği, soru 9 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-013",
+      "roadPicture": "warningLight",
+      "sign": "isikSuSicakligi",
+      "category": "arac_teknigi",
+      "situation": "Sürüş sırasında gösterge panelinde bu ikaz ışığı yandı.",
+      "question": "Bu ışık sana neyi bildiriyor?",
+      "options": [
+        "Soğutma suyunun sıcaklığı aşırı yükseldi",
+        "Şarj sistemi çalışmıyor",
+        "Motor yağ basıncı çok düştü",
+        "Lastiklerden birinde basınç kaybı var"
+      ],
+      "answer": 0,
+      "explanation": "Termometre ve dalga şeklindeki bu ikaz ışığının yanması, motor soğutma suyu sıcaklığının aşırı yükseldiğini bildirir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 14 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-014",
+      "roadPicture": "warningLight",
+      "sign": "isikAku",
+      "category": "arac_teknigi",
+      "situation": "Motor çalışırken gösterge panelinde akü şarj ikaz ışığı yanıyor.",
+      "question": "Arıza büyük ihtimalle nerededir?",
+      "options": [
+        "Alternatörde",
+        "Fan motorunda",
+        "Marş motorunda",
+        "Far ampullerinde"
+      ],
+      "answer": 0,
+      "explanation": "Motor çalışır durumdayken akü şarj ikaz ışığı yanıyorsa muhtemel arıza alternatördedir.",
+      "source": "meb-mtsas-2013-04-13",
+      "sourceSection": "Motor ve Araç Tekniği, soru 12 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-015",
+      "roadPicture": "warningLight",
+      "sign": "isikArkaCam",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde bu ışık yanıyor.",
+      "question": "Bu ışık neyi bildirir?",
+      "options": [
+        "Arka cam ısıtıcısının (rezistansının) çalıştığını",
+        "Elektrik devresinde şarj sorunu olduğunu",
+        "Soğutma suyunun çok ısındığını",
+        "Motor kaputunun tam kapanmadığını"
+      ],
+      "answer": 0,
+      "explanation": "Dikdörtgen içinde yukarı doğru dalgalı oklar bulunan bu ışık, arka cam rezistansının (ısıtıcısının) çalışmakta olduğunu bildirir.",
+      "source": "meb-mtsk-2016-02-13",
+      "sourceSection": "soru 38 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-016",
+      "roadPicture": "warningLight",
+      "sign": "isikSagSinyal",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde bu ok şeklindeki ışık sürekli yanıp sönüyor.",
+      "question": "Bu ne anlama gelir?",
+      "options": [
+        "Sağa dönüş sinyal lambaları çalışıyor",
+        "Sola dönüş sinyal lambaları çalışıyor",
+        "Dörtlü ikaz lambaları açık",
+        "Uzun hüzmeli farlar açık"
+      ],
+      "answer": 0,
+      "explanation": "Sağı gösteren tek okun sürekli yanıp sönmesi, sağa dönüş sinyal lambalarının çalıştığını bildirir.",
+      "source": "meb-mtsas-2013-11-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 13 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-017",
+      "roadPicture": "warningLight",
+      "sign": "isikDortlu",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde iki yönü gösteren bu oklar birlikte sürekli yanıp sönüyor.",
+      "question": "Bu ne anlama gelir?",
+      "options": [
+        "Dörtlü ikaz (acil uyarı) lambaları açık",
+        "Sağa dönüş sinyal lambaları açık",
+        "Sola dönüş sinyal lambaları açık",
+        "Sis lambaları açık"
+      ],
+      "answer": 0,
+      "explanation": "Sağ ve sol okların birlikte sürekli yanıp sönmesi, acil uyarı (dörtlü ikaz) lambalarının açık olduğunu bildirir.",
+      "source": "meb-mtsas-2014-03-08",
+      "sourceSection": "Motor ve Araç Tekniği, soru 13 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-018",
+      "roadPicture": "warningLight",
+      "sign": "isikUzunFar",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde bu mavi renkli ikaz ışığı yanıyor.",
+      "question": "Hangi lambalar açıkken bu ışık yanar?",
+      "options": [
+        "Uzun hüzmeli farlar",
+        "Kısa hüzmeli farlar",
+        "Arka sis lambası",
+        "Sol sinyal lambaları"
+      ],
+      "answer": 0,
+      "explanation": "Gösterge panelindeki bu mavi renkli ikaz ışığı, uzun hüzmeli farlar (uzun farlar) devredeyken yanar.",
+      "source": "meb-mtsas-2013-02-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 16 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-019",
+      "roadPicture": "warningLight",
+      "sign": "isikKisaFar",
+      "category": "arac_teknigi",
+      "situation": "Gösterge panelinde bu ışık yanıyor.",
+      "question": "Bu ışık neyi bildirir?",
+      "options": [
+        "Kısa hüzmeli farların açık olduğunu",
+        "Uzun hüzmeli farların açık olduğunu",
+        "Ön sis lambalarının açık olduğunu",
+        "Park lambalarının açık olduğunu"
+      ],
+      "answer": 0,
+      "explanation": "Çizgileri aşağı doğru eğik olan bu far ışığı, kısa hüzmeli farların (kısa farların) açık olduğunu bildirir.",
+      "source": "meb-mtsas-2013-04-13",
+      "sourceSection": "Motor ve Araç Tekniği, soru 15 and answer key",
+      "reviewed": true
+    },
+    {
+      "id": "at-020",
+      "roadPicture": "warningLight",
+      "sign": "isikDortlu",
+      "category": "arac_teknigi",
+      "situation": "Araban arızalandı ve yolun kenarında durmak zorunda kaldın.",
+      "question": "Hangi lambaları kullanmalısın?",
+      "options": [
+        "Dörtlü ikaz (acil uyarı) lambalarını",
+        "Sis lambalarını",
+        "Plaka lambalarını",
+        "İç aydınlatma lambalarını"
+      ],
+      "answer": 0,
+      "explanation": "Araç arızalandığında, durma veya mecburi park etme durumunda acil uyarı (dörtlü ikaz) lambaları kullanılır.",
+      "source": "meb-mtsas-2013-02-02",
+      "sourceSection": "Motor ve Araç Tekniği, soru 15 and answer key",
       "reviewed": true
     }
   ]

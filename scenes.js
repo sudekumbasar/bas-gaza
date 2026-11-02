@@ -945,6 +945,12 @@ function drawWarningLightPicture(front, progress, t, v) {
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.fill();
+  // A question about one particular light shows that light, blinking.
+  if (v.sign) {
+    const image = signImage(v.sign);
+    if (image.complete && flashOn(t, 2)) ctx.drawImage(image, x - r * 0.8, y - r * 0.8, r * 1.6, r * 1.6);
+    return;
+  }
   ctx.fillStyle = flashOn(t, 2) ? "#f59e0b" : "#78350f";
   ctx.beginPath();
   ctx.moveTo(x, y - r * 0.6);
